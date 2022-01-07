@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.SITCinemax" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="navigationViewStyle">@style/navTheme</item>
+        <!-- Text Color -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <!-- Background Color -->
+        <item name="colorControlHighlight">@color/Primary_light</item>
+        <item name="android:textSize">20sp</item>
+        <item name="listPreferredItemHeightSmall">60dp</item>
+        <item name="sizePercent">25</item>
+        <item name="android:expandableListPreferredItemPaddingLeft">10dp</item>
+        <item name="paddingTopNoTitle">20dp</item>
+        <item name="android:layout_centerInParent">true</item>
+
+    </style>
+    <!--- Bottom Dialog -->
+    <style name="BottomDialog" >
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+</resources>
