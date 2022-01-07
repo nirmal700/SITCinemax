@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/bg_lower.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/drawable-v24/bg_primary.xml" value="0.16145833333333334" />
+        <entry key="app/src/main/res/drawable-v24/ic_age.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/drawable-v24/ic_password.xml" value="0.3109375" />
+        <entry key="app/src/main/res/drawable-v24/ic_phone.xml" value="0.3109375" />
+        <entry key="app/src/main/res/drawable-v24/ic_user.xml" value="0.3109375" />
         <entry key="app/src/main/res/font/aladin.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21878411091659694" />
+        <entry key="app/src/main/res/layout/activity_user_sign_up.xml" value="0.2947916666666667" />
       </map>
     </option>
   </component>
