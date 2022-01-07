@@ -174,7 +174,7 @@
                         android:id="@+id/radio_1styear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1st Year "
+                        android:text="1stYear"
                         android:buttonTint="@color/Primary"
                         android:textColor="@color/black" />
 
@@ -182,7 +182,7 @@
                         android:id="@+id/radio_2ndyear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2nd Year"
+                        android:text="2ndYear"
                         android:layout_marginStart="10dp"
                         android:buttonTint="@color/Primary"
                         android:textColor="@color/black"
@@ -193,7 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="3rd Year"
+                        android:text="3rdYear"
                         android:buttonTint="@color/Primary"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp" />
@@ -202,7 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="4th Year"
+                        android:text="4thYear"
                         android:buttonTint="@color/Primary"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp" />

@@ -3,15 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/bg_card_user.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/drawable-v24/bg_drawer_menu.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/drawable-v24/bg_lower.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/drawable-v24/bg_primary.xml" value="0.16145833333333334" />
         <entry key="app/src/main/res/drawable-v24/ic_age.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/drawable-v24/ic_app_info.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_contact_us.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_exit.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_home.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_logout.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_password.xml" value="0.3109375" />
         <entry key="app/src/main/res/drawable-v24/ic_phone.xml" value="0.3109375" />
+        <entry key="app/src/main/res/drawable-v24/ic_share.xml" value="0.16197916666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_shop.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_user.xml" value="0.3109375" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/font/aladin.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21878411091659694" />
         <entry key="app/src/main/res/layout/activity_user_sign_up.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/menu_header.xml" value="0.28020833333333334" />
+        <entry key="app/src/main/res/layout/user_dashboard.xml" value="0.25645646353983703" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.28020833333333334" />
       </map>
     </option>
   </component>
