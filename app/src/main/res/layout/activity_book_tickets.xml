@@ -271,7 +271,6 @@
                     android:autoSizeTextType="uniform"
                     android:inputType="none"
                     android:textColor="@color/black"
-                    android:focusable="false"
                     android:maxLines="1"
                     android:textColorHint="@color/hintBlack"
                     android:digits="@string/allowedName"
