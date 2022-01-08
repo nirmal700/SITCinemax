@@ -301,7 +301,6 @@
                     android:layout_height="55dp"
                     android:autoSizeTextType="uniform"
                     android:inputType="none"
-                    android:focusable="false"
                     android:fontFamily="@font/my_fav_sans_number"
                     android:textColorHint="@color/hintBlack"
                     android:textColor="@color/black"
