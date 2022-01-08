@@ -36,7 +36,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     static final float END_SCALE = 0.7f;
 
 
-    MaterialCardView btn_CustomerProfile,btn_TodoList,btn_mapFind,btn_ScannedShops,btn_book_tickets,btn_transaction_History;
+    MaterialCardView btn_CustomerProfile,btn_TodoList,btn_ScannedShops,btn_book_tickets,btn_transaction_History;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -73,8 +73,6 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         btn_CustomerProfile = findViewById(R.id.btn_CustomerProfile);
         btn_TodoList = findViewById(R.id.btn_TodoList);
-        btn_mapFind = findViewById(R.id.btn_mapFind);
-        btn_ScannedShops = findViewById(R.id.btn_ScannedShops);
         btn_book_tickets = findViewById(R.id.btn_book_ticket);
         btn_transaction_History = findViewById(R.id.btn_transaction_History);
 
@@ -122,20 +120,13 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
                  startActivity(new Intent(UserDashBoard.this, UserToDoList.class));
             }
         });
-
-        btn_mapFind.setOnClickListener(new View.OnClickListener() {
+        btn_book_tickets.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(UserDashBoard.this, FindShops.class));
+            public void onClick(View view) {
+                startActivity(new Intent(UserDashBoard.this, UserBookTickets.class));
             }
         });
 
-        btn_ScannedShops.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(getApplicationContext(),ShopDetails.class));
-            }
-        });
 
 
 

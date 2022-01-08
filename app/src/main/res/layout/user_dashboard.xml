@@ -294,7 +294,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_mapFind"
+                android:id="@+id/btn_feedback"
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_margin="10dp"
@@ -312,8 +312,8 @@
                         android:layout_height="65dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_shop_location"
-                        android:contentDescription="@null" />
+                        android:contentDescription="@null"
+                        android:src="@drawable/feedback" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -322,7 +322,7 @@
                         android:layout_alignParentBottom="true"
                         android:autoSizeTextType="uniform"
                         android:layout_marginBottom="20dp"
-                        android:text="Find Shops"
+                        android:text="Feedback"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:fontFamily="@font/my_fav_sans_number"
