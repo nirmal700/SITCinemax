@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -81,13 +82,15 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
                     Log.e("AddSnapShot", error.getMessage());
                     return;
                 }
-                for(DocumentSnapshot documentSnapshot : Objects.requireNonNull(value))
+                for(DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges())
                 {
-                    list.add(documentSnapshot.toObject(Movies.class));
-                    userMoviesAdapter = new UserMoviesAdapter(UserBookTickets.this, list);
-                    recyclerView.setAdapter(userMoviesAdapter);
-                    userMoviesAdapter.notifyDataSetChanged();
-                    userMoviesAdapter.setOnItemClickListener(UserBookTickets.this);
+                    if (documentChange.getType() == DocumentChange.Type.ADDED) {
+                        list.add(documentChange.getDocument().toObject(Movies.class));
+                        userMoviesAdapter = new UserMoviesAdapter(UserBookTickets.this, list);
+                        recyclerView.setAdapter(userMoviesAdapter);
+                        userMoviesAdapter.notifyDataSetChanged();
+                        userMoviesAdapter.setOnItemClickListener(UserBookTickets.this);
+                    }
                 }
             }
         });
@@ -96,8 +99,11 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
 
     @Override
     public void onItemClick(int position) {
-        startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
-        finish();
+        Movies movies = list.get(position);
+        String mMovieName = movies.getMovieName();
+        Intent intent = new Intent(UserBookTickets.this, BookTickets.class);
+        intent.putExtra("MovieName", mMovieName); // Pass Shop Id value To ShopDetailsSingleView
+        startActivity(intent);
     }
     @Override
     public void onBackPressed() {
