@@ -27,6 +27,9 @@
             android:name=".UserDashBoard"
             android:exported="false" />
         <activity
+            android:name=".UserToDoList"
+            android:exported="false"/>
+        <activity
             android:name=".UserSignUp"
             android:exported="false" />
         <activity

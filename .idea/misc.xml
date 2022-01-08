@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/bg_bottom.xml" value="0.3109375" />
+        <entry key="app/src/main/res/drawable-v24/bg_card_shop.xml" value="0.3109375" />
         <entry key="app/src/main/res/drawable-v24/bg_card_user.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/drawable-v24/bg_drawer_menu.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/drawable-v24/bg_lower.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/drawable-v24/bg_primary.xml" value="0.16145833333333334" />
+        <entry key="app/src/main/res/drawable-v24/ic_add.xml" value="0.171875" />
         <entry key="app/src/main/res/drawable-v24/ic_age.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_app_info.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_contact_us.xml" value="0.16197916666666667" />
@@ -31,13 +33,16 @@
         <entry key="app/src/main/res/layout/activity_user_phone_number_verification.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_user_sign_up.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/card_view_team_members.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/list_todo.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/menu_header.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/text_menu.xml" value="0.28020833333333334" />
+        <entry key="app/src/main/res/layout/todo_add_and_update.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/user_dashboard.xml" value="0.25645646353983703" />
         <entry key="app/src/main/res/layout/user_login.xml" value="0.33951306968684164" />
         <entry key="app/src/main/res/layout/user_phone_number_verification.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/user_sign_up.xml" value="0.35554876477391395" />
+        <entry key="app/src/main/res/layout/user_to_do_list.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.28020833333333334" />
       </map>
     </option>

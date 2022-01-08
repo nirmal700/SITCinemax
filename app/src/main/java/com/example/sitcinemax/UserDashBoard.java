@@ -119,7 +119,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         btn_TodoList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // startActivity(new Intent(UserDashBoard.this, UserToDoList.class));
+                 startActivity(new Intent(UserDashBoard.this, UserToDoList.class));
             }
         });
 
