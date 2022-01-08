@@ -120,7 +120,7 @@ public class UserLogin extends AppCompatActivity {
                         et_phoneNumber.getEditText().setError(null);
 
                         //Get User data From DataBase
-                        String _SIC = snapshot.child(_completePhoneNumber).child("Profile").child("SIC").getValue(String.class);
+                        String _SIC = snapshot.child(_completePhoneNumber).child("Profile").child("sic").getValue(String.class);
                         String _phoneNo = snapshot.child(_completePhoneNumber).child("Profile").child("phoneNumber").getValue(String.class);
                         String _password = snapshot.child(_completePhoneNumber).child("Profile").child("password").getValue(String.class);
 

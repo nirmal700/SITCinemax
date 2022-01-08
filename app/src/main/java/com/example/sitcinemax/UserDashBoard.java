@@ -1,15 +1,6 @@
 package com.example.sitcinemax;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,24 +12,25 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 
 public class UserDashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     static final float END_SCALE = 0.7f;
@@ -95,15 +87,12 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         tv_time.setFormat12Hour("hh:mm:ss a");
         tv_time.setFormat24Hour(null);
 
-        user_Name.setText(manager.getSIC());
+        manager = new SessionManager(getApplicationContext());
+
+        String sName = manager.getSIC();
+        user_Name.setText(sName);
 
         navigationDrawer();
-
-        //nav_shop.setVisible(!managerUser.getShopButton());
-
-        // SessionManager sessionManager = new SessionManager(this);
-        //HashMap<String,String> userDetails = sessionManager.getUserDetailsFromSession();
-
 
         //Animation set onclick
         lottieAnimationView1.setOnClickListener(new View.OnClickListener() {

@@ -275,7 +275,7 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String _SIC = snapshot.child(phoneNumber).child("Profile").child("SIC").getValue(String.class);
+                String _SIC = snapshot.child(phoneNumber).child("Profile").child("sic").getValue(String.class);
                 String _phoneNo = snapshot.child(phoneNumber).child("Profile").child("phoneNumber").getValue(String.class);
                 String _password = snapshot.child(phoneNumber).child("Profile").child("password").getValue(String.class);
 
