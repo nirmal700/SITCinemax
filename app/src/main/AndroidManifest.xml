@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SITCinemax">
         <activity
+            android:name=".EditUserProfile"
+            android:exported="false" />
+        <activity
             android:name=".AboutSITCinemax"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
             android:exported="false" />
         <activity
             android:name=".UserToDoList"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".UserSignUp"
             android:exported="false" />

@@ -112,7 +112,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         btn_CustomerProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(UserDashBoard.this, EditUserProfile.class));
+                startActivity(new Intent(UserDashBoard.this, EditUserProfile.class));
             }
         });
 

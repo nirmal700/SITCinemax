@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/font/aladin.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/layout/activity_about_sitcinemax.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/activity_edit_user_profile.xml" value="0.6392589486818395" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21878411091659694" />
         <entry key="app/src/main/res/layout/activity_user_login.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_user_phone_number_verification.xml" value="0.28020833333333334" />
@@ -41,7 +42,7 @@
         <entry key="app/src/main/res/layout/user_dashboard.xml" value="0.25645646353983703" />
         <entry key="app/src/main/res/layout/user_login.xml" value="0.33951306968684164" />
         <entry key="app/src/main/res/layout/user_phone_number_verification.xml" value="0.28020833333333334" />
-        <entry key="app/src/main/res/layout/user_sign_up.xml" value="0.35554876477391395" />
+        <entry key="app/src/main/res/layout/user_sign_up.xml" value="0.502905524310348" />
         <entry key="app/src/main/res/layout/user_to_do_list.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.28020833333333334" />
       </map>

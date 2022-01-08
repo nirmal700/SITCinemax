@@ -7,4 +7,18 @@
     <string name="allowedName">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.()-_</string>
     <string name="hint_otp">######</string>
     <string name="noOtp">Didn\'t receive OTP?</string>
+    <string name="update_user">Update your details</string>
+
+    <string name="required"><font color='#FF0000'>*</font> Required</string>
+    <string name="editName">Name<font color='#FF0000'>*</font></string>
+    <string name="editLocation">Location<font color='#FF0000'>*</font></string>
+    <string name="editAge">Age<font color='#FF0000'>*</font></string>
+    <string name="editGender">Choose Gender<font color='#FF0000'>*</font></string>
+    <string name="editEmail">Email</string>
+    <string name="editAddress">Address</string>
+
+    <string name="hint_age">20</string>
+    <string name="hint_email">example@gmail.com</string>
+
+    <string name="update">Update</string>
 </resources>
