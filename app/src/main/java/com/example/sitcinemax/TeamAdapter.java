@@ -95,7 +95,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ImageViewHolde
 
         Glide.with(mContext)
                 .load(currentData.getImgUrl())
-                .placeholder(R.drawable.bg_loading)
+                .placeholder(R.drawable.sand_clock)
                 .into(holder.imageView);
 
 
