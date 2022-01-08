@@ -123,34 +123,39 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_age"
+                    android:id="@+id/et_course"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
                     android:layout_marginTop="8dp"
                     android:hint="Select Your Course"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidth="1dp"
-                    app:endIconMode="clear_text"
+                    app:errorTextColor="@color/black"
                     app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/ic_age"
                     app:startIconTint="@color/black">
 
                     <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:autoSizeTextType="uniform"
-                        android:inputType="none"
                         android:id="@+id/autoCompleteCourse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/my_fav_sans_number"
+                        android:inputType="none"
+                        android:background="@color/black"
                         android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="LabelFor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"

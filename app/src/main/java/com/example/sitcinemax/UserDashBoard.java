@@ -41,7 +41,6 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 public class UserDashBoard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
     static final float END_SCALE = 0.7f;
 
 

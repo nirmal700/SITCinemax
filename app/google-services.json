@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1076596174857",
+    "project_id": "sit-cinemax-4a5e0",
+    "storage_bucket": "sit-cinemax-4a5e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076596174857:android:6e1a4a304d4bc7e10988d8",
+        "android_client_info": {
+          "package_name": "com.example.sitcinemax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076596174857-2ap4evjupoijhci93lqbabbafjc7ca1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeI50SGKBhf6qw2ccpbhg0xzDaDWikr88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076596174857-2ap4evjupoijhci93lqbabbafjc7ca1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

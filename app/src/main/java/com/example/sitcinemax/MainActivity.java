@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //  startActivity( new Intent(MainActivity.this, ShopSignup.class));
                 //Initialize SessionManager
-                    startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
+                    startActivity(new Intent(getApplicationContext(), UserSignUp.class));
                 finish();
 
             }

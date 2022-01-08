@@ -5,4 +5,6 @@
     <string name="cinemax">Cinemax</string>
     <string name="developed_by_nirmal_kumar">Developed By Nirmal Kumar</string>
     <string name="allowedName">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.()-_</string>
+    <string name="hint_otp">######</string>
+    <string name="noOtp">Didn\'t receive OTP?</string>
 </resources>
