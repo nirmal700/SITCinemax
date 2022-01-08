@@ -278,9 +278,9 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
                 String _SIC = snapshot.child(phoneNumber).child("Profile").child("sic").getValue(String.class);
                 String _phoneNo = snapshot.child(phoneNumber).child("Profile").child("phoneNumber").getValue(String.class);
                 String _password = snapshot.child(phoneNumber).child("Profile").child("password").getValue(String.class);
-
+                String _Name = snapshot.child(phoneNumber).child("Profile").child("name").getValue(String.class);
                 manager.setUserLogin(true);
-                manager.setDetails(_phoneNo,_password,_SIC);
+                manager.setDetails(_phoneNo,name,_password,_SIC);
 
 
                 progressDialog.dismiss();

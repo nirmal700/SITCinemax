@@ -87,7 +87,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         manager = new SessionManager(getApplicationContext());
 
-        String sName = manager.getSIC();
+        String sName = manager.getName();
         user_Name.setText(sName);
 
         navigationDrawer();
@@ -269,7 +269,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
             public void onClick(DialogInterface dialog, int which) {
 
                 manager.setUserLogin(false);
-                manager.setDetails("","","");
+                manager.setDetails("","","","");
 
                 //activity.finishAffinity();
                 dialog.dismiss();

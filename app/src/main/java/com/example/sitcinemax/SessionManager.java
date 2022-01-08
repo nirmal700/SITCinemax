@@ -24,10 +24,11 @@ public class SessionManager {
         return sharedPreferences.getBoolean("KEY_LOGIN", false);
     }
 
-    public void setDetails(String phoneNo, String password, String SIC) {
+    public void setDetails(String phoneNo,String Name, String password, String SIC) {
         editor.putString("KEY_PHONE", phoneNo);
         editor.putString("KEY_PASSWORD", password);
         editor.putString("KEY_SIC",SIC);
+        editor.putString("KEY_NAME",Name);
 
         editor.commit();
 
@@ -39,6 +40,7 @@ public class SessionManager {
     }
     public String getSIC() { return  sharedPreferences.getString("KEY_SIC","");}
     public String getPassword() { return  sharedPreferences.getString("KEY_PASSWORD","");}
+    public String getName() { return  sharedPreferences.getString("KEY_NAME","");}
 
 
     public void logoutUserFromSession() {

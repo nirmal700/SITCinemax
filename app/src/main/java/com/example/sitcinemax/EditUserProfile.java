@@ -201,7 +201,7 @@ public class EditUserProfile extends AppCompatActivity {
                     manager = new SessionManager(getApplicationContext());
                     phoneNumber = manager.getPhone();
                     String _Password = manager.getPassword();
-                    manager.setDetails(phoneNumber,_Password,et_sic.getEditText().getText().toString());
+                    manager.setDetails(phoneNumber,et_name.getEditText().getText().toString(),_Password,et_sic.getEditText().getText().toString());
 
                     userDb.child("name").setValue(et_name.getEditText().getText().toString());
                     tv_name.setText(et_name.getEditText().getText().toString());

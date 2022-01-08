@@ -123,9 +123,9 @@ public class UserLogin extends AppCompatActivity {
                         String _SIC = snapshot.child(_completePhoneNumber).child("Profile").child("sic").getValue(String.class);
                         String _phoneNo = snapshot.child(_completePhoneNumber).child("Profile").child("phoneNumber").getValue(String.class);
                         String _password = snapshot.child(_completePhoneNumber).child("Profile").child("password").getValue(String.class);
-
+                        String _Name = snapshot.child(_completePhoneNumber).child("Profile").child("name").getValue(String.class);
                         manager.setUserLogin(true);
-                        manager.setDetails(_phoneNo,_password,_SIC);
+                        manager.setDetails(_phoneNo,_Name,_password,_SIC);
 
                         // Intent to Next Activity
                         startActivity(new Intent(getApplicationContext(), UserDashBoard.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
