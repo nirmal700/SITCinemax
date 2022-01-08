@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/bg_bottom.xml" value="0.3109375" />
         <entry key="app/src/main/res/drawable-v24/bg_card_user.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/drawable-v24/bg_drawer_menu.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/drawable-v24/bg_lower.xml" value="0.17135416666666667" />
@@ -24,10 +25,12 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/font/aladin.xml" value="0.17552083333333332" />
         <entry key="app/src/main/res/layout/activity_about_sitcinemax.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21878411091659694" />
         <entry key="app/src/main/res/layout/activity_user_login.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_user_phone_number_verification.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_user_sign_up.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/card_view_team_members.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/menu_header.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/text_menu.xml" value="0.28020833333333334" />
