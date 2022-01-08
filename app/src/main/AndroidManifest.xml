@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SITCinemax">
         <activity
+            android:name=".AboutSITCinemax"
+            android:exported="false" />
+        <activity
+            android:name=".ContactUs"
+            android:exported="false" />
+        <activity
             android:name=".UserLogin"
             android:exported="false" />
         <activity

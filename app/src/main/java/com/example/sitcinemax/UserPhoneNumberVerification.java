@@ -40,6 +40,8 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
     TextView tv_phoneNo;
     ImageView btn_back;
 
+    SessionManager manager;
+
     private TextView btn_resend,tv_counter,tv_resend;
     private EditText et_otp;
     private ProgressDialog progressDialog;
@@ -76,6 +78,7 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
             showCustomDialog();
         }
         firebaseAuth = FirebaseAuth.getInstance();
+        manager = new SessionManager(getApplicationContext());
 
         String mobile = phoneNumber;
         mobile = mobile.substring(0, 3) + "*****" + mobile.substring(9);
@@ -272,9 +275,12 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String _name = snapshot.child(phoneNumber).child("Profile").child("name").getValue(String.class);
+                String _SIC = snapshot.child(phoneNumber).child("Profile").child("SIC").getValue(String.class);
                 String _phoneNo = snapshot.child(phoneNumber).child("Profile").child("phoneNumber").getValue(String.class);
                 String _password = snapshot.child(phoneNumber).child("Profile").child("password").getValue(String.class);
+
+                manager.setUserLogin(true);
+                manager.setDetails(_phoneNo,_password,_SIC);
 
 
                 progressDialog.dismiss();

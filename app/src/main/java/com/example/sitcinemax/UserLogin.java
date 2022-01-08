@@ -31,6 +31,8 @@ public class UserLogin extends AppCompatActivity {
     TextInputLayout et_phoneNumber, et_password;
     Button btn_login,btn_backSignUp;
 
+    SessionManager manager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,9 @@ public class UserLogin extends AppCompatActivity {
 
         btn_login = findViewById(R.id.btn_login);
         btn_backSignUp = findViewById(R.id.btn_backSignUp);
+
+        //Create a Session
+        manager = new SessionManager(getApplicationContext());
 
         if (!isConnected(UserLogin.this)){
             showCustomDialog();
@@ -115,10 +120,12 @@ public class UserLogin extends AppCompatActivity {
                         et_phoneNumber.getEditText().setError(null);
 
                         //Get User data From DataBase
-                        String _name = snapshot.child(_completePhoneNumber).child("Profile").child("name").getValue(String.class);
+                        String _SIC = snapshot.child(_completePhoneNumber).child("Profile").child("SIC").getValue(String.class);
                         String _phoneNo = snapshot.child(_completePhoneNumber).child("Profile").child("phoneNumber").getValue(String.class);
                         String _password = snapshot.child(_completePhoneNumber).child("Profile").child("password").getValue(String.class);
 
+                        manager.setUserLogin(true);
+                        manager.setDetails(_phoneNo,_password,_SIC);
 
                         // Intent to Next Activity
                         startActivity(new Intent(getApplicationContext(), UserDashBoard.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));

@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView powered;
 
+    SessionManager manager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +35,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                //  startActivity( new Intent(MainActivity.this, ShopSignup.class));
-                //Initialize SessionManager
+                manager = new SessionManager(getApplicationContext());
+                if(manager.getUserLogin())
+                {
+                    startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
+                    finish();
+                }
+                else
+                {
                     startActivity(new Intent(getApplicationContext(), UserSignUp.class));
-                finish();
+                    finish();
+                }
+
 
             }
         },SPLASH_TIMER);

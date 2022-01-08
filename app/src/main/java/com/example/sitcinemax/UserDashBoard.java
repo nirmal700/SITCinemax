@@ -55,6 +55,8 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     TextView tv_date;
     TextClock tv_time;
 
+    SessionManager manager;
+
 
     String phoneNo;
     String view_date= new SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(new Date());
@@ -93,7 +95,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         tv_time.setFormat12Hour("hh:mm:ss a");
         tv_time.setFormat24Hour(null);
 
-        user_Name.setText("Nirmal Kumar");
+        user_Name.setText(manager.getSIC());
 
         navigationDrawer();
 
@@ -230,7 +232,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.logout:
-                //logout();
+                logout();
                 break;
 
             case R.id.exit:
@@ -261,266 +263,56 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     }
 
     private void contactUs() {
-        //startActivity(new Intent(getApplicationContext(), ContactUs.class));
+        startActivity(new Intent(getApplicationContext(), ContactUs.class));
     }
 
     private void about() {
-        //startActivity(new Intent(getApplicationContext(), AboutQrRegistry.class));
+        startActivity(new Intent(getApplicationContext(), AboutSITCinemax.class));
     }
 
+    private void logout() {
 
-//    private void shopLogin() {
-//
-//        managerUser = new SessionManagerUser(getApplicationContext());
-//        managerShop = new SessionManagerShop(getApplicationContext());
-//
-//        if (managerShop.getShopLogin()) {
-//            startActivity(new Intent(getApplicationContext(), ShopDashBoard.class));
-//        } else {
-//
-//            Dialog dialog = new Dialog(UserDashBoard.this);
-//            dialog.setContentView(layout.login_alert);
-//            Button btCancel = dialog.findViewById(R.id.bt_cancel);
-//            Button btOk = dialog.findViewById(R.id.bt_ok);
-//            Button btn_disable = dialog.findViewById(R.id.btn_disable);
-//
-//            btCancel.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    dialog.cancel();
-//                }
-//            });
-//            btOk.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                    startActivity(new Intent(UserDashBoard.this, ShopLogin.class));
-//                    dialog.dismiss();
-//                }
-//            });
-//            btn_disable.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Menu menuNav = navigationView.getMenu();
-//                    MenuItem nav_shop = menuNav.findItem(R.id.nav_shop);
-//                    managerUser.setShopButton(true);
-//                    nav_shop.setVisible(false);
-//                    dialog.dismiss();
-//                }
-//            });
-//            dialog.show();
-//        }
-//    }
-//
-//    private void logout() {
-//
-//        managerUser = new SessionManagerUser(getApplicationContext());
-//        managerShop = new SessionManagerShop(getApplicationContext());
-//
-//        //Initialize alert dialog
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//
-//        //Set Title
-//        builder.setTitle("Log out");
-//
-//        //set Message
-//        builder.setMessage("Are you sure to Log out ?");
-//
-//        //positive YES button
-//        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//                managerUser.setCustomerLogin(false);
-//                managerUser.setShopButton(false);
-//                managerUser.setDetails("","","");
-//
-//                managerShop.setShopLogin(false);
-//                managerShop.setDetails("","","");
-//
-//                //activity.finishAffinity();
-//                dialog.dismiss();
-//
-//                //Finish Activity
-//                startActivity(new Intent(getApplicationContext(), UserSignUp.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-//                finish();
-//            }
-//        });
-//
-//        //Negative NO button
-//        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                //Dismiss Dialog
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        AlertDialog alert = builder.create();
-//        alert.show();
-//    }
-//
-//    private void scanCode() {
-//
-//        //Initialize intent integrator
-//        IntentIntegrator intentIntegrator = new IntentIntegrator(UserDashBoard.this);
-//
-//        intentIntegrator.setPrompt("For Flash Use Volume Up Key"); //Set Prompt text
-//        intentIntegrator.setCameraId(0); //set Camera
-//        intentIntegrator.setBeepEnabled(true); //set beep
-//        intentIntegrator.setOrientationLocked(true);    //Locked Orientation
-//        intentIntegrator.setCaptureActivity(QRCodeScanner.class);   //Set Capture Activity
-//        intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-//        intentIntegrator.initiateScan();    //Initiate Scan
-//
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        //Initiate Intent Result
-//        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-//
-//        //Check Condition
-//        if (intentResult.getContents() != null && resultCode == RESULT_OK) {
-//
-//            managerShop = new SessionManagerShop(getApplicationContext());
-//            phoneNo  = managerUser.getPhone();
-//
-//            FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-//            DatabaseReference reference = rootNode.getReference("Users").child(phoneNo).child("Shops");
-//
-//            //DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-//            String output = intentResult.getContents();
-//
-//
-//
-//            if (output.startsWith("QrRegistryShop")) {
-//
-//                try {
-//
-//                    String[] separated = output.split(":");
-//
-//                    String shopName = separated[1];
-//                    String shopDetails = separated[2];
-//
-//                    ShopData = (String) decrypt(shopDetails);
-//
-//                    String[] separated0 = ShopData.split(":");
-//
-//                    String sId = separated0[0];
-//                    String phoneNumber = separated0[1];
-//
-//                    Query checkData = FirebaseDatabase.getInstance().getReference("Users").child(phoneNo).child("Shops").orderByChild("shopId").equalTo(sId);
-//                    checkData.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            if (snapshot.exists()){
-//                                AlertDialog.Builder builder = new AlertDialog.Builder(UserDashBoard.this);
-//                                builder.setMessage("Details already exist ");
-//                                builder.setPositiveButton("Scan Again", (dialog, which) -> scanCode());
-//                                builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
-//                                builder.show();
-//
-//                            }else {
-//                                String id = reference.push().getKey();
-//                                if (id != null){
-//                                    reference.child(id).child("shopId").setValue(sId);
-//                                    reference.child(id).child("phoneNumber").setValue(phoneNumber);
-//                                    reference.child(id).child("shopName").setValue(shopName);
-//                                    reference.child(id).child("id").setValue(id);
-//                                }
-//                                Toast.makeText(UserDashBoard.this, "New shop details added", Toast.LENGTH_SHORT).show();
-//                                //Initialize Dialog box
-//                                AlertDialog.Builder builder = new AlertDialog.Builder(UserDashBoard.this);
-//
-//                                //Set Title
-//                                builder.setTitle("Result");
-//
-//                                //Set Message
-//                                builder.setMessage("Read Successfully");
-//
-//                                //set Positive Button
-//                                builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                        scanCode();
-//                                    }
-//                                }).setNegativeButton("OK", new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                        dialog.dismiss();
-//                                    }
-//                                });
-//
-//                                //Show Alert Dialog
-//                                builder.show();
-//                            }
-//                        }
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
-//
-//
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(UserDashBoard.this);
-//                    builder.setMessage("Wrong QR Code");
-//                    builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            scanCode();
-//                        }
-//                    });
-//                    builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
-//                    builder.show();
-//                }
-//
-//            } else {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(UserDashBoard.this);
-//                builder.setMessage("Wrong QR Code");
-//                builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        scanCode();
-//                    }
-//                });
-//                builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
-//                builder.show();
-//
-//            }
-//        } else {
-//
-//            Toast.makeText(getApplicationContext(), "You did not scan anything", Toast.LENGTH_SHORT).show();
-//        }
-//
-//        super.onActivityResult(requestCode, resultCode, data);
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//    private Object decrypt(String shopDetails) throws Exception {
-//
-//        SecretKeySpec key = generateKey(keyPass);
-//        Cipher c = Cipher.getInstance(AES);
-//        c.init(Cipher.DECRYPT_MODE,key);
-//        byte[] decodeValue = android.util.Base64.decode(shopDetails,android.util.Base64.DEFAULT);
-//        byte[] decValue = c.doFinal(decodeValue);
-//        return new String(decValue);
-//
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//    private SecretKeySpec generateKey(String keyPass) throws Exception {
-//        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
-//        byte[] bytes = keyPass.getBytes(StandardCharsets.UTF_8);
-//        digest.update(bytes,0,bytes.length);
-//        byte[] key = digest.digest();
-//        return new SecretKeySpec(key,"AES");
-//    }
+        manager = new SessionManager(getApplicationContext());
+
+        //Initialize alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //Set Title
+        builder.setTitle("Log out");
+
+        //set Message
+        builder.setMessage("Are you sure to Log out ?");
+
+        //positive YES button
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                manager.setUserLogin(false);
+                manager.setDetails("","","");
+
+                //activity.finishAffinity();
+                dialog.dismiss();
+
+                //Finish Activity
+                startActivity(new Intent(getApplicationContext(), UserSignUp.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                finish();
+            }
+        });
+
+        //Negative NO button
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Dismiss Dialog
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
     //--------------- Internet Error Dialog Box -----------
     private void showCustomDialog() {
