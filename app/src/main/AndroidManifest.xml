@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SITCinemax">
         <activity
+            android:name=".ChooseSeatLayout"
+            android:exported="false" />
+        <activity
             android:name=".BookTickets"
             android:exported="false" />
         <activity

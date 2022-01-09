@@ -32,6 +32,7 @@
         <entry key="app/src/main/res/font/oswald_light.xml" value="0.32" />
         <entry key="app/src/main/res/layout/activity_about_sitcinemax.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_book_tickets.xml" value="0.14781826623299052" />
+        <entry key="app/src/main/res/layout/activity_choose_seat_layout.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_edit_user_profile.xml" value="0.45461847389558235" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21878411091659694" />
