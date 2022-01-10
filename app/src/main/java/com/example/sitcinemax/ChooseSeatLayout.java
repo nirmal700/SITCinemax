@@ -188,7 +188,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 if(selectedIds.length()>1&&selectedIds.length()<=10)
                 {
                     btn_Proceed.setError(null);
-                    Toast.makeText(ChooseSeatLayout.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChooseSeatLayout.this, "Successfull"+ selectedIds, Toast.LENGTH_SHORT).show();
                 }
                 else
                     btn_Proceed.setError("Check The Seats");
@@ -200,7 +200,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         Log.e("Clicked", "onClick: "+view.getId() );
         if ((int) view.getTag() == STATUS_AVAILABLE) {
-            //if(selectedIds.length()>=1&&selectedIds.length()<=10) {
+            if(selectedIds.length()<=6) {
                 if (selectedIds.contains(view.getId() + ",")) {
                     selectedIds = selectedIds.replace(+view.getId() + ",", "");
                     Log.e("IF1", "onClick: Selected" + selectedIds);
@@ -210,11 +210,15 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                     view.setBackgroundResource(R.drawable.ic_seats_selected);
                     Log.e("IF2", "onClick: Selected" + selectedIds);
                 }
-            //}
-//            else
-//            {
-//                btn_Proceed.setError("Choosen More Than Two");
-//            }
+            }
+            else if(selectedIds.contains(view.getId() + ","))
+            {
+                selectedIds = selectedIds.replace(+view.getId() + ",", "");
+                Log.e("IF1", "onClick: Selected" + selectedIds);
+                view.setBackgroundResource(R.drawable.ic_seats_book);
+            }
+            else
+                Toast.makeText(ChooseSeatLayout.this, "Cannot Choose More Than Two Seats", Toast.LENGTH_SHORT).show();
         } else if ((int) view.getTag() == STATUS_BOOKED) {
             Toast.makeText(this, "Seat " + view.getId() + " is Booked", Toast.LENGTH_SHORT).show();
         } else if ((int) view.getTag() == STATUS_RESERVED) {
