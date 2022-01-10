@@ -20,22 +20,18 @@ import java.util.List;
 public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickListener{
     ViewGroup layout;
 
-    String seats = "_UUUUUUAAAAARRRR_/"
-            + "_________________/"
-            + "UU__AAAARRRRR__RR/"
-            + "UU__UUUAAAAAA__AA/"
-            + "AA__AAAAAAAAA__AA/"
-            + "AA__AARUUUURR__AA/"
-            + "UU__UUUA_RRRR__AA/"
-            + "AA__AAAA_RRAA__UU/"
-            + "AA__AARR_UUUU__RR/"
-            + "AA__UUAA_UURR__RR/"
-            + "_________________/"
-            + "UU_AAAAAAAUUUU_RR/"
-            + "RR_AAAAAAAAAAA_AA/"
-            + "AA_UUAAAAAUUUU_AA/"
-            + "AA_AAAAAAUUUUU_AA/"
-            + "_________________/";
+    String seats = "____UUUUUUUUUUUUUUUUUUUUUUUU00070008000900100011RRRRRRRRRRRRRRRR____////"
+            + "____________________________________________________________________////"
+            + "UUUUUUUU________010801090110011101120113011401150116________RRRRRRRR////"
+            + "UUUUUUUU________UUUUUUUUUUUU020102020203020402050206________02070208////"
+            + "03010302________030303040305030603070308030903100311________03120313////"
+            + "04010402________RRRRRRRR04050406RRRR04080409RRRR0411________UUUU0413////"
+            + "UUUUUUUU________UUUUUUUUUUUU0501____RRRRRRRRRRRRRRRR________05020503////"
+            + "06010602________0603060406050606____0607060806090610________RRRRUUUU////"
+            + "07010402________RRRRRRRR07050706____07080709RRRR0711________UUUU0713////"
+            + "UUUUUUUU________UUUUUUUUUUUU0801____RRRRRRRRRRRRRRRR________08020803////"
+            + "09010902________0903090409050906____0907090809090910________RRRRUUUU////"
+            +"UUUUUUUU________UUUUUUUUUUUU1001____RRRRRRRRRRRRRRRR________10021003////";
 
     List<TextView> seatViewList = new ArrayList<>();
     int seatSize = 100;
@@ -53,12 +49,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
         layout = findViewById(R.id.layoutSeat);
 
-        String name = getIntent().getStringExtra("NAME_2");
-        String sic = getIntent().getStringExtra("SIC_2");
-        String PhoneNumber = getIntent().getStringExtra("PHONE_NUMBER_2");
-        Log.e("Seats Intent", "onCreate: "+name+PhoneNumber+sic);
-
-        seats = "/" + seats;
+        seats = "////" + seats;
 
         LinearLayout layoutSeat = new LinearLayout(this);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -67,13 +58,16 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
         layoutSeat.setPadding(8 * seatGaping, 8 * seatGaping, 8 * seatGaping, 8 * seatGaping);
         layout.addView(layoutSeat);
 
+        char Par = '_';
+
         LinearLayout layout = null;
 
         int count = 0;
 
-        for (int index = 0; index < seats.length(); index++) {
+        for (int index = 0; index < seats.length(); index=index+4) {
             if (seats.charAt(index) == '/') {
                 layout = new LinearLayout(this);
+                count = 0;
                 layout.setOrientation(LinearLayout.HORIZONTAL);
                 layoutSeat.addView(layout);
             } else if (seats.charAt(index) == 'U') {
@@ -83,27 +77,74 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
                 view.setLayoutParams(layoutParams);
                 view.setPadding(0, 0, 0, 2 * seatGaping);
-                view.setId(count);
+                view.setId(1000+count);
                 view.setGravity(Gravity.CENTER);
                 view.setBackgroundResource(R.drawable.ic_seats_booked);
                 view.setTextColor(Color.WHITE);
                 view.setTag(STATUS_BOOKED);
-                view.setText(count + "");
+                view.setText( "U");
                 view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
                 layout.addView(view);
                 seatViewList.add(view);
                 view.setOnClickListener(this);
-            } else if (seats.charAt(index) == 'A') {
+            } else if (seats.startsWith("00", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
                 count++;
+                Log.e("LOG12", "onCreate: "+index +"\t" + seats.substring(index,index+4) );
+                if(seats.startsWith("00", index))
+                {
+                    Par = 'A';
+                }
+                else if(seats.startsWith("01", index))
+                {
+                    Par = 'B';
+                }
+                else if(seats.startsWith("02", index))
+                {
+                    Par = 'C';
+                }
+                else if(seats.startsWith("03", index))
+                {
+                    Par = 'D';
+                }
+                if(seats.startsWith("04", index))
+                {
+                    Par = 'E';
+                }
+                else if(seats.startsWith("05", index))
+                {
+                    Par = 'F';
+                }
+                if(seats.startsWith("06", index))
+                {
+                    Par = 'G';
+                }
+                else if(seats.startsWith("07", index))
+                {
+                    Par = 'H';
+                }
+                else if(seats.startsWith("08", index))
+                {
+                    Par = 'I';
+                }
+                else if(seats.startsWith("09", index))
+                {
+                    Par = 'J';
+                }else if(seats.startsWith("10", index))
+                {
+                    Par = 'K';
+                }
+
+                String ID = seats.substring(index+2,index+4);
+                Log.e("ID", "onCreate: "+"Index\t"+seats.substring(index,index+4)+"Seat No\t"+ID+"Parity Bit"+Par );
                 TextView view = new TextView(this);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
                 layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
                 view.setLayoutParams(layoutParams);
                 view.setPadding(0, 0, 0, 2 * seatGaping);
-                view.setId(count);
+                view.setId(Integer.parseInt(seats.substring(index,index+4)));
                 view.setGravity(Gravity.CENTER);
                 view.setBackgroundResource(R.drawable.ic_seats_book);
-                view.setText(count + "");
+                view.setText(Par+""+ID + "");
                 view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
                 view.setTextColor(Color.BLACK);
                 view.setTag(STATUS_AVAILABLE);
@@ -117,10 +158,10 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
                 view.setLayoutParams(layoutParams);
                 view.setPadding(0, 0, 0, 2 * seatGaping);
-                view.setId(count);
+                view.setId(2000+count);
                 view.setGravity(Gravity.CENTER);
                 view.setBackgroundResource(R.drawable.ic_seats_reserved);
-                view.setText(count + "");
+                view.setText( "R");
                 view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
                 view.setTextColor(Color.WHITE);
                 view.setTag(STATUS_RESERVED);
