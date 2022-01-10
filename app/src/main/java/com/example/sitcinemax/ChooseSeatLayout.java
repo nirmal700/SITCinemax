@@ -10,6 +10,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,12 +43,15 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
     int STATUS_RESERVED = 3;
     String selectedIds = "";
 
+    Button btn_Proceed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_seat_layout);
 
         layout = findViewById(R.id.layoutSeat);
+        btn_Proceed = findViewById(R.id.btn_Proceed);
 
         seats = "////" + seats;
 
@@ -178,21 +182,39 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 layout.addView(view);
             }
         }
+        btn_Proceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selectedIds.length()>1&&selectedIds.length()<=10)
+                {
+                    btn_Proceed.setError(null);
+                    Toast.makeText(ChooseSeatLayout.this, "Successfull", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    btn_Proceed.setError("Check The Seats");
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
         Log.e("Clicked", "onClick: "+view.getId() );
         if ((int) view.getTag() == STATUS_AVAILABLE) {
-            if (selectedIds.contains(view.getId() + ",")) {
-                selectedIds = selectedIds.replace(+view.getId() + ",", "");
-                Log.e("IF1", "onClick: Selected"+selectedIds );
-                view.setBackgroundResource(R.drawable.ic_seats_book);
-            } else {
-                selectedIds = selectedIds + view.getId() + ",";
-                view.setBackgroundResource(R.drawable.ic_seats_selected);
-                Log.e("IF2", "onClick: Selected"+selectedIds );
-            }
+            //if(selectedIds.length()>=1&&selectedIds.length()<=10) {
+                if (selectedIds.contains(view.getId() + ",")) {
+                    selectedIds = selectedIds.replace(+view.getId() + ",", "");
+                    Log.e("IF1", "onClick: Selected" + selectedIds);
+                    view.setBackgroundResource(R.drawable.ic_seats_book);
+                } else {
+                    selectedIds = selectedIds + view.getId() + ",";
+                    view.setBackgroundResource(R.drawable.ic_seats_selected);
+                    Log.e("IF2", "onClick: Selected" + selectedIds);
+                }
+            //}
+//            else
+//            {
+//                btn_Proceed.setError("Choosen More Than Two");
+//            }
         } else if ((int) view.getTag() == STATUS_BOOKED) {
             Toast.makeText(this, "Seat " + view.getId() + " is Booked", Toast.LENGTH_SHORT).show();
         } else if ((int) view.getTag() == STATUS_RESERVED) {
