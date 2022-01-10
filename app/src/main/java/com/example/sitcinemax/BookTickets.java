@@ -17,12 +17,12 @@ import java.util.Objects;
 
 public class BookTickets extends AppCompatActivity {
 
-    private TextInputLayout et_userName,et_sic,et_phoneNumber,et_userName2,et_sic2,et_phoneNumber2;
+    private TextInputLayout et_userName,et_sic,et_phoneNumber,et_userName2,et_sic2,et_phoneNumber2,et_MovieName;
     private SessionManager manager;
     private RadioGroup radio_group;
     private RadioButton rb_selected,rb1,rb2;
     private Button btn_Proceed;
-    String sic,name,phone;
+    String sic,name,phone,mMovieName;
     int b=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class BookTickets extends AppCompatActivity {
         et_sic2 = findViewById(R.id.et_sic2);
         rb1 = findViewById(R.id.single);
         rb2 = findViewById(R.id.duo);
+        et_MovieName = findViewById(R.id.et_MovieName);
         btn_Proceed = findViewById(R.id.btn_Proceed);
 
         manager = new SessionManager(getApplicationContext());
@@ -46,6 +47,8 @@ public class BookTickets extends AppCompatActivity {
         et_phoneNumber2.setVisibility(View.GONE);
         et_userName2.setVisibility(View.GONE);
         et_sic2.setVisibility(View.GONE);
+        mMovieName = getIntent().getStringExtra("MovieName");
+        et_MovieName.getEditText().setText(mMovieName);
 
         radio_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

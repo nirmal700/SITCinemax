@@ -15,11 +15,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickListener{
     ViewGroup layout;
+    private DatabaseReference userDb;
 
     String seats = "____UUUUUUUUUUUUUUUUUUUUUUUU00070008000900100011RRRRRRRRRRRRRRRR____////"
             + "____________________________________________________________________////"

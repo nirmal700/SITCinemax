@@ -70,6 +70,35 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="15dp"
             android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_MovieName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:layout_marginTop="5dp"
+                android:hint="Movie Name"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="1dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_user"
+                app:startIconTint="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:autoSizeTextType="uniform"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:fontFamily="@font/my_fav_sans_number"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:digits="@string/allowedName"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_userName"

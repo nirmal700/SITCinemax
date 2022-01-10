@@ -1,19 +1,28 @@
 package com.example.sitcinemax;
 
 public class Movies {
-    String MovieName,MovieDescription,MovieRating,PosterUrl,MovieShort;
+    String MovieName,MovieDescription,MovieRating,PosterUrl,MovieShort,SeatLayout;
     boolean IsScreening;
 
     public Movies() {
     }
 
-    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening) {
+    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening,String SeatLayout) {
         MovieName = movieName;
         MovieDescription = movieDescription;
         MovieRating = movieRating;
         PosterUrl = posterUrl;
         MovieShort = movieShort;
         IsScreening = isScreening;
+        this.SeatLayout = SeatLayout;
+    }
+
+    public String getSeatLayout() {
+        return SeatLayout;
+    }
+
+    public void setSeatLayout(String seatLayout) {
+        SeatLayout = seatLayout;
     }
 
     public String getMovieName() {
