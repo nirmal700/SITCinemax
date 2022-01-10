@@ -23,7 +23,10 @@ import java.util.List;
 public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickListener{
     ViewGroup layout;
     private DatabaseReference userDb;
-
+    String Name2 = getIntent().getStringExtra("NAME_2");
+    String SIC2 = getIntent().getStringExtra("SIC_2");
+    String PhoneNumber2 = getIntent().getStringExtra("PHONE_NUMBER_2");
+    String MovieName = getIntent().getStringExtra("Movie_Name");
     String seats = "____UUUUUUUUUUUUUUUUUUUUUUUU00070008000900100011RRRRRRRRRRRRRRRR____////"
             + "____________________________________________________________________////"
             + "UUUUUUUU________010801090110011101120113011401150116________RRRRRRRR////"

@@ -113,6 +113,7 @@ public class BookTickets extends AppCompatActivity {
                 intent.putExtra("NAME_2",name);
                 intent.putExtra("SIC_2",sic);
                 intent.putExtra("PHONE_NUMBER_2",phone);
+                intent.putExtra("Movie_Name",mMovieName);
                 Log.e("Intent Put", "onClick: "+name+phone+sic );
                 startActivity(intent);
             }

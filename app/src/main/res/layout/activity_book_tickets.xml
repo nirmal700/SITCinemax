@@ -84,7 +84,7 @@
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/black"
                 app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user"
+                app:startIconDrawable="@drawable/ic_movie"
                 app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
