@@ -298,8 +298,8 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
                 Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
             }
-            seats = seats.replace(seatno1, "UUUU");
-            seats = seats.replace(seatno2, "UUUU");
+            Replace_For(seatno1);
+            Replace_For(seatno2);
             collectionReference.document(MovieName).update("SeatLayout", seats);
         } else {
             if (selectedIds.length() == 5) {
@@ -320,8 +320,18 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 Log.e("Seats", "SetSeats: " + seatno1 + "\t");
             }
             Log.e("Replace", "Replace: " + seatno1);
-            seats = seats.replace(seatno1, "UUUU");
+            Replace_For(seatno1);
             collectionReference.document(MovieName).update("SeatLayout", seats);
+        }
+    }
+
+    private void Replace_For(String ReplaceString) {
+        for(int a = 0; a<seats.length();a=a+4)
+        {
+            if(seats.substring(a, a+4).equals(ReplaceString))
+            {
+                seats = seats.substring(0,a)+"UUUU"+seats.substring(a+4) ;
+            }
         }
     }
 
