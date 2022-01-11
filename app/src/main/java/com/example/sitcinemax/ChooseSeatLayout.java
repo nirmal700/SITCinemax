@@ -326,11 +326,9 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
     }
 
     private void Replace_For(String ReplaceString) {
-        for(int a = 0; a<seats.length();a=a+4)
-        {
-            if(seats.substring(a, a+4).equals(ReplaceString))
-            {
-                seats = seats.substring(0,a)+"UUUU"+seats.substring(a+4) ;
+        for (int a = 0; a < seats.length(); a = a + 4) {
+            if (seats.substring(a, a + 4).equals(ReplaceString)) {
+                seats = seats.substring(0, a) + "UUUU" + seats.substring(a + 4);
             }
         }
     }
