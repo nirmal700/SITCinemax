@@ -16,7 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -93,143 +92,140 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
         FirebaseFirestore.getInstance()
                 .collection("Movies")
                 .document(MovieName)
-                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Log.e("Firebase Error", "onEvent: ", error);
-                            return;
+                .addSnapshotListener((value, error) -> {
+                    if (error != null) {
+                        Log.e("Firebase Error", "onEvent: ", error);
+                        return;
+                    }
+                    if (value != null) {
+                        if (mMovie == null) {
+                            Log.e("mMovie called", "onEvent: ");
+                            layoutSeat = new LinearLayout(ChooseSeatLayout.this);
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            layoutSeat.setOrientation(LinearLayout.VERTICAL);
+                            layoutSeat.setLayoutParams(params);
+                            layoutSeat.setPadding(8 * seatGaping, 8 * seatGaping, 8 * seatGaping, 8 * seatGaping);
+                            layout.addView(layoutSeat);
+                        } else {
+                            layout.removeAllViews();
+                            layoutSeat.removeAllViews();
+                            layoutSeat = new LinearLayout(ChooseSeatLayout.this);
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            layoutSeat.setOrientation(LinearLayout.VERTICAL);
+                            layoutSeat.setLayoutParams(params);
+                            layoutSeat.setPadding(8 * seatGaping, 8 * seatGaping, 8 * seatGaping, 8 * seatGaping);
+                            layout.addView(layoutSeat);
                         }
-                        if (value != null) {
-                            if (mMovie == null) {
-                                Log.e("mMovie called", "onEvent: ");
-                                layoutSeat = new LinearLayout(ChooseSeatLayout.this);
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                                layoutSeat.setOrientation(LinearLayout.VERTICAL);
-                                layoutSeat.setLayoutParams(params);
-                                layoutSeat.setPadding(8 * seatGaping, 8 * seatGaping, 8 * seatGaping, 8 * seatGaping);
-                                layout.addView(layoutSeat);
-                            } else {
-                                layout.removeAllViews();
-                                layoutSeat.removeAllViews();
-                                layoutSeat = new LinearLayout(ChooseSeatLayout.this);
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                                layoutSeat.setOrientation(LinearLayout.VERTICAL);
-                                layoutSeat.setLayoutParams(params);
-                                layoutSeat.setPadding(8 * seatGaping, 8 * seatGaping, 8 * seatGaping, 8 * seatGaping);
-                                layout.addView(layoutSeat);
-                            }
-                            mMovie = value.toObject(Movies.class);
-                            if (mMovie != null) {
-                                Log.e("mMovie", "onEvent: " + mMovie.getSeatLayout());
-                            }
-
+                        mMovie = value.toObject(Movies.class);
+                        if (mMovie != null) {
+                            Log.e("mMovie", "onEvent: " + mMovie.getSeatLayout());
                         }
-                        LinearLayout layout = null;
+
+                    }
+                    LinearLayout layout = null;
 
 
-                        seats = mMovie.getSeatLayout();
-                        seats = "////" + seats;
-                        char Par = '_';
+                    seats = mMovie.getSeatLayout();
+                    seats = "////" + seats;
+                    char Par = '_';
 
-                        int count = 0;
+                    int count = 0;
 
-                        for (int index = 0; index < seats.length(); index = index + 4) {
-                            if (seats.charAt(index) == '/') {
-                                layout = new LinearLayout(ChooseSeatLayout.this);
-                                count = 0;
-                                layout.setOrientation(LinearLayout.HORIZONTAL);
-                                layoutSeat.addView(layout);
-                            } else if (seats.charAt(index) == 'U') {
-                                count++;
-                                TextView view = new TextView(ChooseSeatLayout.this);
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
-                                layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
-                                view.setLayoutParams(layoutParams);
-                                view.setPadding(0, 0, 0, 2 * seatGaping);
-                                view.setId(1000 + count);
-                                view.setGravity(Gravity.CENTER);
-                                view.setBackgroundResource(R.drawable.ic_seats_booked);
-                                view.setTextColor(Color.WHITE);
-                                view.setTag(STATUS_BOOKED);
-                                view.setText("U");
-                                view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
-                                layout.addView(view);
-                                seatViewList.add(view);
-                                view.setOnClickListener(ChooseSeatLayout.this);
-                            } else if (seats.startsWith("00", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
-                                count++;
-                                Log.e("LOG12", "onCreate: " + index + "\t" + seats.substring(index, index + 4));
-                                if (seats.startsWith("00", index)) {
-                                    Par = 'A';
-                                } else if (seats.startsWith("01", index)) {
-                                    Par = 'B';
-                                } else if (seats.startsWith("02", index)) {
-                                    Par = 'C';
-                                } else if (seats.startsWith("03", index)) {
-                                    Par = 'D';
-                                }
-                                if (seats.startsWith("04", index)) {
-                                    Par = 'E';
-                                } else if (seats.startsWith("05", index)) {
-                                    Par = 'F';
-                                }
-                                if (seats.startsWith("06", index)) {
-                                    Par = 'G';
-                                } else if (seats.startsWith("07", index)) {
-                                    Par = 'H';
-                                } else if (seats.startsWith("08", index)) {
-                                    Par = 'I';
-                                } else if (seats.startsWith("09", index)) {
-                                    Par = 'J';
-                                } else if (seats.startsWith("10", index)) {
-                                    Par = 'K';
-                                }
-
-                                String ID = seats.substring(index + 2, index + 4);
-                                Log.e("ID", "onCreate: " + "Index\t" + seats.substring(index, index + 4) + "Seat No\t" + ID + "Parity Bit" + Par);
-                                TextView view = new TextView(ChooseSeatLayout.this);
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
-                                layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
-                                view.setLayoutParams(layoutParams);
-                                view.setPadding(0, 0, 0, 2 * seatGaping);
-                                view.setId(Integer.parseInt(seats.substring(index, index + 4)));
-                                view.setGravity(Gravity.CENTER);
-                                view.setBackgroundResource(R.drawable.ic_seats_book);
-                                view.setText(Par + "" + ID + "");
-                                view.setHint(Par + "" + ID);
-                                view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
-                                view.setTextColor(Color.BLACK);
-                                view.setTag(STATUS_AVAILABLE);
-                                Objects.requireNonNull(layout).addView(view);
-                                seatViewList.add(view);
-                                view.setOnClickListener(ChooseSeatLayout.this);
-                            } else if (seats.charAt(index) == 'R') {
-                                count++;
-                                TextView view = new TextView(ChooseSeatLayout.this);
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
-                                layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
-                                view.setLayoutParams(layoutParams);
-                                view.setPadding(0, 0, 0, 2 * seatGaping);
-                                view.setId(2000 + count);
-                                view.setGravity(Gravity.CENTER);
-                                view.setBackgroundResource(R.drawable.ic_seats_reserved);
-                                view.setText("R");
-                                view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
-                                view.setTextColor(Color.WHITE);
-                                view.setTag(STATUS_RESERVED);
-                                Objects.requireNonNull(layout).addView(view);
-                                seatViewList.add(view);
-                                view.setOnClickListener(ChooseSeatLayout.this);
-                            } else if (seats.charAt(index) == '_') {
-                                TextView view = new TextView(ChooseSeatLayout.this);
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
-                                layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
-                                view.setLayoutParams(layoutParams);
-                                view.setBackgroundColor(Color.TRANSPARENT);
-                                view.setText("");
-                                Objects.requireNonNull(layout).addView(view);
+                    for (int index = 0; index < seats.length(); index = index + 4) {
+                        if (seats.charAt(index) == '/') {
+                            layout = new LinearLayout(ChooseSeatLayout.this);
+                            count = 0;
+                            layout.setOrientation(LinearLayout.HORIZONTAL);
+                            layoutSeat.addView(layout);
+                        } else if (seats.charAt(index) == 'U') {
+                            count++;
+                            TextView view = new TextView(ChooseSeatLayout.this);
+                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
+                            layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
+                            view.setLayoutParams(layoutParams);
+                            view.setPadding(0, 0, 0, 2 * seatGaping);
+                            view.setId(1000 + count);
+                            view.setGravity(Gravity.CENTER);
+                            view.setBackgroundResource(R.drawable.ic_seats_booked);
+                            view.setTextColor(Color.WHITE);
+                            view.setTag(STATUS_BOOKED);
+                            view.setText("U");
+                            view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
+                            layout.addView(view);
+                            seatViewList.add(view);
+                            view.setOnClickListener(ChooseSeatLayout.this);
+                        } else if (seats.startsWith("00", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
+                            count++;
+                            Log.e("LOG12", "onCreate: " + index + "\t" + seats.substring(index, index + 4));
+                            if (seats.startsWith("00", index)) {
+                                Par = 'A';
+                            } else if (seats.startsWith("01", index)) {
+                                Par = 'B';
+                            } else if (seats.startsWith("02", index)) {
+                                Par = 'C';
+                            } else if (seats.startsWith("03", index)) {
+                                Par = 'D';
                             }
+                            if (seats.startsWith("04", index)) {
+                                Par = 'E';
+                            } else if (seats.startsWith("05", index)) {
+                                Par = 'F';
+                            }
+                            if (seats.startsWith("06", index)) {
+                                Par = 'G';
+                            } else if (seats.startsWith("07", index)) {
+                                Par = 'H';
+                            } else if (seats.startsWith("08", index)) {
+                                Par = 'I';
+                            } else if (seats.startsWith("09", index)) {
+                                Par = 'J';
+                            } else if (seats.startsWith("10", index)) {
+                                Par = 'K';
+                            }
+
+                            String ID = seats.substring(index + 2, index + 4);
+                            Log.e("ID", "onCreate: " + "Index\t" + seats.substring(index, index + 4) + "Seat No\t" + ID + "Parity Bit" + Par);
+                            TextView view = new TextView(ChooseSeatLayout.this);
+                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
+                            layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
+                            view.setLayoutParams(layoutParams);
+                            view.setPadding(0, 0, 0, 2 * seatGaping);
+                            view.setId(Integer.parseInt(seats.substring(index, index + 4)));
+                            view.setGravity(Gravity.CENTER);
+                            view.setBackgroundResource(R.drawable.ic_seats_book);
+                            view.setText(Par + "" + ID + "");
+                            view.setHint(Par + "" + ID);
+                            view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
+                            view.setTextColor(Color.BLACK);
+                            view.setTag(STATUS_AVAILABLE);
+                            Objects.requireNonNull(layout).addView(view);
+                            seatViewList.add(view);
+                            view.setOnClickListener(ChooseSeatLayout.this);
+                        } else if (seats.charAt(index) == 'R') {
+                            count++;
+                            TextView view = new TextView(ChooseSeatLayout.this);
+                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
+                            layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
+                            view.setLayoutParams(layoutParams);
+                            view.setPadding(0, 0, 0, 2 * seatGaping);
+                            view.setId(2000 + count);
+                            view.setGravity(Gravity.CENTER);
+                            view.setBackgroundResource(R.drawable.ic_seats_reserved);
+                            view.setText("R");
+                            view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
+                            view.setTextColor(Color.WHITE);
+                            view.setTag(STATUS_RESERVED);
+                            Objects.requireNonNull(layout).addView(view);
+                            seatViewList.add(view);
+                            view.setOnClickListener(ChooseSeatLayout.this);
+                        } else if (seats.charAt(index) == '_') {
+                            TextView view = new TextView(ChooseSeatLayout.this);
+                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
+                            layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
+                            view.setLayoutParams(layoutParams);
+                            view.setBackgroundColor(Color.TRANSPARENT);
+                            view.setText("");
+                            Objects.requireNonNull(layout).addView(view);
                         }
                     }
                 });
