@@ -15,7 +15,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
     String Name2, SIC2, PhoneNumber2, MovieName;
     Movies mMovie;
     String seats, seatno1, seatno2;
+    int flag =0;
     SessionManager manager;
 
 //    String seats = "____UUUUUUUUUUUUUUUUUUUUUUUU00070008000900100011RRRRRRRRRRRRRRRR____////"
@@ -234,28 +237,53 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 btn_Proceed.setError(null);
                 getSeats();
                 Toast.makeText(ChooseSeatLayout.this, "Successfull" + selectedIds, Toast.LENGTH_SHORT).show();
-                Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
-                CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
-                collectionReference.add(ticket).addOnSuccessListener(documentReference -> Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show()).addOnCompleteListener(task -> {
 
-
-                });
                 Replace(selectedIds);
-                Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
-                startActivity(intent);
-                finish();
+                if(flag==0)
+                {
+                    btn_Proceed.setError("Can't Book The Seats");
+                    return;
+                }
+                else
+                {
+                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
+                    CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
+                    collectionReference.add(ticket).addOnSuccessListener(documentReference -> {
+                    }).addOnCompleteListener(task -> {
+                        if(task.isSuccessful()) {
+                            Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                }
             } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10) {
                 btn_Proceed.setError(null);
                 getSeats();
-                Toast.makeText(ChooseSeatLayout.this, "Successfull" + selectedIds, Toast.LENGTH_SHORT).show();
-                Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
-                CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
-                collectionReference.add(ticket).addOnSuccessListener(documentReference -> Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show()).addOnCompleteListener(task -> {
-                });
                 Replace(selectedIds);
-                Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
-                startActivity(intent);
-                finish();
+                if(flag==0)
+                {
+                    btn_Proceed.setError("Can't Book The Seats");
+                    return;
+                }
+                else {
+                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
+                    CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
+                    collectionReference.add(ticket).addOnSuccessListener(documentReference -> {
+                        }
+                    ).addOnCompleteListener((Task<DocumentReference> task) -> {
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                }
+
+
             } else
                 btn_Proceed.setError("Check the Seats");
 
@@ -321,10 +349,17 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
     }
 
     private void Replace_For(String ReplaceString) {
+         flag=0;
         for (int a = 0; a < seats.length(); a = a + 4) {
             if (seats.substring(a, a + 4).equals(ReplaceString)) {
                 seats = seats.substring(0, a) + "UUUU" + seats.substring(a + 4);
+                flag=1;
             }
+        }
+        if(flag==0)
+        {
+            btn_Proceed.setError("Can't Book The Seats");
+            return;
         }
     }
 
