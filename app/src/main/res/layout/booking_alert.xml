@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:gravity="center"
+    android:background="#CAECFD"
+    tools:targetApi="o">
+
+    <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="360dp"
+            android:layout_height="100dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp"
+            android:background="@color/Primary"
+            android:src="@drawable/img_shop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_horizontal"
+        android:text="@string/guidelines_for_sit_cinemax"
+        android:textAllCaps="true"
+        android:layout_marginBottom="5dp"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/my_fav_sans_number"
+        android:text="@string/you_must_come_with_your_id_card_face_mask_and_santizer"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="start"
+        android:gravity="clip_horizontal"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/my_fav_sans_number"
+        android:text="@string/don_t_carry_bag_umbrella_food_items_water_bottle_etc_into_the_cinemax"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autoSizeTextType="uniform"
+        android:layout_gravity="start"
+        android:fontFamily="@font/my_fav_sans_number"
+        android:text="@string/arrive_exactly_at_the_reporting_time"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autoSizeTextType="uniform"
+        android:layout_gravity="start"
+        android:fontFamily="@font/my_fav_sans_number"
+        android:text="@string/sit_accoridng_to_your_alloted_seat"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autoSizeTextType="uniform"
+        android:layout_gravity="start"
+        android:fontFamily="@font/my_fav_sans_number"
+        android:text="@string/maintain_deocorum_inside_the_cinemax"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autoSizeTextType="uniform"
+        android:layout_gravity="start"
+        android:fontFamily="@font/my_fav_sans_number"
+        android:text="@string/before_sitting_in_the_alloted_seat_check_wether_its_condition_is_good_or_not"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/bt_cancel"
+            android:text="@string/cancel"
+            android:textStyle="bold"
+            android:fontFamily="@font/my_fav_sans_number"
+            style="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/light_red" />
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/bt_ok"
+            android:text="@string/i_agree"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/my_fav_sans_number"
+            style="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:backgroundTint="@color/light_green" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

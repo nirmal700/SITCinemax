@@ -1,6 +1,7 @@
 package com.example.sitcinemax;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -11,6 +12,7 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -104,7 +106,21 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         btn_CustomerProfile.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, EditUserProfile.class)));
 
         btn_TodoList.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserToDoList.class)));
-        btn_book_tickets.setOnClickListener(view -> startActivity(new Intent(UserDashBoard.this, UserBookTickets.class)));
+        btn_book_tickets.setOnClickListener(view -> {
+            Dialog dialog = new Dialog(UserDashBoard.this);
+            dialog.setContentView(R.layout.booking_alert);
+            Button btCancel = dialog.findViewById(R.id.bt_cancel);
+            Button btOk = dialog.findViewById(R.id.bt_ok);
+
+            btCancel.setOnClickListener(v -> dialog.cancel());
+            btOk.setOnClickListener(v -> {
+
+                startActivity(new Intent(UserDashBoard.this, UserBookTickets.class));
+                dialog.dismiss();
+            });
+
+            dialog.show();
+        });
 
         if (!isConnected(UserDashBoard.this)) {
             showCustomDialog();

@@ -19,18 +19,15 @@ public class AboutSITCinemax extends AppCompatActivity {
         setContentView(R.layout.activity_about_sitcinemax);
         source_code = findViewById(R.id.source_code);
 
-        source_code.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        source_code.setOnClickListener(v -> {
 
 
-                String url = "https://github.com/nirmal700/SITCinemax";
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
-                Toast.makeText(AboutSITCinemax.this, "SIT Cinemax Source code", Toast.LENGTH_SHORT).show();
+            String url = "https://github.com/nirmal700/SITCinemax";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+            Toast.makeText(AboutSITCinemax.this, "SIT Cinemax Source code", Toast.LENGTH_SHORT).show();
 
-            }
         });
     }
 }

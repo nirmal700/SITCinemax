@@ -76,4 +76,12 @@
     <string name="proceed">Proceed</string>
     <string name="version_1_0">Version 1.0</string>
     <string name="team_s_i_t_cinemax">Team S I T Cinemax</string>
+    <string name="guidelines_for_sit_cinemax">Guidelines For SIT Cinemax</string>
+    <string name="i_agree">I, Agree</string>
+    <string name="before_sitting_in_the_alloted_seat_check_wether_its_condition_is_good_or_not"><font color="#09EAA3">*</font>Before Sitting In the ALloted Seat Check Wether Its Condition Is Good Or Not</string>
+    <string name="maintain_deocorum_inside_the_cinemax"><font color="#44ADFF">*</font>Maintain Deocorum Inside The Cinemax</string>
+    <string name="sit_accoridng_to_your_alloted_seat"><font color="#F74343">*</font>Sit Accoridng To Your Alloted Seat</string>
+    <string name="arrive_exactly_at_the_reporting_time"><font color="#09EAA3">*</font>Arrive Exactly At the Reporting Time</string>
+    <string name="you_must_come_with_your_id_card_face_mask_and_santizer"><font color="#44ADFF">*</font>You Must Come With Your ID Card, Face Mask and Santizer</string>
+    <string name="don_t_carry_bag_umbrella_food_items_water_bottle_etc_into_the_cinemax"><font color="#F74343">*</font>Don\'t Carry bag, Umbrella, Food Items, Water Bottle etc. into the Cinemax</string>
 </resources>
