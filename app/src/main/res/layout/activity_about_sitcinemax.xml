@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Version 1.0"
+        android:text="@string/version_1_0"
         android:autoSizeTextType="uniform"
         android:textSize="15sp"
         android:textColor="@color/white"
@@ -46,7 +46,7 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/harmony"
-        android:text="Team S I T Cinemax"
+        android:text="@string/team_s_i_t_cinemax"
         android:textColor="@color/black"
         android:textSize="40sp"
         tools:targetApi="o" />

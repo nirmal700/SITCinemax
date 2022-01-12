@@ -71,4 +71,18 @@
     <string name="_4thyear">4thYear</string>
     <string name="team_sit_cinemax">Team SIT Cinemax</string>
     <string name="contact_us">Contact Us</string>
+    <string name="book_ticket">Book Ticket</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="name">Name</string>
+    <string name="sic">SIC</string>
+    <string name="phone">Phone</string>
+    <string name="choose_no_of_person_s">Choose No of Person\'s</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_2nd_person_name">2nd Person Name</string>
+    <string name="_2nd_person_sic">2nd Person SIC</string>
+    <string name="_2nd_person_phone">2nd Person Phone</string>
+    <string name="proceed">Proceed</string>
+    <string name="version_1_0">Version 1.0</string>
+    <string name="team_s_i_t_cinemax">Team S I T Cinemax</string>
 </resources>
