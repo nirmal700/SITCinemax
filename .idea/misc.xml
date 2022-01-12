@@ -39,6 +39,7 @@
         <entry key="app/src/main/res/layout/activity_user_login.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_user_phone_number_verification.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_user_sign_up.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/card_view_movie.xml" value="0.14635416666666667" />
         <entry key="app/src/main/res/layout/card_view_team_members.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/card_view_uploaded_vehicle.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/list_todo.xml" value="0.2947916666666667" />
