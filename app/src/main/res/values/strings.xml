@@ -36,4 +36,7 @@
     <string name="get_otp">Get otp</string>
     <string name="password">Password</string>
     <string name="to_do_list">To-do List</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="re_send">Re-send</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

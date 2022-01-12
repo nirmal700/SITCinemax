@@ -90,48 +90,45 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
         });
 
         CountTimer();
-        btn_signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btn_signUp.setOnClickListener(v -> {
 
-                if (!validateOtp()) {
-                    return;
-                }
-                //Initialize ProgressDialog
-                progressDialog = new ProgressDialog(UserPhoneNumberVerification.this);
-                progressDialog.show();
-                progressDialog.setCancelable(false);
-                progressDialog.setContentView(R.layout.progress_dialog);
-                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            if (!validateOtp()) {
+                return;
+            }
+            //Initialize ProgressDialog
+            progressDialog = new ProgressDialog(UserPhoneNumberVerification.this);
+            progressDialog.show();
+            progressDialog.setCancelable(false);
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-                String enteredOtp = et_otp.getText().toString();
+            String enteredOtp = et_otp.getText().toString();
 
-                /*                if(getOtp != null){
-                    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(getOtp,enteredOtp);
-                    FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                nodeId = String.valueOf(node+1000);
-            */
+            /*                if(getOtp != null){
+                PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(getOtp,enteredOtp);
+                FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            nodeId = String.valueOf(node+1000);
+        */
 
-                if (getOtp != null) {
-                    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(getOtp, enteredOtp);
-                    FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
+            if (getOtp != null) {
+                PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(getOtp, enteredOtp);
+                FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
 
-                            storeNewUserData();
+                        storeNewUserData();
 
-                        } else {
-                            progressDialog.dismiss();
-                            Toast.makeText(UserPhoneNumberVerification.this, "Error occur", Toast.LENGTH_SHORT).show();
-                        }
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(UserPhoneNumberVerification.this, "Error occur", Toast.LENGTH_SHORT).show();
+                    }
 
-                    });
-                } else {
-                    progressDialog.dismiss();
-                    Toast.makeText(UserPhoneNumberVerification.this, "Enter The Correct OTP", Toast.LENGTH_SHORT).show();
-                }
+                });
+            } else {
+                progressDialog.dismiss();
+                Toast.makeText(UserPhoneNumberVerification.this, "Enter The Correct OTP", Toast.LENGTH_SHORT).show();
             }
         });
         btn_resend.setOnClickListener(v -> {
@@ -261,9 +258,6 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
-        String email = "";
-        String address = "";
-
         UserData addNewUser = new UserData(name,SIC,Course,password,phoneNumber,Year);
         reference.child(phoneNumber).child("Profile").setValue(addNewUser);
         reference.child(phoneNumber).child("phoneNumber").setValue(phoneNumber);
@@ -280,7 +274,7 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
                 String _password = snapshot.child(phoneNumber).child("Profile").child("password").getValue(String.class);
                 String _Name = snapshot.child(phoneNumber).child("Profile").child("name").getValue(String.class);
                 manager.setUserLogin(true);
-                manager.setDetails(_phoneNo,name,_password,_SIC);
+                manager.setDetails(_phoneNo,_Name,_password,_SIC);
 
 
                 progressDialog.dismiss();
