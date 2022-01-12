@@ -2,38 +2,29 @@ package com.example.sitcinemax;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.MyViewHolder> {
     private final Context mContext;
     private final List<Movies> mMovies;
     private OnItemClickListener mListener;
-    private final List<Movies> copyList;
+
 
     public UserMoviesAdapter(Context context, List<Movies> movies) {
 
         mContext = context;
         mMovies = movies;
-        this.copyList = new ArrayList<>();
-        copyList.addAll(movies);
     }
 
     @NonNull
