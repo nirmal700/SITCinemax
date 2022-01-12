@@ -105,8 +105,6 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                             layout.addView(layoutSeat);
                         }
                         mMovie = value.toObject(Movies.class);
-                        if (mMovie != null) {
-                            Log.e("mMovie", "onEvent: " + mMovie.getSeatLayout());
 
                     }
                     LinearLayout layout = null;
