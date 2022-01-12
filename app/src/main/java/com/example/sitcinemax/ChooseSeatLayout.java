@@ -30,7 +30,6 @@ import java.util.Objects;
 public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickListener {
     ViewGroup layout;
 
-    private DatabaseReference userDb;
     String Name2, SIC2, PhoneNumber2, MovieName;
     Movies mMovie;
     String seats, seatno1, seatno2;
