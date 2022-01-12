@@ -1,8 +1,6 @@
 package com.example.sitcinemax;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -16,14 +14,15 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.util.Pair;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseException;
@@ -38,12 +37,16 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class UserSignUp extends AppCompatActivity {
 
-    private TextInputLayout et_userName,et_sic,et_course,et_phoneNumber,et_password;
+    private TextInputLayout et_userName;
+    private TextInputLayout et_sic;
+    private TextInputLayout et_phoneNumber;
+    private TextInputLayout et_password;
     Button btn_getOtp,btn_login;
     RadioGroup rg_year;
     RadioButton rb_selectedYear;
@@ -54,6 +57,7 @@ public class UserSignUp extends AppCompatActivity {
     private FirebaseAuth auth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
 
+     @SuppressLint({"CutPasteId", "ObsoleteSdkInt"})
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +66,7 @@ public class UserSignUp extends AppCompatActivity {
          final String[] Course = {""};
          et_userName = findViewById(R.id.et_userName);
          et_sic = findViewById(R.id.et_sic);
-         et_course = findViewById(R.id.et_course);
+         TextInputLayout et_course = findViewById(R.id.et_course);
          et_phoneNumber = findViewById(R.id.et_phoneNumber);
          et_password = findViewById(R.id.et_password);
 
@@ -81,96 +85,84 @@ public class UserSignUp extends AppCompatActivity {
          arrayListCourse.add("MCA");
          arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(),R.layout.text_menu,arrayListCourse);
          autoCompleteCourse.setAdapter(arrayAdapterCourse);
-         autoCompleteCourse.setOnItemClickListener(new OnItemClickListener() {
-             @Override
-             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                 Course[0] = arrayAdapterCourse.getItem(i);
-             }
-         });
+         autoCompleteCourse.setOnItemClickListener((adapterView, view, i, l) -> Course[0] = arrayAdapterCourse.getItem(i));
          //--------------- Internet Checking -----------
          if (!isConnected(UserSignUp.this)){
              showCustomDialog();
          }
-         btn_login.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intent = new Intent(getApplicationContext(), UserLogin.class);
+         btn_login.setOnClickListener(v -> {
+             Intent intent = new Intent(getApplicationContext(), UserLogin.class);
 
-                 Pair[] pairs = new Pair[1];
-                 pairs[0] = new Pair<View,String>(findViewById(R.id.btn_backToLogin),"transition_login");
+             Pair[] pairs = new Pair[1];
+             pairs[0] = new Pair<View,String>(findViewById(R.id.btn_backToLogin),"transition_login");
 
-                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserSignUp.this,pairs);
-                     startActivity(intent,options.toBundle());
-                 }
-                 else{
-                     finish();
-                 }
+             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserSignUp.this,pairs);
+                 startActivity(intent,options.toBundle());
+             }
+             else{
+                 finish();
              }
          });
-         btn_getOtp.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
+         btn_getOtp.setOnClickListener(v -> {
 
-                 //EditText Validations
-                 if (!validatePhoneNumber()  | !validateUserName() | !validateCourse() | !validatePassword() | !validateYear() | !validateSIC()) {
+             //EditText Validations
+             if (!validatePhoneNumber()  | !validateUserName() | !validateCourse() | !validatePassword() | !validateYear() | !validateSIC()) {
 
-                     return;
-                 }
+                 return;
+             }
 
-                 //Initialize ProgressDialog
-                 progressDialog = new ProgressDialog(UserSignUp.this);
-                 progressDialog.show();
-                 progressDialog.setContentView(R.layout.progress_dialog);
-                 progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                 progressDialog.setCancelable(false);
+             //Initialize ProgressDialog
+             progressDialog = new ProgressDialog(UserSignUp.this);
+             progressDialog.show();
+             progressDialog.setContentView(R.layout.progress_dialog);
+             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+             progressDialog.setCancelable(false);
 
-                 rb_selectedYear = findViewById(rg_year.getCheckedRadioButtonId());
-                 String Year =  rb_selectedYear.getText().toString();
+             rb_selectedYear = findViewById(rg_year.getCheckedRadioButtonId());
 
-                 String phone = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
-                 String phoneNumber = "+91" + phone;
+             String phone = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
+             String phoneNumber = "+91" + phone;
 
-                 if (!phone.isEmpty()) {
-                     if (phone.length() == 10) {
+             if (!phone.isEmpty()) {
+                 if (phone.length() == 10) {
 
-                         Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNumber").equalTo(phoneNumber);
+                     Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNumber").equalTo(phoneNumber);
 
-                         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                             @Override
-                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                     checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                         @Override
+                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                 if (snapshot.exists()) {
-                                     progressDialog.dismiss();
-                                     Toast.makeText(UserSignUp.this, "This User already Exist  Please Login", Toast.LENGTH_LONG).show();
+                             if (snapshot.exists()) {
+                                 progressDialog.dismiss();
+                                 Toast.makeText(UserSignUp.this, "This User already Exist  Please Login", Toast.LENGTH_LONG).show();
 
-                                 } else {
+                             } else {
 
 
-                                     PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
-                                             .setPhoneNumber(phoneNumber)
-                                             .setTimeout(60L, TimeUnit.SECONDS)
-                                             .setActivity(UserSignUp.this)
-                                             .setCallbacks(mCallBacks)
-                                             .build();
-                                     PhoneAuthProvider.verifyPhoneNumber(options);
-
-                                 }
-                             }
-                             @Override
-                             public void onCancelled(@NonNull DatabaseError error) {
+                                 PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
+                                         .setPhoneNumber(phoneNumber)
+                                         .setTimeout(60L, TimeUnit.SECONDS)
+                                         .setActivity(UserSignUp.this)
+                                         .setCallbacks(mCallBacks)
+                                         .build();
+                                 PhoneAuthProvider.verifyPhoneNumber(options);
 
                              }
-                         });
+                         }
+                         @Override
+                         public void onCancelled(@NonNull DatabaseError error) {
 
-                     } else {
-                         progressDialog.dismiss();
-                         Toast.makeText(UserSignUp.this, "Please Enter Correct Mobile Number", Toast.LENGTH_SHORT).show();
-                     }
+                         }
+                     });
+
                  } else {
                      progressDialog.dismiss();
-                     Toast.makeText(UserSignUp.this, "Please Enter Mobile Number", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(UserSignUp.this, "Please Enter Correct Mobile Number", Toast.LENGTH_SHORT).show();
                  }
+             } else {
+                 progressDialog.dismiss();
+                 Toast.makeText(UserSignUp.this, "Please Enter Mobile Number", Toast.LENGTH_SHORT).show();
              }
          });
          mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -192,28 +184,25 @@ public class UserSignUp extends AppCompatActivity {
                  //sometime the code is not detected automatically
                  //so user has to manually enter the code
 
-                 new Handler().postDelayed(new Runnable() {
-                     @Override
-                     public void run() {
+                 new Handler().postDelayed(() -> {
 
-                         Intent otpIntent = new Intent(UserSignUp.this, UserPhoneNumberVerification.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                         otpIntent.putExtra("auth", s);
-                         String phoneNumber = "+91" + Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString();
-                         otpIntent.putExtra("phoneNumber", phoneNumber);
+                     Intent otpIntent = new Intent(UserSignUp.this, UserPhoneNumberVerification.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                     otpIntent.putExtra("auth", s);
+                     String phoneNumber = "+91" + Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString();
+                     otpIntent.putExtra("phoneNumber", phoneNumber);
 
-                         String name = Objects.requireNonNull(et_userName.getEditText()).getText().toString();
-                         String SIC = Objects.requireNonNull(et_sic.getEditText()).getText().toString();
-                         String Year = rb_selectedYear.getText().toString();
-                         String password = Objects.requireNonNull(et_password.getEditText()).getText().toString();
-                         otpIntent.putExtra("name", name);
-                         otpIntent.putExtra("SIC", SIC);
-                         otpIntent.putExtra("Course", Course[0]);
-                         otpIntent.putExtra("Year", Year);
-                         otpIntent.putExtra("password", password);
-                         startActivity(otpIntent);
-                         finish();
-                     }
-
+                     String name = Objects.requireNonNull(et_userName.getEditText()).getText().toString();
+                     String SIC = Objects.requireNonNull(et_sic.getEditText()).getText().toString();
+                     String Year = rb_selectedYear.getText().toString();
+                     String password = Objects.requireNonNull(et_password.getEditText()).getText().toString();
+                     SIC=SIC.toUpperCase(Locale.ROOT);
+                     otpIntent.putExtra("name", name);
+                     otpIntent.putExtra("SIC", SIC);
+                     otpIntent.putExtra("Course", Course[0]);
+                     otpIntent.putExtra("Year", Year);
+                     otpIntent.putExtra("password", password);
+                     startActivity(otpIntent);
+                     finish();
                  }, 1);
 
              }
@@ -320,12 +309,7 @@ public class UserSignUp extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserSignUp.this);
         builder.setMessage("Please connect to the internet")
                 //   .setCancelable(false)
-                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                    }
-                })
+                .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
                 .setNegativeButton("Cancel", (dialog, which) -> {
                     startActivity(new Intent(getApplicationContext(),UserSignUp.class));
                     finish();
