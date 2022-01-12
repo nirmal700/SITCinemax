@@ -35,4 +35,5 @@
     <string name="login">Login</string>
     <string name="get_otp">Get otp</string>
     <string name="password">Password</string>
+    <string name="to_do_list">To-do List</string>
 </resources>
