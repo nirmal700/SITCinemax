@@ -1,12 +1,9 @@
 package com.example.sitcinemax;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,12 +14,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class UserLogin extends AppCompatActivity {
 
@@ -33,6 +35,7 @@ public class UserLogin extends AppCompatActivity {
 
     SessionManager manager;
 
+    @SuppressLint({"CutPasteId", "ObsoleteSdkInt"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,29 +53,21 @@ public class UserLogin extends AppCompatActivity {
         if (!isConnected(UserLogin.this)){
             showCustomDialog();
         }
-        btn_backSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UserSignUp.class);
+        btn_backSignUp.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), UserSignUp.class);
 
-                Pair[] pairs = new Pair[1];
-                pairs[0] = new Pair<View,String>(findViewById(R.id.btn_backSignUp),"transition_signUp");
+            Pair[] pairs = new Pair[1];
+            pairs[0] = new Pair<View,String>(findViewById(R.id.btn_backSignUp),"transition_signUp");
 
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserLogin.this,pairs);
-                    startActivity(intent,options.toBundle());
-                }
-                else{
-                    finish();
-                }
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserLogin.this,pairs);
+                startActivity(intent,options.toBundle());
+            }
+            else{
+                finish();
             }
         });
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userLogin();
-            }
-        });
+        btn_login.setOnClickListener(v -> userLogin());
     }
     private void userLogin() {
 
@@ -94,8 +89,8 @@ public class UserLogin extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.setCancelable(false);
 
-        String _phoneNumber = et_phoneNumber.getEditText().getText().toString().trim();
-        String _password = et_password.getEditText().getText().toString().trim();
+        String _phoneNumber = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
+        String _password = Objects.requireNonNull(et_password.getEditText()).getText().toString().trim();
 
         if (_phoneNumber.charAt(0) == '0') {
 
@@ -116,7 +111,7 @@ public class UserLogin extends AppCompatActivity {
                     et_phoneNumber.getEditText().setError(null);
                     String systemPassword = snapshot.child(_completePhoneNumber).child("Profile").child("password").getValue(String.class);
 
-                    if (systemPassword.equals(_password)) {
+                    if (Objects.requireNonNull(systemPassword).equals(_password)) {
                         et_phoneNumber.getEditText().setError(null);
 
                         //Get User data From DataBase
@@ -153,7 +148,7 @@ public class UserLogin extends AppCompatActivity {
     }
 
     private boolean validatePassword() {
-        String val = et_password.getEditText().getText().toString().trim();
+        String val = Objects.requireNonNull(et_password.getEditText()).getText().toString().trim();
 
         if (val.isEmpty()){
             et_password.setError("Field can not be empty");
@@ -168,7 +163,7 @@ public class UserLogin extends AppCompatActivity {
     }
 
     private boolean validatePhoneNumber(){
-        String val = et_phoneNumber.getEditText().getText().toString().trim();
+        String val = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
 
         if (val.isEmpty()){
             et_phoneNumber.setError("Field can not be empty");
@@ -191,18 +186,10 @@ public class UserLogin extends AppCompatActivity {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(UserLogin.this);
         builder.setMessage("Please connect to the internet")
                 //.setCancelable(false)
-                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(getApplicationContext(),UserLogin.class));
-                        finish();
-                    }
+                .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    startActivity(new Intent(getApplicationContext(),UserLogin.class));
+                    finish();
                 });
         android.app.AlertDialog alertDialog = builder.create();
         alertDialog.show();

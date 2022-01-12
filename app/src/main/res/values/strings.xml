@@ -39,4 +39,9 @@
     <string name="otp_verification">OTP Verification</string>
     <string name="re_send">Re-send</string>
     <string name="sign_up">Sign Up</string>
+    <string name="login_with">Login With</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signup">SignUp</string>
 </resources>
