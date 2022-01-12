@@ -21,7 +21,7 @@ import com.google.firebase.firestore.Query;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class UserBookTickets extends AppCompatActivity implements UserMoviesAdapter.OnItemClickListener{
+public class UserBookTickets extends AppCompatActivity implements UserMoviesAdapter.OnItemClickListener {
 
     private RecyclerView recyclerView;
     ImageView btn_back;
@@ -29,6 +29,7 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
     private UserMoviesAdapter userMoviesAdapter;
 
     private final CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Movies");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,14 +66,13 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
 
     @SuppressLint("NotifyDataSetChanged")
     private void LoadRecycler() {
-        Query mMovie = collectionReference.whereEqualTo("IsScreening",true);
+        Query mMovie = collectionReference.whereEqualTo("IsScreening", true);
         mMovie.addSnapshotListener((value, error) -> {
             if (error != null) {
                 Log.e("AddSnapShot", error.getMessage());
                 return;
             }
-            for(DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges())
-            {
+            for (DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges()) {
                 if (documentChange.getType() == DocumentChange.Type.ADDED) {
                     list.add(documentChange.getDocument().toObject(Movies.class));
                     userMoviesAdapter = new UserMoviesAdapter(UserBookTickets.this, list);
@@ -93,6 +93,7 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
         intent.putExtra("MovieName", mMovieName); // Pass Shop Id value To ShopDetailsSingleView
         startActivity(intent);
     }
+
     @Override
     public void onBackPressed() {
         startActivity(new Intent(getApplicationContext(), UserDashBoard.class));

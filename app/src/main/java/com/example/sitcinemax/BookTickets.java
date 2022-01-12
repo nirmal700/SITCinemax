@@ -24,8 +24,9 @@ public class BookTickets extends AppCompatActivity {
     private RadioButton rb2;
     private Button btn_Proceed;
     ImageView btn_back;
-    String sic,name,phone,mMovieName;
-    int b=-1;
+    String sic, name, phone, mMovieName;
+    int b = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,66 +54,55 @@ public class BookTickets extends AppCompatActivity {
         Objects.requireNonNull(et_MovieName.getEditText()).setText(mMovieName);
 
         radio_group.setOnCheckedChangeListener((radioGroup, i) -> {
-            if(i == rb2.getId()) {
+            if (i == rb2.getId()) {
                 et_phoneNumber2.setVisibility(View.VISIBLE);
                 et_userName2.setVisibility(View.VISIBLE);
                 et_sic2.setVisibility(View.VISIBLE);
-                b=2;
-            }
-            else
-            {
+                b = 2;
+            } else {
                 et_phoneNumber2.setVisibility(View.GONE);
                 et_userName2.setVisibility(View.GONE);
                 et_sic2.setVisibility(View.GONE);
-                b=1;
+                b = 1;
             }
-            Log.e("No Of Persons", "onCheckedChanged: "+b );
+            Log.e("No Of Persons", "onCheckedChanged: " + b);
         });
         btn_Proceed.setOnClickListener(view -> {
             sic = Objects.requireNonNull(et_sic2.getEditText()).getText().toString();
             name = Objects.requireNonNull(et_userName2.getEditText()).getText().toString();
             phone = Objects.requireNonNull(et_phoneNumber2.getEditText()).getText().toString();
-            Log.e("Valid", "onClick: "+b+sic+name+phone );
-            if(b==2)
-            {
-                if(sic.length()>4) {
+            Log.e("Valid", "onClick: " + b + sic + name + phone);
+            if (b == 2) {
+                if (sic.length() > 4) {
                     et_sic2.setError(null);
-                }
-                else
-                {
+                } else {
                     et_sic2.setError("Enter Valid SIC");
                     return;
                 }
-                if(name.length()>4) {
+                if (name.length() > 4) {
                     et_userName2.setError(null);
-                }
-                else
-                {
+                } else {
                     et_userName2.setError("Enter Valid Name");
                     return;
                 }
-                if(phone.length()==10) {
+                if (phone.length() == 10) {
                     et_phoneNumber2.setError(null);
-                }
-                else
-                {
+                } else {
                     et_phoneNumber2.setError("Enter Valid PhoneNumber");
                     return;
                 }
-            }
-            else if(b==-1)
-            {
+            } else if (b == -1) {
                 btn_Proceed.setError("Choose No Of Persons");
                 return;
             }
-            sic=sic.toUpperCase(Locale.ROOT);
+            sic = sic.toUpperCase(Locale.ROOT);
             Intent intent = new Intent(BookTickets.this, ChooseSeatLayout.class);
-            intent.putExtra("NAME_2",name);
-            intent.putExtra("SIC_2",sic);
-            intent.putExtra("PHONE_NUMBER_2",phone);
-            intent.putExtra("Movie_Name",mMovieName);
-            intent.putExtra("NoOfPersons", ""+b);
-            Log.e("Intent Put", "onClick: "+name+phone+sic );
+            intent.putExtra("NAME_2", name);
+            intent.putExtra("SIC_2", sic);
+            intent.putExtra("PHONE_NUMBER_2", phone);
+            intent.putExtra("Movie_Name", mMovieName);
+            intent.putExtra("NoOfPersons", "" + b);
+            Log.e("Intent Put", "onClick: " + name + phone + sic);
             startActivity(intent);
         });
         btn_back.setOnClickListener(v -> {
@@ -120,9 +110,10 @@ public class BookTickets extends AppCompatActivity {
             finishAffinity();
         });
     }
+
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(),UserBookTickets.class));
+        startActivity(new Intent(getApplicationContext(), UserBookTickets.class));
         super.onBackPressed();
     }
 }

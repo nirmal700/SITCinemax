@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class AboutSITCinemax extends AppCompatActivity {
 
     ImageView source_code;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

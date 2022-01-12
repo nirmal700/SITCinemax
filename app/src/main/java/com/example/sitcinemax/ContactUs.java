@@ -33,7 +33,7 @@ public class ContactUs extends AppCompatActivity {
     private ArrayList<TeamData> list;
     private TeamAdapter teamAdapter;
 
-    ImageView to_gmail,to_whatsapp,to_instagram,to_gitHub;
+    ImageView to_gmail, to_whatsapp, to_instagram, to_gitHub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +66,11 @@ public class ContactUs extends AppCompatActivity {
             Intent i = new Intent(Intent.ACTION_VIEW);
 
             try {
-                String url = "https://api.whatsapp.com/send?phone="+ "+917008000094" +"&text=" + URLEncoder.encode("Hai,\n", "UTF-8");
+                String url = "https://api.whatsapp.com/send?phone=" + "+917008000094" + "&text=" + URLEncoder.encode("Hai,\n", "UTF-8");
                 i.setPackage("com.whatsapp");
                 i.setData(Uri.parse(url));
                 startActivity(i);
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             Toast.makeText(ContactUs.this, "Contact SIT Cinemax via Whatsapp", Toast.LENGTH_SHORT).show();
@@ -95,7 +95,7 @@ public class ContactUs extends AppCompatActivity {
         to_gmail.setOnClickListener(v -> {
 
             Intent emailIntent = new Intent(Intent.ACTION_VIEW);
-            Uri data = Uri.parse("mailto:?subject=" +"SIT Cinemax"+ "&body=" + "Hai,\n" + "&to=" + "k.nirmalkumar2002@gmail.com");
+            Uri data = Uri.parse("mailto:?subject=" + "SIT Cinemax" + "&body=" + "Hai,\n" + "&to=" + "k.nirmalkumar2002@gmail.com");
             emailIntent.setData(data);
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             Toast.makeText(ContactUs.this, "Contact SIT Cinemax via E-mail", Toast.LENGTH_SHORT).show();

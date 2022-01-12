@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Animation bottom,side;
+    Animation bottom, side;
 
     private static int SPLASH_TIMER = 3400;
 
@@ -23,11 +23,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        powered=findViewById(R.id.powered);
+        powered = findViewById(R.id.powered);
 
         //Splash Animation
-        side= AnimationUtils.loadAnimation(this,R.anim.side_anim);
-        bottom= AnimationUtils.loadAnimation(this,R.anim.bottom_anim);
+        side = AnimationUtils.loadAnimation(this, R.anim.side_anim);
+        bottom = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
 
         powered.setAnimation(bottom);
 
@@ -36,20 +36,17 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
 
                 manager = new SessionManager(getApplicationContext());
-                if(manager.getUserLogin())
-                {
+                if (manager.getUserLogin()) {
                     startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
                     finish();
-                }
-                else
-                {
+                } else {
                     startActivity(new Intent(getApplicationContext(), UserSignUp.class));
                     finish();
                 }
 
 
             }
-        },SPLASH_TIMER);
+        }, SPLASH_TIMER);
 
     }
 }

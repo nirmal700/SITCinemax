@@ -42,13 +42,14 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
 
     SessionManager manager;
 
-    private TextView btn_resend,tv_counter,tv_resend;
+    private TextView btn_resend, tv_counter, tv_resend;
     private EditText et_otp;
     private ProgressDialog progressDialog;
 
-    private String name,SIC,Course,password,phoneNumber,Year,getOtp;
+    private String name, SIC, Course, password, phoneNumber, Year, getOtp;
     private FirebaseAuth firebaseAuth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +75,7 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
         btn_resend.setVisibility(View.INVISIBLE);
         tv_resend.setVisibility(View.INVISIBLE);
 
-        if (!isConnected(UserPhoneNumberVerification.this)){
+        if (!isConnected(UserPhoneNumberVerification.this)) {
             showCustomDialog();
         }
         firebaseAuth = FirebaseAuth.getInstance();
@@ -178,10 +179,10 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             public void onTick(long millisUntilFinished) {
                 long counter = millisUntilFinished / 1000;
-                tv_counter.setText( counter + " Sec");
-                if (counter<=15){
+                tv_counter.setText(counter + " Sec");
+                if (counter <= 15) {
                     tv_counter.setTextColor(getResources().getColor(R.color.light_red));
-                }else {
+                } else {
                     tv_counter.setTextColor(getResources().getColor(R.color.light_green));
                 }
             }
@@ -239,13 +240,13 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
 
     }
 
-    private boolean validateOtp(){
+    private boolean validateOtp() {
         String val = et_otp.getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_otp.setError("Field can not be empty");
             return false;
-        }else {
+        } else {
             et_otp.setError(null);
             return true;
         }
@@ -258,7 +259,7 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
-        UserData addNewUser = new UserData(name,SIC,Course,password,phoneNumber,Year);
+        UserData addNewUser = new UserData(name, SIC, Course, password, phoneNumber, Year);
         reference.child(phoneNumber).child("Profile").setValue(addNewUser);
         reference.child(phoneNumber).child("phoneNumber").setValue(phoneNumber);
         reference.child(phoneNumber).child("SIC").setValue(SIC);
@@ -274,7 +275,7 @@ public class UserPhoneNumberVerification extends AppCompatActivity {
                 String _password = snapshot.child(phoneNumber).child("Profile").child("password").getValue(String.class);
                 String _Name = snapshot.child(phoneNumber).child("Profile").child("name").getValue(String.class);
                 manager.setUserLogin(true);
-                manager.setDetails(_phoneNo,_Name,_password,_SIC);
+                manager.setDetails(_phoneNo, _Name, _password, _SIC);
 
 
                 progressDialog.dismiss();

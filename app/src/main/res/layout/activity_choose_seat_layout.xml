@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/card_white"
+    android:orientation="vertical"
     tools:context=".ChooseSeatLayout">
 
     <ScrollView
@@ -20,20 +20,21 @@
             android:layout_height="wrap_content" />
 
     </ScrollView>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_Proceed"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginHorizontal="10dp"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/Primary"
         android:fontFamily="@font/astronaut"
         android:gravity="center"
-        android:backgroundTint="@color/Primary"
-        app:cornerRadius="5dp"
         android:text="@string/proceed"
         android:textColor="@color/white"
-        app:strokeWidth="1dp"
+        android:textSize="25sp"
+        app:cornerRadius="5dp"
         app:strokeColor="@color/black"
-        android:textSize="25sp"/>
+        app:strokeWidth="1dp" />
 </LinearLayout>

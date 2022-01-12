@@ -57,7 +57,7 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView imageView;
-        public TextView tv_title,tv_description;
+        public TextView tv_title, tv_description;
 
 
         public MyViewHolder(@NonNull View itemView) {

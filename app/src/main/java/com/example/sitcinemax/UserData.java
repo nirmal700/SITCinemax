@@ -1,7 +1,7 @@
 package com.example.sitcinemax;
 
 public class UserData {
-    String name,SIC,Course,password,phoneNumber,Year;
+    String name, SIC, Course, password, phoneNumber, Year;
 
     public UserData() {
     }

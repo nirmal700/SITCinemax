@@ -34,17 +34,18 @@ public class EditUserProfile extends AppCompatActivity {
 
     ImageView btn_back;
     Button btn_update;
-    private TextInputLayout et_name,et_sic;
+    private TextInputLayout et_name, et_sic;
     private AutoCompleteTextView et_course;
     private RadioGroup radioGroup;
     private TextView tv_name;
     private ProgressDialog progressDialog;
-    private RadioButton radio_1styear,radio_2ndyear,radio_3rdyear,radio_4thyear,rb_selected;
+    private RadioButton radio_1styear, radio_2ndyear, radio_3rdyear, radio_4thyear, rb_selected;
 
     private String phoneNumber;
     private DatabaseReference userDb;
     private SessionManager manager;
     final String[] Course = {""};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,13 +69,13 @@ public class EditUserProfile extends AppCompatActivity {
         arrayListCourse.add("B.Tech");
         arrayListCourse.add("M.Tech");
         arrayListCourse.add("MCA");
-        arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(),R.layout.text_menu,arrayListCourse);
+        arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListCourse);
         et_course.setAdapter(arrayAdapterCourse);
         et_course.setOnItemClickListener((adapterView, view, i, l) -> Course[0] = arrayAdapterCourse.getItem(i));
 
         manager = new SessionManager(getApplicationContext());
         phoneNumber = manager.getPhone();
-        if (!isConnected(EditUserProfile.this)){
+        if (!isConnected(EditUserProfile.this)) {
             showCustomDialog();
         }
 
@@ -84,7 +85,7 @@ public class EditUserProfile extends AppCompatActivity {
 
         btn_back.setOnClickListener(v -> {
 
-            startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+            startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
             finishAffinity();
         });
 
@@ -93,7 +94,7 @@ public class EditUserProfile extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+        startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
         super.onBackPressed();
     }
 
@@ -106,6 +107,7 @@ public class EditUserProfile extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
     }
+
     //-------------------------------Load data to EditTexts------------------------------------------
     private void loadData() {
 
@@ -124,16 +126,16 @@ public class EditUserProfile extends AppCompatActivity {
 
 
                 assert _year != null;
-                if (_year.equals("1stYear")){
+                if (_year.equals("1stYear")) {
                     radio_1styear.setChecked(true);
                 }
-                if (_year.equals("2ndYear")){
+                if (_year.equals("2ndYear")) {
                     radio_2ndyear.setChecked(true);
                 }
-                if (_year.equals("3rdYear")){
+                if (_year.equals("3rdYear")) {
                     radio_3rdyear.setChecked(true);
                 }
-                if (_year.equals("4thYear")){
+                if (_year.equals("4thYear")) {
                     radio_4thyear.setChecked(true);
                 }
 
@@ -154,7 +156,7 @@ public class EditUserProfile extends AppCompatActivity {
     public void updateData() {
 
         //EditText Validations
-        if (!validateName()  | !validateSic() | !validateYear() | !validateCourse()) {
+        if (!validateName() | !validateSic() | !validateYear() | !validateCourse()) {
 
             return;
         }
@@ -177,16 +179,16 @@ public class EditUserProfile extends AppCompatActivity {
                 if (Objects.requireNonNull(_name).equals(Objects.requireNonNull(et_name.getEditText()).getText().toString()) &&
                         Objects.requireNonNull(_sic).equals(Objects.requireNonNull(et_sic.getEditText()).getText().toString()) &&
                         Objects.requireNonNull(_course).equals(et_course.getText().toString()) &&
-                        Objects.requireNonNull(_year).equals(rb_selected.getText().toString())){
+                        Objects.requireNonNull(_year).equals(rb_selected.getText().toString())) {
 
                     Toast.makeText(EditUserProfile.this, "Same data no changes", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
 
                     manager = new SessionManager(getApplicationContext());
                     phoneNumber = manager.getPhone();
                     String _Password = manager.getPassword();
-                    manager.setDetails(phoneNumber,et_name.getEditText().getText().toString(),_Password, Objects.requireNonNull(et_sic.getEditText()).getText().toString());
+                    manager.setDetails(phoneNumber, et_name.getEditText().getText().toString(), _Password, Objects.requireNonNull(et_sic.getEditText()).getText().toString());
 
                     userDb.child("name").setValue(et_name.getEditText().getText().toString());
                     tv_name.setText(et_name.getEditText().getText().toString());
@@ -218,7 +220,7 @@ public class EditUserProfile extends AppCompatActivity {
                 //.setCancelable(false)
                 .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
                 .setNegativeButton("Cancel", (dialog, which) -> {
-                    startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+                    startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
                     finish();
                 });
         AlertDialog alertDialog = builder.create();
@@ -242,48 +244,50 @@ public class EditUserProfile extends AppCompatActivity {
     private boolean validateName() {
         String val = Objects.requireNonNull(et_name.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_name.setError("Field can not be empty");
             return false;
-        }else if(val.length()>25){
+        } else if (val.length() > 25) {
             et_name.setError("Name is Too Large");
             return false;
-        }else {
+        } else {
             et_name.setError(null);
             return true;
         }
     }
+
     private boolean validateSic() {
         String val = Objects.requireNonNull(et_sic.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_sic.setError("Field can not be empty");
             return false;
-        }else {
+        } else {
             et_sic.setError(null);
             return true;
         }
 
     }
+
     private boolean validateCourse() {
         String val = et_course.getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_course.setError("Field can not be empty");
             return false;
-        }else {
+        } else {
             et_course.setError(null);
             return true;
         }
 
     }
 
-    private boolean validateYear(){
+    private boolean validateYear() {
 
-        if (radioGroup.getCheckedRadioButtonId() == -1){
+        if (radioGroup.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "Please Select Year", Toast.LENGTH_SHORT).show();
             return false;
-        }else
+        } else
             return true;
     }
 

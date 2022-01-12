@@ -3,29 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutSITCinemax"
-    android:orientation="vertical"
+    android:layout_gravity="center"
     android:gravity="center"
-    android:layout_gravity="center">
+    android:orientation="vertical"
+    tools:context=".AboutSITCinemax">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
         android:autoSizeTextType="uniform"
-        android:textSize="25sp"
+        android:text="@string/app_name"
         android:textColor="@color/white"
+        android:textSize="25sp"
         android:textStyle="bold"
         tools:targetApi="o" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="@string/version_1_0"
         android:autoSizeTextType="uniform"
-        android:textSize="15sp"
+        android:text="@string/version_1_0"
         android:textColor="@color/white"
+        android:textSize="15sp"
         tools:targetApi="o" />
 
     <ImageView
@@ -33,22 +34,22 @@
         android:layout_width="218dp"
         android:layout_height="218dp"
         android:layout_marginTop="15dp"
-        android:src="@drawable/ic_launcher"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:contentDescription="@null"
-        android:focusable="true" />
+        android:focusable="true"
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoSizeTextType="uniform"
-        android:textStyle="bold"
         android:layout_marginTop="10dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/harmony"
         android:text="@string/team_s_i_t_cinemax"
         android:textColor="@color/black"
         android:textSize="40sp"
+        android:textStyle="bold"
         tools:targetApi="o" />
 
 </LinearLayout>

@@ -31,7 +31,7 @@ public class UserLogin extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     TextInputLayout et_phoneNumber, et_password;
-    Button btn_login,btn_backSignUp;
+    Button btn_login, btn_backSignUp;
 
     SessionManager manager;
 
@@ -50,33 +50,33 @@ public class UserLogin extends AppCompatActivity {
         //Create a Session
         manager = new SessionManager(getApplicationContext());
 
-        if (!isConnected(UserLogin.this)){
+        if (!isConnected(UserLogin.this)) {
             showCustomDialog();
         }
         btn_backSignUp.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), UserSignUp.class);
 
             Pair[] pairs = new Pair[1];
-            pairs[0] = new Pair<View,String>(findViewById(R.id.btn_backSignUp),"transition_signUp");
+            pairs[0] = new Pair<View, String>(findViewById(R.id.btn_backSignUp), "transition_signUp");
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserLogin.this,pairs);
-                startActivity(intent,options.toBundle());
-            }
-            else{
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserLogin.this, pairs);
+                startActivity(intent, options.toBundle());
+            } else {
                 finish();
             }
         });
         btn_login.setOnClickListener(v -> userLogin());
     }
+
     private void userLogin() {
 
-        if (!isConnected(UserLogin.this)){
+        if (!isConnected(UserLogin.this)) {
             showCustomDialog();
         }
 
         //EditText Validations
-        if (!validatePhoneNumber() | !validatePassword() ) {
+        if (!validatePhoneNumber() | !validatePassword()) {
 
             return;
         }
@@ -120,7 +120,7 @@ public class UserLogin extends AppCompatActivity {
                         String _password = snapshot.child(_completePhoneNumber).child("Profile").child("password").getValue(String.class);
                         String _Name = snapshot.child(_completePhoneNumber).child("Profile").child("name").getValue(String.class);
                         manager.setUserLogin(true);
-                        manager.setDetails(_phoneNo,_Name,_password,_SIC);
+                        manager.setDetails(_phoneNo, _Name, _password, _SIC);
 
                         // Intent to Next Activity
                         startActivity(new Intent(getApplicationContext(), UserDashBoard.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
@@ -144,37 +144,36 @@ public class UserLogin extends AppCompatActivity {
         });
 
 
-
     }
 
     private boolean validatePassword() {
         String val = Objects.requireNonNull(et_password.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_password.setError("Field can not be empty");
             return false;
-        }else if (!val.matches("\\w*")){
+        } else if (!val.matches("\\w*")) {
             et_password.setError("White spaces not allowed");
             return false;
-        }else {
+        } else {
             et_password.setError(null);
             return true;
         }
     }
 
-    private boolean validatePhoneNumber(){
+    private boolean validatePhoneNumber() {
         String val = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_phoneNumber.setError("Field can not be empty");
             return false;
-        }else if(val.length()>10 | val.length()<10){
+        } else if (val.length() > 10 | val.length() < 10) {
             et_phoneNumber.setError("Please Enter 10 Digit Phone Number");
             return false;
-        }else if (!val.matches("\\w*")){
+        } else if (!val.matches("\\w*")) {
             et_phoneNumber.setError("White spaces not allowed");
             return false;
-        }else {
+        } else {
             et_phoneNumber.setError(null);
             return true;
         }
@@ -188,7 +187,7 @@ public class UserLogin extends AppCompatActivity {
                 //.setCancelable(false)
                 .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
                 .setNegativeButton("Cancel", (dialog, which) -> {
-                    startActivity(new Intent(getApplicationContext(),UserLogin.class));
+                    startActivity(new Intent(getApplicationContext(), UserLogin.class));
                     finish();
                 });
         android.app.AlertDialog alertDialog = builder.create();

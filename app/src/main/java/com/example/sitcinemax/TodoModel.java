@@ -1,7 +1,7 @@
 package com.example.sitcinemax;
 
 public class TodoModel {
-    private String id,title,description,day,month,year;
+    private String id, title, description, day, month, year;
 
 
     public TodoModel() {

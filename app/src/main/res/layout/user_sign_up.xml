@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="@color/Primary"
-    tools:context=".UserSignUp"
+    android:fillViewport="true"
     android:transitionName="transition_signUp"
+    tools:context=".UserSignUp"
     tools:targetApi="o">
 
     <LinearLayout
@@ -18,50 +18,49 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_user_sign_up"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            android:src="@drawable/ic_user_sign_up" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
-            android:layout_marginTop="5dp"
-            android:text="@string/sign_up_with"
-            android:textSize="15sp"
-            android:textColor="@color/white"
             android:layout_gravity="center"
-            />
+            android:layout_marginTop="5dp"
+            android:autoSizeTextType="uniform"
+            android:text="@string/sign_up_with"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
+            android:layout_gravity="center"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:autoSizeTextType="uniform"
             android:text="@string/app_name"
             android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="25sp"
             android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"/>
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_lower"
+            android:layout_marginHorizontal="5dp"
             android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:layout_marginHorizontal="5dp">
+            android:background="@drawable/bg_lower"
+            android:orientation="vertical">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="15dp"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -69,8 +68,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
                     android:layout_marginTop="5dp"
+                    android:autoSizeTextType="uniform"
                     android:hint="@string/name"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -85,11 +84,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:autoSizeTextType="uniform"
-                        android:inputType="textCapWords"
+                        android:digits="@string/allowedName"
                         android:fontFamily="@font/my_fav_sans_number"
+                        android:inputType="textCapWords"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:digits="@string/allowedName"/>
+                        android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,8 +97,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
                     android:layout_marginTop="8dp"
+                    android:autoSizeTextType="uniform"
                     android:hint="@string/sic"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -114,12 +113,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:autoSizeTextType="uniform"
-                        android:inputType="textCapCharacters"
-                        android:textColor="@color/black"
-                        android:maxLines="1"
-                        android:textColorHint="@color/hintBlack"
                         android:digits="@string/allowedName"
                         android:fontFamily="@font/my_fav_sans_number"
+                        android:inputType="textCapCharacters"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hintBlack"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,69 +126,70 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_course"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:hint="@string/select_your_course"
-                    android:textColorHint="@color/black"
-                    app:boxStrokeColor="@color/black"
-                    app:boxStrokeWidth="1dp"
-                    app:errorTextColor="@color/black"
-                    app:endIconTint="@color/black"
-                    app:hintTextColor="@color/black"
-                    app:startIconDrawable="@drawable/ic_age"
-                    app:startIconTint="@color/black">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/autoCompleteCourse"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_course"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/my_fav_sans_number"
-                        android:inputType="none"
-                        android:background="@color/black"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        tools:ignore="LabelFor" />
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/select_your_course"
+                        android:textColorHint="@color/black"
+                        app:boxStrokeColor="@color/black"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconTint="@color/black"
+                        app:errorTextColor="@color/black"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/ic_age"
+                        app:startIconTint="@color/black">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteCourse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/black"
+                            android:fontFamily="@font/my_fav_sans_number"
+                            android:inputType="none"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            tools:ignore="LabelFor" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:autoSizeTextType="uniform"
                     android:text="@string/choose_year"
-                    android:textSize="15sp"
                     android:textColor="@color/black"
-                    android:layout_marginTop="5dp"/>
+                    android:textSize="15sp" />
 
                 <RadioGroup
                     android:id="@+id/radio_group"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:autoSizeTextType="uniform"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:autoSizeTextType="uniform"
                     android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radio_1styear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/_1styear"
                         android:buttonTint="@color/Primary"
+                        android:text="@string/_1styear"
                         android:textColor="@color/black" />
 
                     <RadioButton
                         android:id="@+id/radio_2ndyear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/_2ndyear"
                         android:layout_marginStart="10dp"
                         android:buttonTint="@color/Primary"
+                        android:text="@string/_2ndyear"
                         android:textColor="@color/black" />
 
                     <RadioButton
@@ -197,16 +197,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="@string/_3rdyear"
                         android:buttonTint="@color/Primary"
+                        android:text="@string/_3rdyear"
                         android:textColor="@color/black" />
+
                     <RadioButton
                         android:id="@+id/radio_4thyear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="@string/_4thyear"
                         android:buttonTint="@color/Primary"
+                        android:text="@string/_4thyear"
                         android:textColor="@color/black" />
 
 
@@ -215,8 +216,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/black"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:background="@color/black" />
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -224,17 +225,17 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
                     android:layout_marginTop="8dp"
+                    android:autoSizeTextType="uniform"
                     android:hint="@string/phone"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidth="1dp"
-                    app:prefixTextColor="@color/hintBlack"
-                    app:prefixText="+91"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
+                    app:prefixText="+91"
+                    app:prefixTextColor="@color/hintBlack"
                     app:startIconDrawable="@drawable/ic_phone"
                     app:startIconTint="@color/black">
 
@@ -242,10 +243,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:autoSizeTextType="uniform"
-                        android:inputType="number"
                         android:fontFamily="@font/my_fav_sans_number"
-                        android:textColorHint="@color/hintBlack"
+                        android:inputType="number"
                         android:textColor="@color/black"
+                        android:textColorHint="@color/hintBlack"
                         android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -270,9 +271,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/my_fav_sans_number"
                         android:inputType="textPassword"
                         android:maxLines="1"
-                        android:fontFamily="@font/my_fav_sans_number"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -285,36 +286,36 @@
                 android:id="@+id/btn_getOtp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginHorizontal="10dp"
                 android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:backgroundTint="@color/Primary"
                 android:fontFamily="@font/astronaut"
                 android:gravity="center"
-                android:backgroundTint="@color/Primary"
-                app:cornerRadius="5dp"
                 android:text="@string/get_otp"
                 android:textColor="@color/white"
-                app:strokeWidth="1dp"
+                android:textSize="25sp"
+                app:cornerRadius="5dp"
                 app:strokeColor="@color/black"
-                android:textSize="25sp"/>
+                app:strokeWidth="1dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_backToLogin"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/white"
                 android:fontFamily="@font/astronaut"
                 android:gravity="center"
-                android:backgroundTint="@color/white"
-                app:strokeColor="@color/Primary"
-                app:strokeWidth="1dp"
-                app:cornerRadius="5dp"
                 android:text="@string/login"
                 android:textColor="@color/Primary"
                 android:textSize="25sp"
-                android:transitionName="transition_login"/>
+                android:transitionName="transition_login"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/Primary"
+                app:strokeWidth="1dp" />
 
         </LinearLayout>
 

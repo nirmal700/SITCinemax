@@ -1,7 +1,7 @@
 package com.example.sitcinemax;
 
 public class Ticket {
-    String NameUser, SICUser, PhoneNumber, MovieName, Seats,SIC2,PhoneNumber2,Name2;
+    String NameUser, SICUser, PhoneNumber, MovieName, Seats, SIC2, PhoneNumber2, Name2;
 
     public Ticket() {
     }

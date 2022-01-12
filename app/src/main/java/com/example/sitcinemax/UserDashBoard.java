@@ -52,7 +52,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     SessionManager manager;
 
 
-    String view_date= new SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(new Date());
+    String view_date = new SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(new Date());
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -62,7 +62,6 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         LottieAnimationView lottieAnimationView1 = findViewById(R.id.drawer_btn);
         //lottieAnimationView1.setSpeed(3f);
-
 
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -107,12 +106,9 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         btn_TodoList.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserToDoList.class)));
         btn_book_tickets.setOnClickListener(view -> startActivity(new Intent(UserDashBoard.this, UserBookTickets.class)));
 
-        if (!isConnected(UserDashBoard.this)){
+        if (!isConnected(UserDashBoard.this)) {
             showCustomDialog();
         }
-
-
-
 
 
     }
@@ -124,7 +120,6 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
-
 
 
         animateNavigationDrawer();
@@ -172,7 +167,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
 
             case R.id.nav_home:
                 Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
@@ -207,17 +202,18 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         return true;
     }
+
     private void share() {
 
         try {
 
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
-            i.putExtra(Intent.EXTRA_SUBJECT,"QR Registry");
-            i.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName());
-            startActivity(Intent.createChooser(i,"Share With"));
+            i.putExtra(Intent.EXTRA_SUBJECT, "QR Registry");
+            i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
+            startActivity(Intent.createChooser(i, "Share With"));
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, "Unable to share this app.", Toast.LENGTH_SHORT).show();
         }
 
@@ -249,7 +245,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         builder.setPositiveButton("YES", (dialog, which) -> {
 
             manager.setUserLogin(false);
-            manager.setDetails("","","","");
+            manager.setDetails("", "", "", "");
 
             //activity.finishAffinity();
             dialog.dismiss();
@@ -278,7 +274,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
                 //.setCancelable(false)
                 .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
                 .setNegativeButton("Cancel", (dialog, which) -> {
-                    startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+                    startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
                     finish();
                 });
         android.app.AlertDialog alertDialog = builder.create();

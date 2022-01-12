@@ -71,9 +71,9 @@ public class UserToDoList extends AppCompatActivity {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
 
-                if (dy>0){
+                if (dy > 0) {
                     btn_add.hide();
-                }else {
+                } else {
                     btn_add.show();
                 }
 
@@ -104,13 +104,13 @@ public class UserToDoList extends AppCompatActivity {
                 final int month = calendar.get(Calendar.MONTH);
                 final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                final Dialog dialog= new Dialog(UserToDoList.this);
+                final Dialog dialog = new Dialog(UserToDoList.this);
 
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.todo_add_and_update);
 
                 dialog.show();
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setWindowAnimations(R.style.BottomDialog);
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
@@ -118,9 +118,9 @@ public class UserToDoList extends AppCompatActivity {
                 Button btn_selectDate = dialog.findViewById(R.id.btn_selectDate);
                 EditText et_title = dialog.findViewById(R.id.et_title);
                 EditText et_desc = dialog.findViewById(R.id.et_description);
-                Button btn_new  = dialog.findViewById(R.id.bt_ok);
+                Button btn_new = dialog.findViewById(R.id.bt_ok);
 
-                Button btn_cancel  = dialog.findViewById(R.id.btn_cancel);
+                Button btn_cancel = dialog.findViewById(R.id.btn_cancel);
 
                 btn_cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -131,42 +131,42 @@ public class UserToDoList extends AppCompatActivity {
 
 
                 btn_selectDate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        UserToDoList.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int day) {
-                        month  = month+1;
+                    public void onClick(View v) {
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                                UserToDoList.this, new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int day) {
+                                month = month + 1;
 
-                        String fd= ""+day;
-                        String fm = ""+month;
-                        if(day<10){
-                            fd = "0"+day;
-                        }
-                        if (month<10){
-                            fm = "0"+month;
-                        }
+                                String fd = "" + day;
+                                String fm = "" + month;
+                                if (day < 10) {
+                                    fd = "0" + day;
+                                }
+                                if (month < 10) {
+                                    fm = "0" + month;
+                                }
 
-                        selectedDate = fd+"/"+fm+"/"+year;
+                                selectedDate = fd + "/" + fm + "/" + year;
 
-                        btn_selectDate.setText(selectedDate);
+                                btn_selectDate.setText(selectedDate);
+                            }
+                        }, year, month, day);
+                        datePickerDialog.show();
                     }
-                },year,month,day);
-                datePickerDialog.show();
-            }
-        });
+                });
 
 
                 btn_new.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        
-                        if (et_title.getText().toString().trim().isEmpty() | et_desc.getText().toString().trim().isEmpty()){
+
+                        if (et_title.getText().toString().trim().isEmpty() | et_desc.getText().toString().trim().isEmpty()) {
                             Toast.makeText(UserToDoList.this, "Do not empty Title and Description", Toast.LENGTH_SHORT).show();
-                        }else if (btn_selectDate.getText().toString().isEmpty()){
+                        } else if (btn_selectDate.getText().toString().isEmpty()) {
                             Toast.makeText(UserToDoList.this, "Please select a date", Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
 
 
                             String date = btn_selectDate.getText().toString();
@@ -202,9 +202,6 @@ public class UserToDoList extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
     //-----------------------Progress Dialog-------------------
@@ -229,7 +226,7 @@ public class UserToDoList extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
 
                     TodoModel model = postSnapshot.getValue(TodoModel.class);
-                    todoModels.add(0,model);
+                    todoModels.add(0, model);
                 }
 
                 adapter = new TodoAdapter(UserToDoList.this, todoModels);
@@ -237,6 +234,7 @@ public class UserToDoList extends AppCompatActivity {
                 recyclerView.smoothScrollToPosition(0);
                 progressDialog.dismiss();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(UserToDoList.this, error.getMessage(), Toast.LENGTH_SHORT).show();

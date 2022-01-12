@@ -47,7 +47,7 @@ public class UserSignUp extends AppCompatActivity {
     private TextInputLayout et_sic;
     private TextInputLayout et_phoneNumber;
     private TextInputLayout et_password;
-    Button btn_getOtp,btn_login;
+    Button btn_getOtp, btn_login;
     RadioGroup rg_year;
     RadioButton rb_selectedYear;
     AutoCompleteTextView autoCompleteCourse;
@@ -57,158 +57,159 @@ public class UserSignUp extends AppCompatActivity {
     private FirebaseAuth auth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
 
-     @SuppressLint({"CutPasteId", "ObsoleteSdkInt"})
-     @Override
+    @SuppressLint({"CutPasteId", "ObsoleteSdkInt"})
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_sign_up);
 
-         final String[] Course = {""};
-         et_userName = findViewById(R.id.et_userName);
-         et_sic = findViewById(R.id.et_sic);
-         TextInputLayout et_course = findViewById(R.id.et_course);
-         et_phoneNumber = findViewById(R.id.et_phoneNumber);
-         et_password = findViewById(R.id.et_password);
+        final String[] Course = {""};
+        et_userName = findViewById(R.id.et_userName);
+        et_sic = findViewById(R.id.et_sic);
+        TextInputLayout et_course = findViewById(R.id.et_course);
+        et_phoneNumber = findViewById(R.id.et_phoneNumber);
+        et_password = findViewById(R.id.et_password);
 
-         rg_year = findViewById(R.id.radio_group);
+        rg_year = findViewById(R.id.radio_group);
 
-         btn_getOtp = findViewById(R.id.btn_getOtp);
-         btn_login = findViewById(R.id.btn_backToLogin);
-         autoCompleteCourse = findViewById(R.id.autoCompleteCourse);
+        btn_getOtp = findViewById(R.id.btn_getOtp);
+        btn_login = findViewById(R.id.btn_backToLogin);
+        autoCompleteCourse = findViewById(R.id.autoCompleteCourse);
 
-         auth = FirebaseAuth.getInstance();
-         ArrayList<String> arrayListCourse;
-         ArrayAdapter<String> arrayAdapterCourse;
-         arrayListCourse = new ArrayList<>();
-         arrayListCourse.add("B.Tech");
-         arrayListCourse.add("M.Tech");
-         arrayListCourse.add("MCA");
-         arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(),R.layout.text_menu,arrayListCourse);
-         autoCompleteCourse.setAdapter(arrayAdapterCourse);
-         autoCompleteCourse.setOnItemClickListener((adapterView, view, i, l) -> Course[0] = arrayAdapterCourse.getItem(i));
-         //--------------- Internet Checking -----------
-         if (!isConnected(UserSignUp.this)){
-             showCustomDialog();
-         }
-         btn_login.setOnClickListener(v -> {
-             Intent intent = new Intent(getApplicationContext(), UserLogin.class);
+        auth = FirebaseAuth.getInstance();
+        ArrayList<String> arrayListCourse;
+        ArrayAdapter<String> arrayAdapterCourse;
+        arrayListCourse = new ArrayList<>();
+        arrayListCourse.add("B.Tech");
+        arrayListCourse.add("M.Tech");
+        arrayListCourse.add("MCA");
+        arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListCourse);
+        autoCompleteCourse.setAdapter(arrayAdapterCourse);
+        autoCompleteCourse.setOnItemClickListener((adapterView, view, i, l) -> Course[0] = arrayAdapterCourse.getItem(i));
+        //--------------- Internet Checking -----------
+        if (!isConnected(UserSignUp.this)) {
+            showCustomDialog();
+        }
+        btn_login.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), UserLogin.class);
 
-             Pair[] pairs = new Pair[1];
-             pairs[0] = new Pair<View,String>(findViewById(R.id.btn_backToLogin),"transition_login");
+            Pair[] pairs = new Pair[1];
+            pairs[0] = new Pair<View, String>(findViewById(R.id.btn_backToLogin), "transition_login");
 
-             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserSignUp.this,pairs);
-                 startActivity(intent,options.toBundle());
-             }
-             else{
-                 finish();
-             }
-         });
-         btn_getOtp.setOnClickListener(v -> {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(UserSignUp.this, pairs);
+                startActivity(intent, options.toBundle());
+            } else {
+                finish();
+            }
+        });
+        btn_getOtp.setOnClickListener(v -> {
 
-             //EditText Validations
-             if (!validatePhoneNumber()  | !validateUserName() | !validateCourse() | !validatePassword() | !validateYear() | !validateSIC()) {
+            //EditText Validations
+            if (!validatePhoneNumber() | !validateUserName() | !validateCourse() | !validatePassword() | !validateYear() | !validateSIC()) {
 
-                 return;
-             }
+                return;
+            }
 
-             //Initialize ProgressDialog
-             progressDialog = new ProgressDialog(UserSignUp.this);
-             progressDialog.show();
-             progressDialog.setContentView(R.layout.progress_dialog);
-             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-             progressDialog.setCancelable(false);
+            //Initialize ProgressDialog
+            progressDialog = new ProgressDialog(UserSignUp.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            progressDialog.setCancelable(false);
 
-             rb_selectedYear = findViewById(rg_year.getCheckedRadioButtonId());
+            rb_selectedYear = findViewById(rg_year.getCheckedRadioButtonId());
 
-             String phone = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
-             String phoneNumber = "+91" + phone;
+            String phone = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
+            String phoneNumber = "+91" + phone;
 
-             if (!phone.isEmpty()) {
-                 if (phone.length() == 10) {
+            if (!phone.isEmpty()) {
+                if (phone.length() == 10) {
 
-                     Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNumber").equalTo(phoneNumber);
+                    Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNumber").equalTo(phoneNumber);
 
-                     checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                         @Override
-                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                             if (snapshot.exists()) {
-                                 progressDialog.dismiss();
-                                 Toast.makeText(UserSignUp.this, "This User already Exist  Please Login", Toast.LENGTH_LONG).show();
+                            if (snapshot.exists()) {
+                                progressDialog.dismiss();
+                                Toast.makeText(UserSignUp.this, "This User already Exist  Please Login", Toast.LENGTH_LONG).show();
 
-                             } else {
+                            } else {
 
 
-                                 PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
-                                         .setPhoneNumber(phoneNumber)
-                                         .setTimeout(60L, TimeUnit.SECONDS)
-                                         .setActivity(UserSignUp.this)
-                                         .setCallbacks(mCallBacks)
-                                         .build();
-                                 PhoneAuthProvider.verifyPhoneNumber(options);
+                                PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)
+                                        .setPhoneNumber(phoneNumber)
+                                        .setTimeout(60L, TimeUnit.SECONDS)
+                                        .setActivity(UserSignUp.this)
+                                        .setCallbacks(mCallBacks)
+                                        .build();
+                                PhoneAuthProvider.verifyPhoneNumber(options);
 
-                             }
-                         }
-                         @Override
-                         public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        }
 
-                         }
-                     });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                 } else {
-                     progressDialog.dismiss();
-                     Toast.makeText(UserSignUp.this, "Please Enter Correct Mobile Number", Toast.LENGTH_SHORT).show();
-                 }
-             } else {
-                 progressDialog.dismiss();
-                 Toast.makeText(UserSignUp.this, "Please Enter Mobile Number", Toast.LENGTH_SHORT).show();
-             }
-         });
-         mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-             @Override
-             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                        }
+                    });
 
-             }
+                } else {
+                    progressDialog.dismiss();
+                    Toast.makeText(UserSignUp.this, "Please Enter Correct Mobile Number", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                progressDialog.dismiss();
+                Toast.makeText(UserSignUp.this, "Please Enter Mobile Number", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            @Override
+            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-             @Override
-             public void onVerificationFailed(@NonNull FirebaseException e) {
+            }
 
-                 Toast.makeText(UserSignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-             }
+            @Override
+            public void onVerificationFailed(@NonNull FirebaseException e) {
 
-             @Override
-             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                 super.onCodeSent(s, forceResendingToken);
+                Toast.makeText(UserSignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
 
-                 //sometime the code is not detected automatically
-                 //so user has to manually enter the code
+            @Override
+            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                super.onCodeSent(s, forceResendingToken);
 
-                 new Handler().postDelayed(() -> {
+                //sometime the code is not detected automatically
+                //so user has to manually enter the code
 
-                     Intent otpIntent = new Intent(UserSignUp.this, UserPhoneNumberVerification.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                     otpIntent.putExtra("auth", s);
-                     String phoneNumber = "+91" + Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString();
-                     otpIntent.putExtra("phoneNumber", phoneNumber);
+                new Handler().postDelayed(() -> {
 
-                     String name = Objects.requireNonNull(et_userName.getEditText()).getText().toString();
-                     String SIC = Objects.requireNonNull(et_sic.getEditText()).getText().toString();
-                     String Year = rb_selectedYear.getText().toString();
-                     String password = Objects.requireNonNull(et_password.getEditText()).getText().toString();
-                     SIC=SIC.toUpperCase(Locale.ROOT);
-                     otpIntent.putExtra("name", name);
-                     otpIntent.putExtra("SIC", SIC);
-                     otpIntent.putExtra("Course", Course[0]);
-                     otpIntent.putExtra("Year", Year);
-                     otpIntent.putExtra("password", password);
-                     startActivity(otpIntent);
-                     finish();
-                 }, 1);
+                    Intent otpIntent = new Intent(UserSignUp.this, UserPhoneNumberVerification.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    otpIntent.putExtra("auth", s);
+                    String phoneNumber = "+91" + Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString();
+                    otpIntent.putExtra("phoneNumber", phoneNumber);
 
-             }
-         };
+                    String name = Objects.requireNonNull(et_userName.getEditText()).getText().toString();
+                    String SIC = Objects.requireNonNull(et_sic.getEditText()).getText().toString();
+                    String Year = rb_selectedYear.getText().toString();
+                    String password = Objects.requireNonNull(et_password.getEditText()).getText().toString();
+                    SIC = SIC.toUpperCase(Locale.ROOT);
+                    otpIntent.putExtra("name", name);
+                    otpIntent.putExtra("SIC", SIC);
+                    otpIntent.putExtra("Course", Course[0]);
+                    otpIntent.putExtra("Year", Year);
+                    otpIntent.putExtra("password", password);
+                    startActivity(otpIntent);
+                    finish();
+                }, 1);
+
+            }
+        };
 
     }
+
     @Override
     public void onBackPressed() {
         finishAffinity();
@@ -219,16 +220,16 @@ public class UserSignUp extends AppCompatActivity {
 
         String val = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_phoneNumber.setError("Field can not be empty");
             return false;
-        }else if(val.length()>10 | val.length()<10){
+        } else if (val.length() > 10 | val.length() < 10) {
             et_phoneNumber.setError("Please Enter 10 Digit Phone Number");
             return false;
-        }else if (!val.matches("\\w*")){
+        } else if (!val.matches("\\w*")) {
             et_phoneNumber.setError("White spaces not allowed");
             return false;
-        }else {
+        } else {
             et_phoneNumber.setError(null);
             return true;
         }
@@ -237,10 +238,10 @@ public class UserSignUp extends AppCompatActivity {
     private boolean validateSIC() {
         String val = Objects.requireNonNull(et_sic.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_sic.setError("Field can not be empty");
             return false;
-        }else {
+        } else {
             et_sic.setError(null);
             return true;
         }
@@ -249,13 +250,13 @@ public class UserSignUp extends AppCompatActivity {
     private boolean validateUserName() {
         String val = Objects.requireNonNull(et_userName.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_userName.setError("Field can not be empty");
             return false;
-        }else if(val.length()>25){
+        } else if (val.length() > 25) {
             et_userName.setError("Name is Too Large");
             return false;
-        }else {
+        } else {
             et_userName.setError(null);
             return true;
         }
@@ -265,10 +266,10 @@ public class UserSignUp extends AppCompatActivity {
         // String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         String val = autoCompleteCourse.getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             autoCompleteCourse.setError("Field can not be empty");
             return false;
-        }else {
+        } else {
             autoCompleteCourse.setError(null);
             return true;
         }
@@ -278,28 +279,28 @@ public class UserSignUp extends AppCompatActivity {
     private boolean validatePassword() {
         String val = Objects.requireNonNull(et_password.getEditText()).getText().toString().trim();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             et_password.setError("Field can not be empty");
             return false;
-        }else if(val.length()<8) {
+        } else if (val.length() < 8) {
             et_password.setError("Password minimum 8 Characters");
             return false;
-        }else if (!val.matches("\\w*")){
+        } else if (!val.matches("\\w*")) {
             et_password.setError("White spaces not allowed");
             return false;
-        }else {
+        } else {
             et_password.setError(null);
             return true;
         }
 
     }
 
-    private boolean validateYear(){
+    private boolean validateYear() {
 
-        if (rg_year.getCheckedRadioButtonId() == -1){
+        if (rg_year.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "Please Select Year", Toast.LENGTH_SHORT).show();
             return false;
-        }else
+        } else
             return true;
     }
 
@@ -311,7 +312,7 @@ public class UserSignUp extends AppCompatActivity {
                 //   .setCancelable(false)
                 .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
                 .setNegativeButton("Cancel", (dialog, which) -> {
-                    startActivity(new Intent(getApplicationContext(),UserSignUp.class));
+                    startActivity(new Intent(getApplicationContext(), UserSignUp.class));
                     finish();
                 });
         AlertDialog alertDialog = builder.create();

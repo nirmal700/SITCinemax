@@ -1,13 +1,13 @@
 package com.example.sitcinemax;
 
 public class Movies {
-    String MovieName,MovieDescription,MovieRating,PosterUrl,MovieShort,SeatLayout;
+    String MovieName, MovieDescription, MovieRating, PosterUrl, MovieShort, SeatLayout;
     boolean IsScreening;
 
     public Movies() {
     }
 
-    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening,String SeatLayout) {
+    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening, String SeatLayout) {
         MovieName = movieName;
         MovieDescription = movieDescription;
         MovieRating = movieRating;
