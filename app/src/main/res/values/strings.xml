@@ -22,4 +22,17 @@
 
     <string name="update">Update</string>
     <string name="proceed">Proceed</string>
+    <string name="sign_up_with">Sign Up With</string>
+    <string name="name">Name</string>
+    <string name="sic">SIC</string>
+    <string name="select_your_course">Select Your Course</string>
+    <string name="choose_year">Choose Year</string>
+    <string name="_1styear">1stYear</string>
+    <string name="_2ndyear">2ndYear</string>
+    <string name="_3rdyear">3rdYear</string>
+    <string name="_4thyear">4thYear</string>
+    <string name="phone">Phone</string>
+    <string name="login">Login</string>
+    <string name="get_otp">Get otp</string>
+    <string name="password">Password</string>
 </resources>
