@@ -58,4 +58,6 @@
     <string name="add_new">Add New</string>
     <string name="stay_home">Stay Home</string>
     <string name="delete">Delete</string>
+    <string name="about_movie">About Movie</string>
+    <string name="book_ticket_s">Book Ticket\'s</string>
 </resources>
