@@ -1,5 +1,6 @@
 package com.example.sitcinemax;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,19 +34,6 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
     int flag =0;
     SessionManager manager;
 
-//    String seats = "____UUUUUUUUUUUUUUUUUUUUUUUU00070008000900100011RRRRRRRRRRRRRRRR____////"
-//            + "____________________________________________________________________////"
-//            + "UUUUUUUU________01001090110011101120113011401150116________RRRRRRRR////"
-//            + "UUUUUUUU________UUUUUUUUUUUU020102020203020402050206________02070208////"
-//            + "03010302________030303040305030603070308030903100311________03120313////"
-//            + "04010402________RRRRRRRR04050406RRRR04080409RRRR0411________UUUU0413////"
-//            + "UUUUUUUU________UUUUUUUUUUUU0501____RRRRRRRRRRRRRRRR________05020503////"
-//            + "06010602________0603060406050606____0607060806090610________RRRRUUUU////"
-//            + "07010402________RRRRRRRR07050706____07080709RRRR0711________UUUU0713////"
-//            + "UUUUUUUU________UUUUUUUUUUUU0801____RRRRRRRRRRRRRRRR________08020803////"
-//            + "09010902________0903090409050906____0907090809090910________RRRRUUUU////"
-//            +"UUUUUUUU________UUUUUUUUUUUU1001____RRRRRRRRRRRRRRRR________10021003////";
-
     List<TextView> seatViewList = new ArrayList<>();
     int seatSize = 100;
     int seatGaping = 10;
@@ -62,6 +50,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
     private final CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Movies");
     LinearLayout layoutSeat;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +107,6 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                         mMovie = value.toObject(Movies.class);
                         if (mMovie != null) {
                             Log.e("mMovie", "onEvent: " + mMovie.getSeatLayout());
-                        }
 
                     }
                     LinearLayout layout = null;
@@ -323,7 +311,6 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
             }
             Replace_For(seatno1);
             Replace_For(seatno2);
-            collectionReference.document(MovieName).update("SeatLayout", seats);
         } else {
             if (selectedIds.length() == 5) {
                 String seat1 = selectedIds.substring(2, 4);
@@ -344,8 +331,8 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
             }
             Log.e("Replace", "Replace: " + seatno1);
             Replace_For(seatno1);
-            collectionReference.document(MovieName).update("SeatLayout", seats);
         }
+        collectionReference.document(MovieName).update("SeatLayout", seats);
     }
 
     private void Replace_For(String ReplaceString) {
