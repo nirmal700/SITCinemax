@@ -103,15 +103,12 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(error != null )
-                        {
+                        if (error != null) {
                             Log.e("Firebase Error", "onEvent: ", error);
                             return;
                         }
-                        if(value != null )
-                        {
-                            if(mMovie == null)
-                            {
+                        if (value != null) {
+                            if (mMovie == null) {
                                 Log.e("mMovie called", "onEvent: ");
                                 layoutSeat = new LinearLayout(ChooseSeatLayout.this);
                                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -119,9 +116,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                                 layoutSeat.setLayoutParams(params);
                                 layoutSeat.setPadding(8 * seatGaping, 8 * seatGaping, 8 * seatGaping, 8 * seatGaping);
                                 layout.addView(layoutSeat);
-                            }
-                            else
-                            {
+                            } else {
                                 layout.removeAllViews();
                                 layoutSeat.removeAllViews();
                                 layoutSeat = new LinearLayout(ChooseSeatLayout.this);
@@ -213,7 +208,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                                 view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
                                 view.setTextColor(Color.BLACK);
                                 view.setTag(STATUS_AVAILABLE);
-                                layout.addView(view);
+                                Objects.requireNonNull(layout).addView(view);
                                 seatViewList.add(view);
                                 view.setOnClickListener(ChooseSeatLayout.this);
                             } else if (seats.charAt(index) == 'R') {
@@ -230,7 +225,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                                 view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
                                 view.setTextColor(Color.WHITE);
                                 view.setTag(STATUS_RESERVED);
-                                layout.addView(view);
+                                Objects.requireNonNull(layout).addView(view);
                                 seatViewList.add(view);
                                 view.setOnClickListener(ChooseSeatLayout.this);
                             } else if (seats.charAt(index) == '_') {
@@ -240,7 +235,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                                 view.setLayoutParams(layoutParams);
                                 view.setBackgroundColor(Color.TRANSPARENT);
                                 view.setText("");
-                                layout.addView(view);
+                                Objects.requireNonNull(layout).addView(view);
                             }
                         }
                     }
