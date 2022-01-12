@@ -121,7 +121,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                     LinearLayout layout = null;
 
 
-                    seats = mMovie.getSeatLayout();
+                    seats = Objects.requireNonNull(mMovie).getSeatLayout();
                     seats = "////" + seats;
                     char Par = '_';
 
@@ -147,7 +147,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                             view.setTag(STATUS_BOOKED);
                             view.setText("U");
                             view.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9);
-                            layout.addView(view);
+                            Objects.requireNonNull(layout).addView(view);
                             seatViewList.add(view);
                             view.setOnClickListener(ChooseSeatLayout.this);
                         } else if (seats.startsWith("00", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
