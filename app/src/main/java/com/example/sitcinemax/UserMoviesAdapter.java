@@ -2,9 +2,11 @@ package com.example.sitcinemax;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +47,16 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
                 .load(currentData.getPosterUrl())
                 .placeholder(R.drawable.sand_clock)
                 .into(holder.imageView);
+        holder.bt_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Movies movies = mMovies.get(holder.getAdapterPosition());
+                String mMovieName = movies.getMovieName();
+                Intent intent = new Intent(mContext, BookTickets.class);
+                intent.putExtra("MovieName", mMovieName); // Pass Shop Id value To ShopDetailsSingleView
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -58,6 +70,7 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
 
         public ImageView imageView;
         public TextView tv_title, tv_description;
+        public Button bt_ok;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -66,6 +79,7 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
             imageView = itemView.findViewById(R.id.iv_poster);
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_description = itemView.findViewById(R.id.tv_description);
+            bt_ok = itemView.findViewById(R.id.bt_ok);
 
             itemView.setOnClickListener(this);
 

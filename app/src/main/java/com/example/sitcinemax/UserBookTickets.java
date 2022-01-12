@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -27,6 +28,7 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
     ImageView btn_back;
     private ArrayList<Movies> list;
     private UserMoviesAdapter userMoviesAdapter;
+    Movies mMovies;
 
     private final CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Movies");
 
@@ -72,14 +74,13 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
                 Log.e("AddSnapShot", error.getMessage());
                 return;
             }
-            for (DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges()) {
-                if (documentChange.getType() == DocumentChange.Type.MODIFIED) {
-                    list.add(documentChange.getDocument().toObject(Movies.class));
+            for (DocumentSnapshot querySnapshot : Objects.requireNonNull(value)) {
+                    mMovies = querySnapshot.toObject(Movies.class);
+                    list.add(mMovies);
                     userMoviesAdapter = new UserMoviesAdapter(UserBookTickets.this, list);
                     recyclerView.setAdapter(userMoviesAdapter);
                     userMoviesAdapter.notifyDataSetChanged();
                     userMoviesAdapter.setOnItemClickListener(UserBookTickets.this);
-                }
             }
         });
 
