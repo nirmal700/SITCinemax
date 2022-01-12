@@ -73,7 +73,7 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
                 return;
             }
             for (DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges()) {
-                if (documentChange.getType() == DocumentChange.Type.ADDED) {
+                if (documentChange.getType() == DocumentChange.Type.MODIFIED) {
                     list.add(documentChange.getDocument().toObject(Movies.class));
                     userMoviesAdapter = new UserMoviesAdapter(UserBookTickets.this, list);
                     recyclerView.setAdapter(userMoviesAdapter);
