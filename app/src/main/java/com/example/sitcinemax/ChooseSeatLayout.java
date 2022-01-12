@@ -227,41 +227,38 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 });
 
 
-        btn_Proceed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btn_Proceed.setOnClickListener(view -> {
 
-                if (NoOfPerson.equals("1") && selectedIds.length() <= 5) {
+            if (NoOfPerson.equals("1") && selectedIds.length() <= 5) {
 
-                    btn_Proceed.setError(null);
-                    getSeats();
-                    Toast.makeText(ChooseSeatLayout.this, "Successfull" + selectedIds, Toast.LENGTH_SHORT).show();
-                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
-                    CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
-                    collectionReference.add(ticket).addOnSuccessListener(documentReference -> Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show()).addOnCompleteListener(task -> {
+                btn_Proceed.setError(null);
+                getSeats();
+                Toast.makeText(ChooseSeatLayout.this, "Successfull" + selectedIds, Toast.LENGTH_SHORT).show();
+                Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
+                CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
+                collectionReference.add(ticket).addOnSuccessListener(documentReference -> Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show()).addOnCompleteListener(task -> {
 
 
-                    });
-                    Replace(selectedIds);
-                    Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
-                    startActivity(intent);
-                    finish();
-                } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10) {
-                    btn_Proceed.setError(null);
-                    getSeats();
-                    Toast.makeText(ChooseSeatLayout.this, "Successfull" + selectedIds, Toast.LENGTH_SHORT).show();
-                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
-                    CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
-                    collectionReference.add(ticket).addOnSuccessListener(documentReference -> Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show()).addOnCompleteListener(task -> {
-                    });
-                    Replace(selectedIds);
-                    Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
-                    startActivity(intent);
-                    finish();
-                } else
-                    btn_Proceed.setError("Check the Seats");
+                });
+                Replace(selectedIds);
+                Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
+                startActivity(intent);
+                finish();
+            } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10) {
+                btn_Proceed.setError(null);
+                getSeats();
+                Toast.makeText(ChooseSeatLayout.this, "Successfull" + selectedIds, Toast.LENGTH_SHORT).show();
+                Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
+                CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
+                collectionReference.add(ticket).addOnSuccessListener(documentReference -> Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show()).addOnCompleteListener(task -> {
+                });
+                Replace(selectedIds);
+                Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
+                startActivity(intent);
+                finish();
+            } else
+                btn_Proceed.setError("Check the Seats");
 
-            }
         });
     }
 
