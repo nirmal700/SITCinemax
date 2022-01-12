@@ -2,7 +2,6 @@ package com.example.sitcinemax;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -36,7 +35,10 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     static final float END_SCALE = 0.7f;
 
 
-    MaterialCardView btn_CustomerProfile,btn_TodoList,btn_ScannedShops,btn_book_tickets,btn_transaction_History;
+    MaterialCardView btn_CustomerProfile;
+    MaterialCardView btn_TodoList;
+    MaterialCardView btn_book_tickets;
+    MaterialCardView btn_transaction_History;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -50,10 +52,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     SessionManager manager;
 
 
-    String phoneNo;
     String view_date= new SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(new Date());
-
-    private String ShopData;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -93,41 +92,24 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         navigationDrawer();
 
         //Animation set onclick
-        lottieAnimationView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        lottieAnimationView1.setOnClickListener(v -> {
 
-                lottieAnimationView1.playAnimation();
-                lottieAnimationView1.loop(true);
+            lottieAnimationView1.playAnimation();
+            lottieAnimationView1.loop(true);
 
-                if (drawerLayout.isDrawerVisible(GravityCompat.START))
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                else drawerLayout.openDrawer(GravityCompat.START);
-            }
-
+            if (drawerLayout.isDrawerVisible(GravityCompat.START))
+                drawerLayout.closeDrawer(GravityCompat.START);
+            else drawerLayout.openDrawer(GravityCompat.START);
         });
 
-        btn_CustomerProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserDashBoard.this, EditUserProfile.class));
-            }
-        });
+        btn_CustomerProfile.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, EditUserProfile.class)));
 
-        btn_TodoList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 startActivity(new Intent(UserDashBoard.this, UserToDoList.class));
-            }
-        });
-        btn_book_tickets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(UserDashBoard.this, UserBookTickets.class));
-            }
-        });
+        btn_TodoList.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserToDoList.class)));
+        btn_book_tickets.setOnClickListener(view -> startActivity(new Intent(UserDashBoard.this, UserBookTickets.class)));
 
-
+        if (!isConnected(UserDashBoard.this)){
+            showCustomDialog();
+        }
 
 
 
@@ -264,29 +246,23 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         builder.setMessage("Are you sure to Log out ?");
 
         //positive YES button
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setPositiveButton("YES", (dialog, which) -> {
 
-                manager.setUserLogin(false);
-                manager.setDetails("","","","");
+            manager.setUserLogin(false);
+            manager.setDetails("","","","");
 
-                //activity.finishAffinity();
-                dialog.dismiss();
+            //activity.finishAffinity();
+            dialog.dismiss();
 
-                //Finish Activity
-                startActivity(new Intent(getApplicationContext(), UserSignUp.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                finish();
-            }
+            //Finish Activity
+            startActivity(new Intent(getApplicationContext(), UserSignUp.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            finish();
         });
 
         //Negative NO button
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Dismiss Dialog
-                dialog.dismiss();
-            }
+        builder.setNegativeButton("NO", (dialog, which) -> {
+            //Dismiss Dialog
+            dialog.dismiss();
         });
 
         AlertDialog alert = builder.create();
@@ -300,18 +276,10 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(UserDashBoard.this);
         builder.setMessage("Please connect to the internet")
                 //.setCancelable(false)
-                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
-                        finish();
-                    }
+                .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+                    finish();
                 });
         android.app.AlertDialog alertDialog = builder.create();
         alertDialog.show();
