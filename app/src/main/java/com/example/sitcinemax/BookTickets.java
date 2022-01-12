@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -22,6 +23,7 @@ public class BookTickets extends AppCompatActivity {
     private RadioGroup radio_group;
     private RadioButton rb_selected,rb1,rb2;
     private Button btn_Proceed;
+    ImageView btn_back;
     String sic,name,phone,mMovieName;
     int b=-1;
     @Override
@@ -37,6 +39,7 @@ public class BookTickets extends AppCompatActivity {
         rb1 = findViewById(R.id.single);
         rb2 = findViewById(R.id.duo);
         et_MovieName = findViewById(R.id.et_MovieName);
+        btn_back = findViewById(R.id.btn_backToSd);
         btn_Proceed = findViewById(R.id.btn_Proceed);
 
         manager = new SessionManager(getApplicationContext());
@@ -119,6 +122,17 @@ public class BookTickets extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BookTickets.this, UserDashBoard.class));
+                finishAffinity();
+            }
+        });
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),UserBookTickets.class));
+        super.onBackPressed();
     }
 }
