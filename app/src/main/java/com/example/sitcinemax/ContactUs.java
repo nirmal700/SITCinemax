@@ -62,66 +62,54 @@ public class ContactUs extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        to_whatsapp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
+        to_whatsapp.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW);
 
-                try {
-                    String url = "https://api.whatsapp.com/send?phone="+ "+917008000094" +"&text=" + URLEncoder.encode("Hai,\n", "UTF-8");
-                    i.setPackage("com.whatsapp");
-                    i.setData(Uri.parse(url));
-                    startActivity(i);
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-                Toast.makeText(ContactUs.this, "Contact SIT Cinemax via Whatsapp", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        to_instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Uri uri = Uri.parse("https://www.instagram.com/k.nirmalkumar2002/");
-                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
-                likeIng.setPackage("com.instagram.android");
-
-                try {
-                    startActivity(likeIng);
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://www.instagram.com/k.nirmalkumar2002/")));
-                }
-                Toast.makeText(ContactUs.this, "Contact SIT Cinemax via Instagram", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        to_gmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent emailIntent = new Intent(Intent.ACTION_VIEW);
-                Uri data = Uri.parse("mailto:?subject=" +"SIT Cinemax"+ "&body=" + "Hai,\n" + "&to=" + "k.nirmalkumar2002@gmail.com");
-                emailIntent.setData(data);
-                startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                Toast.makeText(ContactUs.this, "Contact SIT Cinemax via E-mail", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        to_gitHub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String url = "https://github.com/nirmal700";
-                Intent i = new Intent(Intent.ACTION_VIEW);
+            try {
+                String url = "https://api.whatsapp.com/send?phone="+ "+917008000094" +"&text=" + URLEncoder.encode("Hai,\n", "UTF-8");
+                i.setPackage("com.whatsapp");
                 i.setData(Uri.parse(url));
                 startActivity(i);
-                Toast.makeText(ContactUs.this, "Contact Nirmal via GitHub", Toast.LENGTH_SHORT).show();
-
+            } catch (Exception e){
+                e.printStackTrace();
             }
+            Toast.makeText(ContactUs.this, "Contact SIT Cinemax via Whatsapp", Toast.LENGTH_SHORT).show();
+        });
+
+        to_instagram.setOnClickListener(v -> {
+
+            Uri uri = Uri.parse("https://www.instagram.com/k.nirmalkumar2002/");
+            Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+            likeIng.setPackage("com.instagram.android");
+
+            try {
+                startActivity(likeIng);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.instagram.com/k.nirmalkumar2002/")));
+            }
+            Toast.makeText(ContactUs.this, "Contact SIT Cinemax via Instagram", Toast.LENGTH_SHORT).show();
+
+        });
+
+        to_gmail.setOnClickListener(v -> {
+
+            Intent emailIntent = new Intent(Intent.ACTION_VIEW);
+            Uri data = Uri.parse("mailto:?subject=" +"SIT Cinemax"+ "&body=" + "Hai,\n" + "&to=" + "k.nirmalkumar2002@gmail.com");
+            emailIntent.setData(data);
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            Toast.makeText(ContactUs.this, "Contact SIT Cinemax via E-mail", Toast.LENGTH_SHORT).show();
+
+        });
+
+        to_gitHub.setOnClickListener(v -> {
+
+            String url = "https://github.com/nirmal700";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+            Toast.makeText(ContactUs.this, "Contact Nirmal via GitHub", Toast.LENGTH_SHORT).show();
+
         });
 
         list = new ArrayList<>();
