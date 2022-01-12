@@ -60,4 +60,13 @@
     <string name="delete">Delete</string>
     <string name="about_movie">About Movie</string>
     <string name="book_ticket_s">Book Ticket\'s</string>
+    <string name="update_your_details">Update Your Details</string>
+    <string name="e_g_john">e.g. John</string>
+    <string name="_20bcta16">20BCTA16</string>
+    <string name="select_your_course">Select Your Course</string>
+    <string name="choose_year">Choose Year</string>
+    <string name="_1styear">1stYear</string>
+    <string name="_2ndyear">2ndYear</string>
+    <string name="_3rdyear">3rdYear</string>
+    <string name="_4thyear">4thYear</string>
 </resources>

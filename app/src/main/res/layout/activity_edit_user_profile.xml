@@ -19,7 +19,6 @@
             android:id="@+id/btn_backToCd"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -65,10 +64,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:autoSizeTextType="uniform"
-                android:text="Update Your Details "
+                android:text="@string/update_your_details"
                 android:textColor="@color/Primary"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -77,7 +75,6 @@
                 android:layout_width="96dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
                 android:autoSizeTextType="uniform"
                 android:text="@string/required"
@@ -106,7 +103,7 @@
                     android:layout_height="55dp"
                     android:autoSizeTextType="uniform"
                     android:digits="@string/allowedName"
-                    android:hint="e.g. John"
+                    android:hint="@string/e_g_john"
                     android:inputType="textCapSentences"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintBlack"
@@ -119,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="SIC"
+                android:hint="@string/sic"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="1dp"
@@ -135,7 +132,7 @@
                     android:layout_height="55dp"
                     android:autoSizeTextType="uniform"
                     android:digits="@string/allowedName"
-                    android:hint="20BCTA16"
+                    android:hint="@string/_20bcta16"
                     android:inputType="textCapSentences"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintBlack"
@@ -148,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Select Your Course"
+                android:hint="@string/select_your_course"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="1dp"
@@ -175,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Choose Year"
+                android:text="@string/choose_year"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -193,7 +190,7 @@
                     android:id="@+id/radio_1styear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1stYear"
+                    android:text="@string/_1styear"
                     android:buttonTint="@color/Primary"
                     android:textColor="@color/black" />
 
@@ -201,30 +198,27 @@
                     android:id="@+id/radio_2ndyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2ndYear"
+                    android:text="@string/_2ndyear"
                     android:layout_marginStart="07dp"
                     android:buttonTint="@color/Primary"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="7dp" />
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:id="@+id/radio_3rdyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
-                    android:text="3rdYear"
+                    android:text="@string/_3rdyear"
                     android:buttonTint="@color/Primary"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="7dp" />
+                    android:textColor="@color/black" />
                 <RadioButton
                     android:id="@+id/radio_4thyear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
-                    android:text="4thYear"
+                    android:text="@string/_4thyear"
                     android:buttonTint="@color/Primary"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="7dp" />
+                    android:textColor="@color/black" />
 
             </RadioGroup>
 
