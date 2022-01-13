@@ -174,6 +174,8 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         } else
             super.onBackPressed();
+        finishAffinity();
+        Toast.makeText(this, "Thank you :)", Toast.LENGTH_SHORT).show();
     }
 
     @SuppressLint("NonConstantResourceId")
