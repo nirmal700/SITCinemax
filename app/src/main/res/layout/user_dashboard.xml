@@ -198,7 +198,7 @@
                         android:autoSizeTextType="uniform"
                         android:fontFamily="@font/my_fav_sans_number"
                         android:gravity="center_horizontal"
-                        android:text="My Qr"
+                        android:text="@string/my_qr"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
