@@ -70,7 +70,7 @@
             android:paddingHorizontal="5dp">
 
             <Button
-                android:id="@+id/btn_cancel"
+                android:id="@+id/btn_aboutMovie"
                 style="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

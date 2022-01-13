@@ -3,6 +3,7 @@
     package="com.example.sitcinemax">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SITCinemax">
+        <activity
+            android:name=".AboutMovie"
+            android:exported="false" />
         <activity
             android:name=".ChooseSeatLayout"
             android:exported="false" />
@@ -40,7 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".UserQrCode"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".UserToDoList"
             android:exported="false" />
@@ -57,5 +61,10 @@
             </intent-filter>
         </activity>
     </application>
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 
 </manifest>

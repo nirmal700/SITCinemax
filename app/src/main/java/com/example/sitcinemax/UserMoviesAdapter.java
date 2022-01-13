@@ -57,6 +57,16 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
                 mContext.startActivity(intent);
             }
         });
+        holder.btn_aboutMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Movies movies = mMovies.get(holder.getAdapterPosition());
+                String mMovieName = movies.getMovieName();
+                Intent intent = new Intent(mContext, AboutMovie.class);
+                intent.putExtra("MovieName", mMovieName); // Pass Shop Id value To ShopDetailsSingleView
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -70,7 +80,7 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
 
         public ImageView imageView;
         public TextView tv_title, tv_description;
-        public Button bt_ok;
+        public Button bt_ok,btn_aboutMovie;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -80,6 +90,7 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_description = itemView.findViewById(R.id.tv_description);
             bt_ok = itemView.findViewById(R.id.bt_ok);
+            btn_aboutMovie = itemView.findViewById(R.id.btn_aboutMovie);
 
             itemView.setOnClickListener(this);
 
