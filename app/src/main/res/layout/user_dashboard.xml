@@ -167,7 +167,7 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_ScannedShops"
+                android:id="@+id/btn_My_Qr"
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_margin="10dp"
@@ -186,7 +186,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:contentDescription="@null"
-                        android:src="@drawable/img_shop" />
+                        android:src="@drawable/ic_qr_code_user" />
 
                     <TextView
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
@@ -198,7 +198,7 @@
                         android:autoSizeTextType="uniform"
                         android:fontFamily="@font/my_fav_sans_number"
                         android:gravity="center_horizontal"
-                        android:text="@string/scanned_shop"
+                        android:text="My Qr"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />

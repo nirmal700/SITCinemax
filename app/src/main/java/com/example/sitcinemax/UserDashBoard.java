@@ -41,6 +41,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     MaterialCardView btn_TodoList;
     MaterialCardView btn_book_tickets;
     MaterialCardView btn_transaction_History;
+    MaterialCardView btn_My_Qr;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -75,6 +76,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         btn_TodoList = findViewById(R.id.btn_TodoList);
         btn_book_tickets = findViewById(R.id.btn_book_ticket);
         btn_transaction_History = findViewById(R.id.btn_transaction_History);
+        btn_My_Qr = findViewById(R.id.btn_My_Qr);
 
         Menu menuNav = navigationView.getMenu();
 
@@ -104,6 +106,12 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         });
 
         btn_CustomerProfile.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, EditUserProfile.class)));
+        btn_My_Qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), UserQrCode.class));
+            }
+        });
 
         btn_TodoList.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserToDoList.class)));
         btn_book_tickets.setOnClickListener(view -> {

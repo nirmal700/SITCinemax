@@ -39,6 +39,9 @@
             android:name=".UserDashBoard"
             android:exported="false" />
         <activity
+            android:name=".UserQrCode"
+            android:exported="false"/>
+        <activity
             android:name=".UserToDoList"
             android:exported="false" />
         <activity
