@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +23,7 @@ public class AboutMovie extends YouTubeBaseActivity {
     YouTubePlayerView youTubePlayerView;
     TextView tv_MovieName, tv_description,tv_date,tv_Details;
     RatingBar rbStars;
+    ImageView btn_backToSd;
     YouTubePlayer.OnInitializedListener onInitializedListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +34,11 @@ public class AboutMovie extends YouTubeBaseActivity {
         tv_description = findViewById(R.id.tv_description);
         tv_Details = findViewById(R.id.tv_Details);
         rbStars = findViewById(R.id.rbStars);
+        btn_backToSd = findViewById(R.id.btn_backToSd);
         Intent intent = getIntent();
         Movies mTrailer = (Movies)intent.getSerializableExtra("Movie_Details");
         tv_MovieName.setText(mTrailer.getMovieName());
-        tv_description.setText("\t\t\t"+mTrailer.getMovieDescription());
+        tv_description.setText(String.format("\n\t\t\t%s\n\n\n", mTrailer.getMovieDescription()));
         rbStars.setRating(Float.parseFloat(mTrailer.getMovieRating()));
         tv_date.setText(mTrailer.getScreenDate());
         tv_Details.setText(mTrailer.getDetails());
@@ -53,5 +58,12 @@ public class AboutMovie extends YouTubeBaseActivity {
             }
         };
         youTubePlayerView.initialize(api_key,onInitializedListener);
+        btn_backToSd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AboutMovie.this,UserBookTickets.class));
+                finishAffinity();
+            }
+        });
     }
 }
