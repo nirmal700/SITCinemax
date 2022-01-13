@@ -1,13 +1,15 @@
 package com.example.sitcinemax;
 
-public class Movies {
-    String MovieName, MovieDescription, MovieRating, PosterUrl, MovieShort, SeatLayout;
+import java.io.Serializable;
+
+public class Movies implements Serializable {
+    String MovieName, MovieDescription, MovieRating, PosterUrl, MovieShort, SeatLayout, TrailerURL;
     boolean IsScreening;
 
     public Movies() {
     }
 
-    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening, String SeatLayout) {
+    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening, String SeatLayout, String TrailerURL) {
         MovieName = movieName;
         MovieDescription = movieDescription;
         MovieRating = movieRating;
@@ -15,6 +17,7 @@ public class Movies {
         MovieShort = movieShort;
         IsScreening = isScreening;
         this.SeatLayout = SeatLayout;
+        this.TrailerURL = TrailerURL;
     }
 
     public String getSeatLayout() {
@@ -71,5 +74,13 @@ public class Movies {
 
     public void setScreening(boolean screening) {
         IsScreening = screening;
+    }
+
+    public String getTrailerURL() {
+        return TrailerURL;
+    }
+
+    public void setTrailerURL(String trailerURL) {
+        TrailerURL = trailerURL;
     }
 }

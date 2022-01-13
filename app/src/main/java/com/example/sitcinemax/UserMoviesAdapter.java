@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.MyViewHolder> {
@@ -63,7 +64,7 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
                 Movies movies = mMovies.get(holder.getAdapterPosition());
                 String mMovieName = movies.getMovieName();
                 Intent intent = new Intent(mContext, AboutMovie.class);
-                intent.putExtra("MovieName", mMovieName); // Pass Shop Id value To ShopDetailsSingleView
+                intent.putExtra("Movie_Details", (Serializable) movies); // Pass Shop Id value To ShopDetailsSingleView
                 mContext.startActivity(intent);
             }
         });

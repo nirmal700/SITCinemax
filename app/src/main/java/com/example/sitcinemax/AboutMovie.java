@@ -2,6 +2,7 @@ package com.example.sitcinemax;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -20,11 +21,14 @@ public class AboutMovie extends YouTubeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_movie);
+        Intent intent = getIntent();
+        Movies mTrailer = (Movies)intent.getSerializableExtra("Movie_Details");
+
         youTubePlayerView = (YouTubePlayerView)findViewById(R.id.YoutubePlayer);
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                 youTubePlayer.loadVideo("rt-2cxAiPJk");
+                 youTubePlayer.loadVideo(mTrailer.getTrailerURL());
             }
 
             @Override
