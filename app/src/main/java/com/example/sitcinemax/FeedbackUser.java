@@ -41,9 +41,11 @@ public class FeedbackUser extends AppCompatActivity {
         manager = new SessionManager(FeedbackUser.this);
 
         progressDialog = new ProgressDialog(FeedbackUser.this);
+        progressDialog.show();
+        progressDialog.setCancelable(false);
         progressDialog.setContentView(R.layout.progress_dialog);
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        progressDialog.setCancelable(false);
+        progressDialog.dismiss();
 
 
         rateStars.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
