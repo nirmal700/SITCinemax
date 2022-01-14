@@ -22,11 +22,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickListener {
@@ -238,7 +235,6 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 if (flag == 0) {
                     btn_Proceed.setError("Can't Book The Seats");
                     progressDialog.dismiss();
-                    return;
                 } else {
                     Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl());
                     CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
@@ -261,7 +257,6 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 if (flag == 0) {
                     btn_Proceed.setError("Can't Book The Seats");
                     progressDialog.dismiss();
-                    return;
                 } else {
                     Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl());
                     CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
@@ -355,7 +350,6 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
         }
         if (flag == 0) {
             btn_Proceed.setError("Can't Book The Seats");
-            return;
         }
     }
 
