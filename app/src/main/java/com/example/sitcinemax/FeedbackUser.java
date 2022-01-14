@@ -2,6 +2,8 @@ package com.example.sitcinemax;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,8 @@ public class FeedbackUser extends AppCompatActivity {
     String answervalue;
     EditText feedback_et;
     SessionManager manager;
+    ProgressDialog progressDialog;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,57 +40,67 @@ public class FeedbackUser extends AppCompatActivity {
         rateStars = findViewById(R.id.rateStars);
         manager = new SessionManager(FeedbackUser.this);
 
+        progressDialog = new ProgressDialog(FeedbackUser.this);
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialog.show();
+        progressDialog.dismiss();
 
-        rateStars.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
-                answervalue = String.valueOf((int) (rateStars.getRating()));
+        rateStars.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
 
-                if (answervalue.equals("1")){
+            answervalue = String.valueOf((int) (rateStars.getRating()));
+
+            switch (answervalue) {
+                case "1":
                     emoji.setImageResource(R.drawable.one);
                     resultRate.setText("Bad");
-                }
-                else if (answervalue.equals("2")){
+                    break;
+                case "2":
                     emoji.setImageResource(R.drawable.two);
 
                     resultRate.setText("Not Bad");
-                }
-                else if (answervalue.equals("3")){
+                    break;
+                case "3":
                     emoji.setImageResource(R.drawable.three);
 
                     resultRate.setText("Nice!");
-                }
-                else if (answervalue.equals("4")){
+                    break;
+                case "4":
                     emoji.setImageResource(R.drawable.four);
 
                     resultRate.setText("Good Job!");
-                }
-                else if (answervalue.equals("5")){
+                    break;
+                case "5":
                     emoji.setImageResource(R.drawable.five);
 
                     resultRate.setText("Awesome!");
-                }
-                else {
+                    break;
+                default:
                     Toast.makeText(getApplicationContext(), "No Point", Toast.LENGTH_SHORT).show();
-                }
+                    break;
             }
         });
-        btn_Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Feedback feedback = new Feedback(""+rateStars.getRating(),feedback_et.getText().toString(),manager.getSIC(), manager.getPhone(),manager.getName(), resultRate.getText().toString(),false,false);
-                CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Feedback");
-                collectionReference.add(feedback).addOnSuccessListener(documentReference -> {
-                }).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(FeedbackUser.this, "Feedback Submitted Successfully!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(FeedbackUser.this, UserDashBoard.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+        btn_Submit.setOnClickListener(view -> {
+            progressDialog.show();
+            if(feedback_et.getText().toString().length()<=5)
+            {
+                btn_Submit.setError("Invalid Feedback");
+                progressDialog.dismiss();
+                return;
             }
+            Feedback feedback = new Feedback(""+rateStars.getRating(),feedback_et.getText().toString(),manager.getSIC(), manager.getPhone(),manager.getName(), resultRate.getText().toString(),false,false);
+            CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Feedback");
+            collectionReference.add(feedback).addOnSuccessListener(documentReference -> {
+            }).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(FeedbackUser.this, "Feedback Submitted Successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(FeedbackUser.this, UserDashBoard.class);
+                    progressDialog.dismiss();
+                    startActivity(intent);
+                    finish();
+                }
+            });
         });
     }
 }
