@@ -15,6 +15,7 @@ public class BookingConfirmation extends AppCompatActivity {
         setContentView(R.layout.activity_booking_confirmation);
         Dialog dialog = new Dialog(BookingConfirmation.this);
         dialog.setContentView(R.layout.booking_successfull);
+        dialog.setCancelable(false);
         Button btOk = dialog.findViewById(R.id.bt_ok);
 
         btOk.setOnClickListener(v -> {
