@@ -41,7 +41,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="160dp"
                 android:fontFamily="monospace"
-                android:text="Tickets"
+                android:text="@string/tickets"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:layout_alignStart="@+id/iv_member"
                 android:layout_marginStart="35dp"
                 android:fontFamily="monospace"
-                android:text="2"
+                android:text="@string/_2"
                 android:textColor="@color/white"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -67,7 +67,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/iv_member"
                 android:fontFamily="monospace"
-                android:text="Spider Man No Way Home"
+                android:text="@string/spider_man_no_way_home"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -111,18 +111,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:autoSizeTextType="uniform"
-                        android:text="Name:  "
+                        android:text="@string/name1"
                         android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:targetApi="o" />
 
                     <TextView
                         android:id="@+id/tv_name1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="K Nirmal Kumar(20BCTA16)"
+                        android:text="@string/k_nirmal_kumar_20bcta16"
                         android:autoSizeTextType="uniform"
                         android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:targetApi="o" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -139,18 +141,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
-                    android:text="Name:  "
+                    android:text="@string/name2"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/tv_name2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="K Nirmal Kumar(20BCTA16)"
+                    android:text="@string/k_nirmal_kumar_20bcta16"
                     android:autoSizeTextType="uniform"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:targetApi="o" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -166,18 +170,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
-                    android:text="Seats:  "
+                    android:text="@string/seats"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/seats"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="B01, B03"
+                    android:text="@string/b01_b03"
                     android:autoSizeTextType="uniform"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:targetApi="o" />
             </LinearLayout>
 
         </RelativeLayout>

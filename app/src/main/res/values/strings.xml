@@ -108,4 +108,13 @@
     <string name="seat_no">Seat No</string>
     <string name="date">Date</string>
     <string name="c04_c15">C04, C15</string>
+    <string name="tickets">Tickets</string>
+    <string name="_2">2</string>
+    <string name="spider_man_no_way_home">Spider Man No Way Home</string>
+    <string name="name1">Name:</string>
+    <string name="k_nirmal_kumar_20bcta16">K Nirmal Kumar(20BCTA16)</string>
+    <string name="name2">Name:</string>
+    <string name="k_nirmal_kumar_20bcta16">K Nirmal Kumar(20BCTA16)</string>
+    <string name="seats">Seats:</string>
+    <string name="b01_b03">B01, B03</string>
 </resources>
