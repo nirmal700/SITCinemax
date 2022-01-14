@@ -113,7 +113,7 @@
                 android:layout_marginTop="5dp"
                 android:id="@+id/tv_bookedBy"
                 android:textSize="18sp"
-                android:text="@string/_23rd_decemeber_2021"
+                android:text="@string/_23rd_december_2021"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                 android:textColor="@color/black" />
 
@@ -133,7 +133,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date"
+                        android:text="@string/date"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
@@ -143,7 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_screenDate"
-                        android:text="23rd Decemeber 2021"
+                        android:text="@string/_23rd_december_2021"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black" />
 
@@ -166,7 +166,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Time"
+                        android:text="@string/time"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
@@ -175,7 +175,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2h 15m"
+                        android:text="@string/_2h_15m"
                         android:textSize="15sp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black" />
@@ -199,7 +199,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Seat No"
+                        android:text="@string/seat_no"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
@@ -210,7 +210,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/SeatNo"
                         android:textSize="16sp"
-                        android:text="C04, C15"
+                        android:text="@string/c04_c15"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black" />
 
