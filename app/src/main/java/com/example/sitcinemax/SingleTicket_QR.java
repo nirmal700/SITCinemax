@@ -1,12 +1,8 @@
 package com.example.sitcinemax;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
@@ -15,9 +11,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Base64;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -51,7 +49,7 @@ public class SingleTicket_QR extends AppCompatActivity {
         tv_screenDate = findViewById(R.id.tv_screenDate);
         SeatNo = findViewById(R.id.SeatNo);
         SeatNo.setText(mBticket.getSeats());
-        tv_bookedBy.setText(mBticket.getNameUser()+"("+mBticket.getSICUser()+")");
+        tv_bookedBy.setText(String.format("%s(%s)", mBticket.getNameUser(), mBticket.getSICUser()));
         tv_Details.setText(mBticket.getmDetails());
         tv_MovieName.setText(mBticket.getMovieName());
         tv_screenDate.setText(mBticket.getmScreenDate());
@@ -73,6 +71,8 @@ public class SingleTicket_QR extends AppCompatActivity {
         String Seats = mBticket.getSeats();
         String BookedTime = mBticket.getmBookedTime().toString();
 
+        if(!isConnected(SingleTicket_QR.this))
+            showCustomDialog();
         //--------------- Encoding Data -----------
         try {
             // assert phoneNumber != null;
@@ -106,18 +106,10 @@ public class SingleTicket_QR extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(SingleTicket_QR.this);
         builder.setMessage("Please connect to the internet")
                 //   .setCancelable(false)
-                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
-                        finish();
-                    }
+                .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+                    finish();
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
@@ -125,9 +117,9 @@ public class SingleTicket_QR extends AppCompatActivity {
     }
 
     //--------------- Check Internet Is Connected -----------
-    private boolean isConnected(UserQrCode userQrCode) {
+    private boolean isConnected(SingleTicket_QR singleTicket_qr) {
 
-        ConnectivityManager connectivityManager = (ConnectivityManager) userQrCode.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) singleTicket_qr.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo wifiConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
