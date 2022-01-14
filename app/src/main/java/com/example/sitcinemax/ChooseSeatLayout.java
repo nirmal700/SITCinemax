@@ -1,6 +1,7 @@
 package com.example.sitcinemax;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -56,6 +57,11 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_seat_layout);
 
+        ProgressDialog progressDialog = new ProgressDialog(ChooseSeatLayout.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
         layout = findViewById(R.id.layoutSeat);
         btn_Proceed = findViewById(R.id.btn_Proceed);
         manager = new SessionManager(getApplicationContext());
@@ -83,6 +89,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 .addSnapshotListener((value, error) -> {
                     if (error != null) {
                         Log.e("Firebase Error", "onEvent: ", error);
+                        progressDialog.dismiss();
                         return;
                     }
                     if (value != null) {
@@ -105,6 +112,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                             layout.addView(layoutSeat);
                         }
                         mMovie = value.toObject(Movies.class);
+                        progressDialog.dismiss();
 
                     }
                     LinearLayout layout = null;
@@ -217,16 +225,16 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
 
         btn_Proceed.setOnClickListener(view -> {
+            progressDialog.show();
 
             if (NoOfPerson.equals("1") && selectedIds.length() <= 5) {
-
                 btn_Proceed.setError(null);
                 getSeats();
-                Toast.makeText(ChooseSeatLayout.this, "Successfull" + selectedIds, Toast.LENGTH_SHORT).show();
 
                 Replace(selectedIds);
                 if (flag == 0) {
                     btn_Proceed.setError("Can't Book The Seats");
+                    progressDialog.dismiss();
                     return;
                 } else {
                     Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
@@ -235,18 +243,21 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                     }).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
+                            Intent intent = new Intent(ChooseSeatLayout.this, BookingConfirmation.class);
                             startActivity(intent);
                             finish();
+                            progressDialog.dismiss();
                         }
                     });
                 }
-            } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10) {
+            } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10 && selectedIds.length() >= 5 ) {
                 btn_Proceed.setError(null);
+                progressDialog.show();
                 getSeats();
                 Replace(selectedIds);
                 if (flag == 0) {
                     btn_Proceed.setError("Can't Book The Seats");
+                    progressDialog.dismiss();
                     return;
                 } else {
                     Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2);
@@ -256,16 +267,20 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                     ).addOnCompleteListener((Task<DocumentReference> task) -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ChooseSeatLayout.this, UserDashBoard.class);
+                            Intent intent = new Intent(ChooseSeatLayout.this, BookingConfirmation.class);
                             startActivity(intent);
                             finish();
+                            progressDialog.dismiss();
                         }
                     });
                 }
 
 
-            } else
+            } else {
                 btn_Proceed.setError("Check the Seats");
+                progressDialog.dismiss();
+            }
+
 
         });
     }

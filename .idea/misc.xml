@@ -40,6 +40,7 @@
         <entry key="app/src/main/res/layout/activity_about_movie.xml" value="0.19525065963060687" />
         <entry key="app/src/main/res/layout/activity_about_sitcinemax.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_book_tickets.xml" value="0.18106508875739644" />
+        <entry key="app/src/main/res/layout/activity_booking_confirmation.xml" value="0.2807971014492754" />
         <entry key="app/src/main/res/layout/activity_choose_seat_layout.xml" value="0.30530845541653623" />
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_edit_user_profile.xml" value="0.45461847389558235" />
@@ -48,6 +49,7 @@
         <entry key="app/src/main/res/layout/activity_user_phone_number_verification.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/activity_user_sign_up.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/booking_alert.xml" value="0.28020833333333334" />
+        <entry key="app/src/main/res/layout/booking_successfull.xml" value="0.2277764329608332" />
         <entry key="app/src/main/res/layout/card_view_movie.xml" value="0.14635416666666667" />
         <entry key="app/src/main/res/layout/card_view_team_members.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/card_view_uploaded_vehicle.xml" value="0.2947916666666667" />
