@@ -95,4 +95,7 @@
     <string name="good_enough">Good Enough</string>
     <string name="enter_your_feedback">Enter your feedback</string>
     <string name="submit_feedback">Submit Feedback</string>
+    <string name="return_to_dashboard">Return to Dashboard</string>
+    <string name="you_can_find_your_tickets_at_ticket_s_history">You Can Find Your Tickets At Ticket\'s History</string>
+    <string name="booking_successful">Booking Successful!!</string>
 </resources>

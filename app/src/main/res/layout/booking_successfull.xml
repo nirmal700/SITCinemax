@@ -12,11 +12,9 @@
 
     <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="360dp"
-            android:layout_height="100dp"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp"
+            android:layout_height="120dp"
             android:background="#CAECFD"
-            android:src="@drawable/complete"/>
+            android:src="@drawable/well_done"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/drawer_btn"
@@ -34,7 +32,7 @@
         android:textColor="@color/black"
         android:autoSizeTextType="uniform"
         android:gravity="center_horizontal"
-        android:text="Booking Successful!!"
+        android:text="@string/booking_successful"
         android:fontFamily="@font/my_fav_sans_number"
         android:layout_marginTop="30dp"
         android:textAllCaps="true"
@@ -50,7 +48,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/my_fav_sans_number"
-        android:text="You Can Find Yout Tickets At Ticket's History"
+        android:text="@string/you_can_find_your_tickets_at_ticket_s_history"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:layout_marginStart="5dp" />
@@ -121,11 +119,11 @@
 
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/bt_ok"
-            android:text="Return to Dashboard"
+            android:text="@string/return_to_dashboard"
             android:textStyle="bold"
             android:textSize="12sp"
             android:textColor="@color/black"
