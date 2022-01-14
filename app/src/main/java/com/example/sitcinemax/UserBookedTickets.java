@@ -86,7 +86,7 @@ public class UserBookedTickets extends AppCompatActivity implements BookedTicket
             }
             for (DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges()) {
                 if (documentChange.getType() == DocumentChange.Type.ADDED) {
-                    if(documentChange.getDocument().toObject(Ticket.class).getSICUser().equals(manager.getSIC())| documentChange.getDocument().toObject(Ticket.class).getSIC2().equals(manager.getSIC()) ) {
+                    if (documentChange.getDocument().toObject(Ticket.class).getSICUser().equals(manager.getSIC()) | documentChange.getDocument().toObject(Ticket.class).getSIC2().equals(manager.getSIC())) {
                         list.add(documentChange.getDocument().toObject(Ticket.class));
                         bookedTicketsAdapter = new BookedTicketsAdapter(UserBookedTickets.this, list);
                         recyclerView.setAdapter(bookedTicketsAdapter);
@@ -100,15 +100,14 @@ public class UserBookedTickets extends AppCompatActivity implements BookedTicket
     }
 
 
-
-   @Override
-   public void onItemClick(int position) {
+    @Override
+    public void onItemClick(int position) {
         Ticket ticket = list.get(position);
         Intent intent = new Intent(UserBookedTickets.this, SingleTicket_QR.class);
         intent.putExtra("Booked_Tickets", (Serializable) ticket); // Pass Shop Id value To ShopDetailsSingleView
         startActivity(intent);
 
-   }
+    }
 
     @Override
     public void onBackPressed() {
