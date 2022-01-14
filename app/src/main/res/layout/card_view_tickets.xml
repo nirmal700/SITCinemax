@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginBottom="10dp"
+    android:layout_weight="1"
+    android:background="@color/Primary"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="10dp"
+    app:strokeColor="@color/hintBlack"
+    app:strokeWidth=".5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_Todo_card"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/iv_member"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:contentDescription="@null" />
+            <TextView
+                android:id="@+id/tv_inv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/iv_member"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="160dp"
+                android:fontFamily="monospace"
+                android:text="Tickets"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_no_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_inv"
+                android:layout_alignStart="@+id/iv_member"
+                android:layout_marginStart="35dp"
+                android:fontFamily="monospace"
+                android:text="2"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_MovieName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/iv_member"
+                android:fontFamily="monospace"
+                android:text="Spider Man No Way Home"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_screenDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_MovieName"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/iv_member"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_screenDate"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/iv_member"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_Details"
+                android:layout_marginStart="10dp"
+                android:id="@+id/person1"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@+id/iv_member">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autoSizeTextType="uniform"
+                        android:text="Name:  "
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_name1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="K Nirmal Kumar(20BCTA16)"
+                        android:autoSizeTextType="uniform"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/person1"
+                android:layout_marginStart="10dp"
+                android:id="@+id/person2"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@+id/iv_member">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:text="Name:  "
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="K Nirmal Kumar(20BCTA16)"
+                    android:autoSizeTextType="uniform"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/person2"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@+id/iv_member">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:text="Seats:  "
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/seats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="B01, B03"
+                    android:autoSizeTextType="uniform"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

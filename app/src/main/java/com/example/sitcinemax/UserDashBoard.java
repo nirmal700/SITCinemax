@@ -136,6 +136,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         if (!isConnected(UserDashBoard.this)) {
             showCustomDialog();
         }
+        btn_transaction_History.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserBookedTickets.class)));
 
 
     }

@@ -1,12 +1,19 @@
 package com.example.sitcinemax;
 
-public class Ticket {
-    String NameUser, SICUser, PhoneNumber, MovieName, Seats, SIC2, PhoneNumber2, Name2;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.io.Serializable;
+import java.util.Date;
+
+
+public class Ticket implements Serializable {
+    String NameUser, SICUser, PhoneNumber, MovieName, Seats, SIC2, PhoneNumber2, Name2,mDetails,mScreenDate,mPoster;
+    @ServerTimestamp Date mBookedTime;
 
     public Ticket() {
     }
 
-    public Ticket(String nameUser, String SICUser, String phoneNumber, String movieName, String seats, String SIC2, String phoneNumber2, String name2) {
+    public Ticket(String nameUser, String SICUser, String phoneNumber, String movieName, String seats, String SIC2, String phoneNumber2, String name2,Date mBookedTime,String mDetails, String mScreenDate, String mPoster) {
         NameUser = nameUser;
         this.SICUser = SICUser;
         PhoneNumber = phoneNumber;
@@ -15,6 +22,11 @@ public class Ticket {
         this.SIC2 = SIC2;
         PhoneNumber2 = phoneNumber2;
         Name2 = name2;
+        this.mBookedTime = mBookedTime;
+        this.mDetails = mDetails;
+        this.mScreenDate = mScreenDate;
+        this.mPoster = mPoster;
+
     }
 
     public String getNameUser() {
@@ -79,5 +91,37 @@ public class Ticket {
 
     public void setName2(String name2) {
         Name2 = name2;
+    }
+
+    public Date getmBookedTime() {
+        return mBookedTime;
+    }
+
+    public void setmBookedTime(Date mBookedTime) {
+        this.mBookedTime = mBookedTime;
+    }
+
+    public String getmDetails() {
+        return mDetails;
+    }
+
+    public void setmDetails(String mDetails) {
+        this.mDetails = mDetails;
+    }
+
+    public String getmScreenDate() {
+        return mScreenDate;
+    }
+
+    public void setmScreenDate(String mScreenDate) {
+        this.mScreenDate = mScreenDate;
+    }
+
+    public String getmPoster() {
+        return mPoster;
+    }
+
+    public void setmPoster(String mPoster) {
+        this.mPoster = mPoster;
     }
 }

@@ -19,7 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SITCinemax">
         <activity
+            android:name=".SingleTicket_QR"
+            android:exported="false" />
+        <activity
             android:name=".FeedbackUser"
+            android:exported="false" />
+        <activity
+            android:name=".UserBookedTickets"
             android:exported="false" />
         <activity
             android:name=".BookingConfirmation"
