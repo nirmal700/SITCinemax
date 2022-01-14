@@ -42,6 +42,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     MaterialCardView btn_book_tickets;
     MaterialCardView btn_transaction_History;
     MaterialCardView btn_My_Qr;
+    MaterialCardView btn_feedback;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -77,6 +78,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         btn_book_tickets = findViewById(R.id.btn_book_ticket);
         btn_transaction_History = findViewById(R.id.btn_transaction_History);
         btn_My_Qr = findViewById(R.id.btn_My_Qr);
+        btn_feedback = findViewById(R.id.btn_feedback);
 
         Menu menuNav = navigationView.getMenu();
 
@@ -129,6 +131,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
             dialog.show();
         });
+        btn_feedback.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, FeedbackUser.class)));
 
         if (!isConnected(UserDashBoard.this)) {
             showCustomDialog();
