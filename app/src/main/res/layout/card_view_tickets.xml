@@ -79,6 +79,7 @@
                 android:layout_below="@+id/tv_MovieName"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/iv_member"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -126,12 +127,13 @@
                         android:textSize="20sp"
                         tools:targetApi="o" />
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/person2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/person1"
                 android:layout_marginStart="10dp"
-                android:id="@+id/person2"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
@@ -150,8 +152,8 @@
                     android:id="@+id/tv_name2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/k_nirmal_kumar_20bcta16"
                     android:autoSizeTextType="uniform"
+                    android:text="@string/k_nirmal_kumar_20bcta16"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     tools:targetApi="o" />

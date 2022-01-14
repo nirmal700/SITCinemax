@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,17 +42,19 @@ public class BookedTicketsAdapter extends RecyclerView.Adapter<BookedTicketsAdap
 
         Ticket currentData = mTicket.get(position);
         holder.tv_MovieName.setText(currentData.getMovieName());
-        holder.tv_name1.setText(currentData.getNameUser()+"("+currentData.getSICUser()+")");
-        holder.tv_name2.setText(currentData.getName2()+"("+currentData.getSIC2()+")");
+        holder.tv_name1.setText(currentData.getNameUser() + "(" + currentData.getSICUser() + ")");
+
         holder.seats.setText(currentData.getSeats());
         holder.tv_Details.setText(currentData.getmDetails());
         holder.tv_screenDate.setText(currentData.getmScreenDate());
-        if(currentData.getSIC2().equals("N/A")|currentData.getName2().equals("N/A"))
+        if (currentData.getSIC2().equals("N/A") || currentData.getName2().equals("N/A")) {
             holder.tv_no_ticket.setText("1");
-        else
+            holder.person2.setVisibility(View.GONE);
+        }
+        else {
             holder.tv_no_ticket.setText("2");
-
-
+            holder.tv_name2.setText(currentData.getName2() + "(" + currentData.getSIC2() + ")");
+        }
 
 
         Glide.with(mContext)
@@ -70,7 +73,8 @@ public class BookedTicketsAdapter extends RecyclerView.Adapter<BookedTicketsAdap
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView poster;
-        public TextView tv_MovieName,tv_screenDate,tv_Details,tv_name1,tv_name2,seats,tv_no_ticket;
+        public TextView tv_MovieName, tv_screenDate, tv_Details, tv_name1, tv_name2, seats, tv_no_ticket;
+        public LinearLayout person2;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,8 +88,7 @@ public class BookedTicketsAdapter extends RecyclerView.Adapter<BookedTicketsAdap
             seats = itemView.findViewById(R.id.seats);
             tv_screenDate = itemView.findViewById(R.id.tv_screenDate);
             tv_no_ticket = itemView.findViewById(R.id.tv_no_ticket);
-
-
+            person2 = itemView.findViewById(R.id.person2);
 
 
             itemView.setOnClickListener(this);

@@ -69,7 +69,6 @@
     <string name="phone">Phone</string>
     <string name="choose_no_of_person_s">Choose No of Person\'s</string>
     <string name="_1">1</string>
-    <string name="_2">2</string>
     <string name="_2nd_person_name">2nd Person Name</string>
     <string name="_2nd_person_sic">2nd Person SIC</string>
     <string name="_2nd_person_phone">2nd Person Phone</string>
@@ -102,7 +101,6 @@
     <string name="spider_man_no_way_home">Spider Man No Way Home</string>
     <string name="_2h_15m_hindi_u_a">2h 15m Hindi U/A</string>
     <string name="_23rd_december_2021">23rd Decemeber 2021</string>
-    <string name="_23rd_december_2021">23rd Decemeber 2021</string>
     <string name="time">Time</string>
     <string name="_2h_15m">2h 15m</string>
     <string name="seat_no">Seat No</string>
@@ -110,11 +108,9 @@
     <string name="c04_c15">C04, C15</string>
     <string name="tickets">Tickets</string>
     <string name="_2">2</string>
-    <string name="spider_man_no_way_home">Spider Man No Way Home</string>
     <string name="name1">Name:</string>
     <string name="k_nirmal_kumar_20bcta16">K Nirmal Kumar(20BCTA16)</string>
     <string name="name2">Name:</string>
-    <string name="k_nirmal_kumar_20bcta16">K Nirmal Kumar(20BCTA16)</string>
-    <string name="seats">Seats:</string>
+    <string name="seats">Seat No:</string>
     <string name="b01_b03">B01, B03</string>
 </resources>
