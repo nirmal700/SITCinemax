@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     Animation bottom, side;
 
-    private static int SPLASH_TIMER = 3400;
+    private static final int SPLASH_TIMER = 3400;
 
     TextView powered;
 
@@ -31,21 +31,17 @@ public class MainActivity extends AppCompatActivity {
 
         powered.setAnimation(bottom);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> {
 
-                manager = new SessionManager(getApplicationContext());
-                if (manager.getUserLogin()) {
-                    startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
-                    finish();
-                } else {
-                    startActivity(new Intent(getApplicationContext(), UserSignUp.class));
-                    finish();
-                }
-
-
+            manager = new SessionManager(getApplicationContext());
+            if (manager.getUserLogin()) {
+                startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
+            } else {
+                startActivity(new Intent(getApplicationContext(), UserSignUp.class));
             }
+            finish();
+
+
         }, SPLASH_TIMER);
 
     }
