@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -37,7 +36,6 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -144,21 +142,15 @@ public class UserQrCode extends AppCompatActivity {
         });
 
         //--------------- Button for back to User Dashboard -----------
-        btn_backToCd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserQrCode.this,UserDashBoard.class));
-                finishAffinity();
-            }
+        btn_backToCd.setOnClickListener(v -> {
+            startActivity(new Intent(UserQrCode.this,UserDashBoard.class));
+            finishAffinity();
         });
 
         //--------------- Button for Screen Shot -----------
-        btn_screenshot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                verifyStoragePermission(UserQrCode.this);
-                takeScreenshot();
-            }
+        btn_screenshot.setOnClickListener(v -> {
+            verifyStoragePermission(UserQrCode.this);
+            takeScreenshot();
         });
 
     }
@@ -169,18 +161,10 @@ public class UserQrCode extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserQrCode.this);
         builder.setMessage("Please connect to the internet")
              //   .setCancelable(false)
-                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
-                        finish();
-                    }
+                .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+                    finish();
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
