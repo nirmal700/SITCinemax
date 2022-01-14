@@ -4,10 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +26,6 @@ import java.util.Objects;
 public class UserBookedTickets extends AppCompatActivity implements BookedTicketsAdapter.OnItemClickListener {
 
     private RecyclerView recyclerView;
-    private ProgressDialog progressDialog;
 
     ImageView btn_backToSd;
     SessionManager manager;
@@ -52,7 +48,7 @@ public class UserBookedTickets extends AppCompatActivity implements BookedTicket
         btn_backToSd = findViewById(R.id.btn_backToSd);
 
         //Initialize ProgressDialog
-        progressDialog = new ProgressDialog(UserBookedTickets.this);
+        ProgressDialog progressDialog = new ProgressDialog(UserBookedTickets.this);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
