@@ -48,25 +48,18 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
                 .load(currentData.getPosterUrl())
                 .placeholder(R.drawable.sand_clock)
                 .into(holder.imageView);
-        holder.bt_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Movies movies = mMovies.get(holder.getAdapterPosition());
-                String mMovieName = movies.getMovieName();
-                Intent intent = new Intent(mContext, BookTickets.class);
-                intent.putExtra("MovieName", mMovieName); // Pass Shop Id value To ShopDetailsSingleView
-                mContext.startActivity(intent);
-            }
+        holder.bt_ok.setOnClickListener(view -> {
+            Movies movies = mMovies.get(holder.getAdapterPosition());
+            String mMovieName = movies.getMovieName();
+            Intent intent = new Intent(mContext, BookTickets.class);
+            intent.putExtra("MovieName", mMovieName); // Pass Shop Id value To ShopDetailsSingleView
+            mContext.startActivity(intent);
         });
-        holder.btn_aboutMovie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Movies movies = mMovies.get(holder.getAdapterPosition());
-                String mMovieName = movies.getMovieName();
-                Intent intent = new Intent(mContext, AboutMovie.class);
-                intent.putExtra("Movie_Details", (Serializable) movies); // Pass Shop Id value To ShopDetailsSingleView
-                mContext.startActivity(intent);
-            }
+        holder.btn_aboutMovie.setOnClickListener(view -> {
+            Movies movies = mMovies.get(holder.getAdapterPosition());
+            Intent intent = new Intent(mContext, AboutMovie.class);
+            intent.putExtra("Movie_Details", (Serializable) movies); // Pass Shop Id value To ShopDetailsSingleView
+            mContext.startActivity(intent);
         });
 
     }

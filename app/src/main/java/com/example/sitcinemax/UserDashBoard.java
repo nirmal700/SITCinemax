@@ -108,12 +108,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         });
 
         btn_CustomerProfile.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, EditUserProfile.class)));
-        btn_My_Qr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), UserQrCode.class));
-            }
-        });
+        btn_My_Qr.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UserQrCode.class)));
 
         btn_TodoList.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserToDoList.class)));
         btn_book_tickets.setOnClickListener(view -> {
