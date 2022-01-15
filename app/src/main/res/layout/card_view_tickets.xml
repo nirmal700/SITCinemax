@@ -33,6 +33,7 @@
                 android:layout_width="120dp"
                 android:layout_height="160dp"
                 android:contentDescription="@null" />
+
             <TextView
                 android:id="@+id/tv_inv"
                 android:layout_width="wrap_content"
@@ -40,9 +41,9 @@
                 android:layout_alignStart="@+id/iv_member"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="160dp"
-                android:fontFamily="monospace"
-                android:text="@string/tickets"
-                android:textColor="@color/white"
+                android:fontFamily="@font/my_fav_sans_number"
+                android:text="@string/ticket_s"
+                android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 tools:ignore="SpUsage" />
@@ -54,9 +55,9 @@
                 android:layout_below="@+id/tv_inv"
                 android:layout_alignStart="@+id/iv_member"
                 android:layout_marginStart="35dp"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/my_fav_sans_number"
                 android:text="@string/_2"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 tools:ignore="SpUsage" />
@@ -66,9 +67,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/iv_member"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/my_fav_sans_number"
                 android:text="@string/spider_man_no_way_home"
                 android:textColor="@color/black"
                 android:textSize="20dp"
@@ -84,7 +86,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/iv_member"
-                android:textColor="@color/white"
+                android:textColor="@color/teal_700"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 tools:ignore="SpUsage" />
@@ -98,7 +100,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/iv_member"
-                android:textColor="@color/white"
+                android:textColor="@color/pink"
                 android:textSize="16dp"
                 tools:ignore="SpUsage" />
 
@@ -119,7 +121,8 @@
                         android:autoSizeTextType="uniform"
                         android:text="@string/name1"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="22dp"
+                        android:fontFamily="@font/bebeas"
                         tools:targetApi="o"
                         tools:ignore="SpUsage" />
 
@@ -130,7 +133,8 @@
                         android:text="@string/k_nirmal_kumar_20bcta16"
                         android:autoSizeTextType="uniform"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:fontFamily="@font/oswald_light"
+                        android:textSize="18dp"
                         tools:targetApi="o"
                         tools:ignore="SpUsage" />
             </LinearLayout>
@@ -152,7 +156,8 @@
                     android:autoSizeTextType="uniform"
                     android:text="@string/name2"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="22dp"
+                    android:fontFamily="@font/bebeas"
                     tools:targetApi="o"
                     tools:ignore="SpUsage" />
 
@@ -163,7 +168,8 @@
                     android:autoSizeTextType="uniform"
                     android:text="@string/k_nirmal_kumar_20bcta16"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:fontFamily="@font/oswald_light"
+                    android:textSize="18dp"
                     tools:targetApi="o"
                     tools:ignore="SpUsage" />
             </LinearLayout>
@@ -183,6 +189,7 @@
                     android:autoSizeTextType="uniform"
                     android:text="@string/seats"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/bebeas"
                     android:textSize="20dp"
                     tools:targetApi="o"
                     tools:ignore="SpUsage" />
@@ -194,6 +201,7 @@
                     android:text="@string/b01_b03"
                     android:autoSizeTextType="uniform"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/my_fav_sans_number"
                     android:textSize="20dp"
                     tools:targetApi="o"
                     tools:ignore="SpUsage" />
