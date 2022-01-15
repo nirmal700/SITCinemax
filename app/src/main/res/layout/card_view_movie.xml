@@ -8,11 +8,12 @@
     android:layout_marginHorizontal="5dp"
     android:layout_marginBottom="10dp"
     android:layout_weight="1"
+    app:cardBackgroundColor="@color/card_white"
     android:background="@color/card_white"
     android:orientation="vertical"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
-    app:strokeColor="@color/black"
+    app:strokeColor="@color/Primary_light"
     app:strokeWidth=".5dp"
     tools:targetApi="o">
 
@@ -20,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/card_white"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <ImageView
@@ -68,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="30dp"
             android:layout_gravity="center_horizontal"
             android:paddingHorizontal="5dp">
 
@@ -75,7 +78,7 @@
                 android:id="@+id/btn_aboutMovie"
                 style="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
@@ -90,7 +93,7 @@
                 android:id="@+id/bt_ok"
                 style="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
