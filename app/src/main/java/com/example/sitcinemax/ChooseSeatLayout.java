@@ -301,7 +301,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 seatno1 = selectedIds.substring(0, 4);
                 seatno2 = selectedIds.substring(5, 9);
 
-                SeatNo = "" + p1 + seat1 + "  ,  " + p2 + seat2;
+                SeatNo = "" + p1 + seat1 + ", " + p2 + seat2;
                 Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
                 Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
 
@@ -314,7 +314,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 char p2 = convert(pa2);
                 seatno1 = "0" + selectedIds.substring(0, 3);
                 seatno2 = "0" + selectedIds.substring(4, 7);
-                SeatNo = "" + p1 + seat1 + "  ,  " + p2 + seat2;
+                SeatNo = "" + p1 + seat1 + ", " + p2 + seat2;
                 Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
                 Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
             }
