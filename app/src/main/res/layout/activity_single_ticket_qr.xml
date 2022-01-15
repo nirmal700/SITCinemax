@@ -69,6 +69,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/docId"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/_201299381324"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"

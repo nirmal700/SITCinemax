@@ -236,9 +236,11 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                     btn_Proceed.setError("Can't Book The Seats");
                     progressDialog.dismiss();
                 } else {
-                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl());
+                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl(),"");
                     CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
-                    collectionReference.add(ticket).addOnSuccessListener(documentReference -> {
+                    collectionReference.add(ticket).addOnSuccessListener((DocumentReference documentReference) -> {
+                        String ID = documentReference.getId();
+                        collectionReference.document(ID).update("mDocId",ID);
                     }).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show();
@@ -258,9 +260,11 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                     btn_Proceed.setError("Can't Book The Seats");
                     progressDialog.dismiss();
                 } else {
-                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl());
+                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl(),"");
                     CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
-                    collectionReference.add(ticket).addOnSuccessListener(documentReference -> {
+                    collectionReference.add(ticket).addOnSuccessListener((DocumentReference documentReference) -> {
+                        String ID = documentReference.getId();
+                        collectionReference.document(ID).update("mDocId",ID);
                             }
                     ).addOnCompleteListener((Task<DocumentReference> task) -> {
                         if (task.isSuccessful()) {

@@ -39,7 +39,7 @@ public class SingleTicket_QR extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_ticket_qr);
         ImageView iv_qr;
-        TextView tv_MovieName,tv_Details,tv_bookedBy,tv_screenDate,SeatNo;
+        TextView tv_MovieName,tv_Details,tv_bookedBy,tv_screenDate,SeatNo,docId;
         Intent i = getIntent();
         Ticket mBticket = (Ticket)i.getSerializableExtra("Booked_Tickets");
         iv_qr = findViewById(R.id.iv_qr);
@@ -47,12 +47,14 @@ public class SingleTicket_QR extends AppCompatActivity {
         tv_Details = findViewById(R.id.tv_Details);
         tv_bookedBy = findViewById(R.id.tv_bookedBy);
         tv_screenDate = findViewById(R.id.tv_screenDate);
+        docId = findViewById(R.id.docId);
         SeatNo = findViewById(R.id.SeatNo);
         SeatNo.setText(mBticket.getSeats());
         tv_bookedBy.setText(String.format("%s(%s)", mBticket.getNameUser(), mBticket.getSICUser()));
         tv_Details.setText(mBticket.getmDetails());
         tv_MovieName.setText(mBticket.getMovieName());
         tv_screenDate.setText(mBticket.getmScreenDate());
+        docId.setText(mBticket.getmDocId());
         //--------------- Initialize ProgressDialog -----------
         progressDialog = new ProgressDialog(SingleTicket_QR.this);
         progressDialog.show();
@@ -70,13 +72,14 @@ public class SingleTicket_QR extends AppCompatActivity {
         String ScreenDate = mBticket.getmScreenDate();
         String Seats = mBticket.getSeats();
         String BookedTime = mBticket.getmBookedTime().toString();
+        String Docid = mBticket.mDocId;
 
         if(!isConnected(SingleTicket_QR.this))
             showCustomDialog();
         //--------------- Encoding Data -----------
         try {
             // assert phoneNumber != null;
-            String encodedData = encrypt(SICUser+ ":" +NameUser+ ":" +SIC2+ ":" +Name2+ ":" +MovieName+ ":"+ Details +":"+ Poster+ ":"+ ScreenDate+ ":"+ Seats+ ":"+BookedTime);
+            String encodedData = encrypt(SICUser+ ":" +NameUser+ ":" +SIC2+ ":" +Name2+ ":" +MovieName+ ":"+ Details +":"+ Poster+ ":"+ ScreenDate+ ":"+ Seats+ ":"+BookedTime+":"+Docid);
             MultiFormatWriter writer = new MultiFormatWriter();
 
             //--------------- Create QR code -----------
