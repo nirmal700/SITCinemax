@@ -89,7 +89,7 @@ public class FeedbackUser extends AppCompatActivity {
                 progressDialog.dismiss();
                 return;
             }
-            Feedback feedback = new Feedback(""+rateStars.getRating(),feedback_et.getText().toString(),manager.getSIC(), manager.getPhone(),manager.getName(), resultRate.getText().toString(),false,false);
+            Feedback feedback = new Feedback(""+rateStars.getRating(),feedback_et.getText().toString(),manager.getSIC(), manager.getPhone(),manager.getName(), resultRate.getText().toString(),false,false,null);
             CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Feedback");
             collectionReference.add(feedback).addOnSuccessListener(documentReference -> {
             }).addOnCompleteListener(task -> {

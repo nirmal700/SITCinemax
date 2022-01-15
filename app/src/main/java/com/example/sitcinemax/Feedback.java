@@ -1,13 +1,19 @@
 package com.example.sitcinemax;
 
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
+
 public class Feedback {
     String RatingStars, Feedback, SIC, PhoneNumber, RatingText,mUserName;
     boolean IsResolved,IsAcknowledged;
+    @ServerTimestamp
+    Date mUpdatedTime;
 
     public Feedback() {
     }
 
-    public Feedback(String ratingStars, String feedback, String SIC, String phoneNumber,String mUserName, String ratingText, boolean isResolved, boolean isAcknowledged) {
+    public Feedback(String ratingStars, String feedback, String SIC, String phoneNumber,String mUserName, String ratingText, boolean isResolved, boolean isAcknowledged,Date mUpdatedTime) {
         RatingStars = ratingStars;
         Feedback = feedback;
         this.SIC = SIC;
@@ -80,5 +86,13 @@ public class Feedback {
 
     public void setmUserName(String mUserName) {
         this.mUserName = mUserName;
+    }
+
+    public Date getmUpdatedTime() {
+        return mUpdatedTime;
+    }
+
+    public void setmUpdatedTime(Date mUpdatedTime) {
+        this.mUpdatedTime = mUpdatedTime;
     }
 }
