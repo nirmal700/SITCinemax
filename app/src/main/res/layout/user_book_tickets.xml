@@ -37,9 +37,10 @@
         android:autoSizeTextType="uniform"
         android:text="@string/book_movie"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="30dp"
         android:textStyle="bold"
-        tools:targetApi="o" />
+        tools:targetApi="o"
+        tools:ignore="SpUsage" />
 
     <RelativeLayout
         android:layout_width="match_parent"

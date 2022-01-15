@@ -27,8 +27,9 @@
         android:text="@string/guidelines_for_sit_cinemax"
         android:textAllCaps="true"
         android:layout_marginBottom="5dp"
-        android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textSize="25dp"
+        android:textStyle="bold"
+        tools:ignore="SpUsage" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,8 +39,9 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:text="@string/you_must_come_with_your_id_card_face_mask_and_santizer"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textSize="20dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,8 +53,9 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:text="@string/don_t_carry_bag_umbrella_food_items_water_bottle_etc_into_the_cinemax"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textSize="20dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,8 +65,9 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:text="@string/arrive_exactly_at_the_reporting_time"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textSize="20dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,8 +77,9 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:text="@string/sit_accoridng_to_your_alloted_seat"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textSize="20dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,8 +89,9 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:text="@string/maintain_deocorum_inside_the_cinemax"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textSize="20dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,8 +101,9 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:text="@string/before_sitting_in_the_alloted_seat_check_wether_its_condition_is_good_or_not"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp" />
+        android:textSize="20dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -111,10 +118,11 @@
             android:textStyle="bold"
             android:fontFamily="@font/my_fav_sans_number"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="@color/black"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/light_red" />
+            android:backgroundTint="@color/light_red"
+            tools:ignore="SpUsage" />
 
 
 
@@ -125,12 +133,13 @@
             android:id="@+id/bt_ok"
             android:text="@string/i_agree"
             android:textStyle="bold"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="@color/black"
             android:layout_margin="5dp"
             android:fontFamily="@font/my_fav_sans_number"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:backgroundTint="@color/light_green" />
+            android:backgroundTint="@color/light_green"
+            tools:ignore="SpUsage" />
 
 
     </LinearLayout>

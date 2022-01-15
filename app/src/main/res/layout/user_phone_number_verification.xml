@@ -45,8 +45,9 @@
             android:gravity="center"
             android:text="@string/otp_verification"
             android:textColor="@color/white"
-            android:textSize="40sp"
-            tools:targetApi="o" />
+            android:textSize="40dp"
+            tools:targetApi="o"
+            tools:ignore="SpUsage" />
 
         <TextView
             android:id="@+id/tv_phoneNo"
@@ -55,8 +56,9 @@
             android:autoSizeTextType="uniform"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            tools:targetApi="o" />
+            android:textSize="20dp"
+            tools:targetApi="o"
+            tools:ignore="SpUsage" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,8 +86,9 @@
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintBlack"
-                android:textSize="30sp"
-                tools:targetApi="o" />
+                android:textSize="30dp"
+                tools:targetApi="o"
+                tools:ignore="SpUsage" />
 
             <TextView
                 android:id="@+id/tv_counter"
@@ -95,7 +98,8 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/my_fav_sans_number"
                 android:textColor="@color/light_green"
-                android:textSize="20sp" />
+                android:textSize="20dp"
+                tools:ignore="SpUsage" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,8 +115,9 @@
                     android:autoSizeTextType="uniform"
                     android:text="@string/noOtp"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
-                    tools:targetApi="o" />
+                    android:textSize="15dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/btn_resend"
@@ -125,8 +130,9 @@
                     android:gravity="center"
                     android:text="@string/re_send"
                     android:textColor="@color/blue"
-                    android:textSize="15sp"
-                    tools:targetApi="o" />
+                    android:textSize="15dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
             </LinearLayout>
 
 
@@ -142,12 +148,13 @@
                 android:gravity="center"
                 android:text="@string/sign_up"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="25dp"
                 android:transitionName="transition_signUp"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/black"
                 app:strokeWidth="1dp"
-                tools:targetApi="lollipop" />
+                tools:targetApi="lollipop"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 

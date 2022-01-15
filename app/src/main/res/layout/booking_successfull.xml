@@ -37,8 +37,9 @@
         android:layout_marginTop="30dp"
         android:textAllCaps="true"
         android:layout_marginBottom="5dp"
-        android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textSize="25dp"
+        android:textStyle="bold"
+        tools:ignore="SpUsage" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,8 +51,9 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:text="@string/you_can_find_your_tickets_at_ticket_s_history"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_marginStart="5dp" />
+        android:textSize="18dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
 
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
@@ -63,7 +65,7 @@
 <!--        android:fontFamily="@font/my_fav_sans_number"-->
 <!--        android:text="@string/don_t_carry_bag_umbrella_food_items_water_bottle_etc_into_the_cinemax"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:textSize="20sp"-->
+<!--        android:textSize="20dp"-->
 <!--        android:layout_marginStart="5dp" />-->
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
@@ -74,7 +76,7 @@
 <!--        android:fontFamily="@font/my_fav_sans_number"-->
 <!--        android:text="@string/arrive_exactly_at_the_reporting_time"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:textSize="20sp"-->
+<!--        android:textSize="20dp"-->
 <!--        android:layout_marginStart="5dp" />-->
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
@@ -85,7 +87,7 @@
 <!--        android:fontFamily="@font/my_fav_sans_number"-->
 <!--        android:text="@string/sit_accoridng_to_your_alloted_seat"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:textSize="20sp"-->
+<!--        android:textSize="20dp"-->
 <!--        android:layout_marginStart="5dp" />-->
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
@@ -96,7 +98,7 @@
 <!--        android:fontFamily="@font/my_fav_sans_number"-->
 <!--        android:text="@string/maintain_deocorum_inside_the_cinemax"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:textSize="20sp"-->
+<!--        android:textSize="20dp"-->
 <!--        android:layout_marginStart="5dp" />-->
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
@@ -107,7 +109,7 @@
 <!--        android:fontFamily="@font/my_fav_sans_number"-->
 <!--        android:text="@string/before_sitting_in_the_alloted_seat_check_wether_its_condition_is_good_or_not"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:textSize="20sp"-->
+<!--        android:textSize="20dp"-->
 <!--        android:layout_marginStart="5dp" />-->
 
     <LinearLayout
@@ -125,12 +127,13 @@
             android:id="@+id/bt_ok"
             android:text="@string/return_to_dashboard"
             android:textStyle="bold"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="@color/black"
             android:layout_margin="5dp"
             android:fontFamily="@font/my_fav_sans_number"
             style="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:backgroundTint="@color/light_green" />
+            android:backgroundTint="@color/light_green"
+            tools:ignore="SpUsage" />
 
 
     </LinearLayout>

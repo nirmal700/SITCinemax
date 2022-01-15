@@ -43,8 +43,9 @@
                 android:fontFamily="monospace"
                 android:text="@string/tickets"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
             <TextView
                 android:id="@+id/tv_no_ticket"
@@ -56,8 +57,9 @@
                 android:fontFamily="monospace"
                 android:text="@string/_2"
                 android:textColor="@color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="25dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
             <TextView
                 android:id="@+id/tv_MovieName"
@@ -69,8 +71,9 @@
                 android:fontFamily="monospace"
                 android:text="@string/spider_man_no_way_home"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
             <TextView
                 android:id="@+id/tv_screenDate"
@@ -82,8 +85,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/iv_member"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
             <TextView
                 android:id="@+id/tv_Details"
@@ -95,7 +99,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/iv_member"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16dp"
+                tools:ignore="SpUsage" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -114,8 +119,9 @@
                         android:autoSizeTextType="uniform"
                         android:text="@string/name1"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        tools:targetApi="o" />
+                        android:textSize="20dp"
+                        tools:targetApi="o"
+                        tools:ignore="SpUsage" />
 
                     <TextView
                         android:id="@+id/tv_name1"
@@ -124,8 +130,9 @@
                         android:text="@string/k_nirmal_kumar_20bcta16"
                         android:autoSizeTextType="uniform"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
-                        tools:targetApi="o" />
+                        android:textSize="20dp"
+                        tools:targetApi="o"
+                        tools:ignore="SpUsage" />
             </LinearLayout>
 
             <LinearLayout
@@ -145,8 +152,9 @@
                     android:autoSizeTextType="uniform"
                     android:text="@string/name2"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:targetApi="o" />
+                    android:textSize="20dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/tv_name2"
@@ -155,8 +163,9 @@
                     android:autoSizeTextType="uniform"
                     android:text="@string/k_nirmal_kumar_20bcta16"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:targetApi="o" />
+                    android:textSize="20dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -174,8 +183,9 @@
                     android:autoSizeTextType="uniform"
                     android:text="@string/seats"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:targetApi="o" />
+                    android:textSize="20dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/seats"
@@ -184,8 +194,9 @@
                     android:text="@string/b01_b03"
                     android:autoSizeTextType="uniform"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:targetApi="o" />
+                    android:textSize="20dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
             </LinearLayout>
 
         </RelativeLayout>

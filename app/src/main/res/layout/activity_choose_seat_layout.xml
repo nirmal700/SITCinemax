@@ -33,8 +33,9 @@
         android:gravity="center"
         android:text="@string/proceed"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="25dp"
         app:cornerRadius="5dp"
         app:strokeColor="@color/black"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="1dp"
+        tools:ignore="SpUsage" />
 </LinearLayout>

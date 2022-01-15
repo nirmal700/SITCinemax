@@ -20,8 +20,9 @@
         android:gravity="center_horizontal"
         android:text="@string/team_sit_cinemax"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textSize="30dp"
+        android:textStyle="bold"
+        tools:ignore="SpUsage" />
 
 
     <LinearLayout
@@ -40,7 +41,8 @@
             android:gravity="center_horizontal"
             android:text="@string/contact_us"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15dp"
+            tools:ignore="SpUsage" />
 
         <LinearLayout
             android:layout_width="wrap_content"

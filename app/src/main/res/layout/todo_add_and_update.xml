@@ -17,9 +17,10 @@
         android:autoSizeTextType="uniform"
         android:text="@string/add_new"
         android:textColor="@color/Primary"
-        android:textSize="30sp"
+        android:textSize="30dp"
         android:textStyle="bold"
-        tools:targetApi="o" />
+        tools:targetApi="o"
+        tools:ignore="SpUsage" />
 
 
     <EditText
@@ -39,8 +40,9 @@
         android:paddingVertical="8dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:textSize="25sp"
-        app:hintTextColor="@color/hintBlack" />
+        android:textSize="25dp"
+        app:hintTextColor="@color/hintBlack"
+        tools:ignore="SpUsage" />
 
     <EditText
         android:id="@+id/et_description"
@@ -59,8 +61,9 @@
         android:paddingVertical="8dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:textSize="25sp"
-        app:hintTextColor="@color/hintBlack" />
+        android:textSize="25dp"
+        app:hintTextColor="@color/hintBlack"
+        tools:ignore="SpUsage" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_selectDate"
@@ -71,14 +74,15 @@
         android:hint="@string/select_date"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:backgroundTint="@color/Primary"
         app:cornerRadius="5dp"
         app:startIconTint="@color/black"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp"
-        tools:targetApi="o" />
+        tools:targetApi="o"
+        tools:ignore="SpUsage" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,9 +101,9 @@
             android:backgroundTint="@color/light_red"
             android:text="@string/cancel"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="bold"
-            tools:ignore="UnusedAttribute" />
+            tools:ignore="SpUsage,UnusedAttribute" />
 
         <Button
             android:id="@+id/bt_ok"
@@ -112,9 +116,9 @@
             android:backgroundTint="@color/light_green"
             android:text="@string/save"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="bold"
-            tools:ignore="UnusedAttribute" />
+            tools:ignore="SpUsage,UnusedAttribute" />
 
 
     </LinearLayout>

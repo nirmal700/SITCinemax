@@ -60,8 +60,9 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="25dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/drawer_btn"
@@ -111,8 +112,9 @@
                         android:fontFamily="@font/my_fav_sans_number"
                         android:text="@string/book_tickets"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="SpUsage" />
 
                 </RelativeLayout>
 
@@ -151,8 +153,9 @@
                         android:fontFamily="@font/my_fav_sans_number"
                         android:text="@string/tickets_history"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="SpUsage" />
 
                 </RelativeLayout>
 
@@ -200,8 +203,9 @@
                         android:gravity="center_horizontal"
                         android:text="@string/my_qr"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="SpUsage" />
 
                 </RelativeLayout>
 
@@ -240,8 +244,9 @@
                         android:fontFamily="@font/my_fav_sans_number"
                         android:text="@string/to_do_list"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="SpUsage" />
 
                 </RelativeLayout>
 
@@ -287,8 +292,9 @@
                         android:fontFamily="@font/my_fav_sans_number"
                         android:text="@string/edit_profile"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="SpUsage" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -326,8 +332,9 @@
                         android:fontFamily="@font/my_fav_sans_number"
                         android:text="@string/feedback"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="SpUsage" />
 
                 </RelativeLayout>
 

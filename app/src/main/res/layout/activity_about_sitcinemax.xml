@@ -15,9 +15,10 @@
         android:autoSizeTextType="uniform"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="25dp"
         android:textStyle="bold"
-        tools:targetApi="o" />
+        tools:targetApi="o"
+        tools:ignore="SpUsage" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,8 +27,9 @@
         android:autoSizeTextType="uniform"
         android:text="@string/version_1_0"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        tools:targetApi="o" />
+        android:textSize="15dp"
+        tools:targetApi="o"
+        tools:ignore="SpUsage" />
 
     <ImageView
         android:id="@+id/source_code"
@@ -48,8 +50,9 @@
         android:fontFamily="@font/harmony"
         android:text="@string/team_s_i_t_cinemax"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="40dp"
         android:textStyle="bold"
-        tools:targetApi="o" />
+        tools:targetApi="o"
+        tools:ignore="SpUsage" />
 
 </LinearLayout>

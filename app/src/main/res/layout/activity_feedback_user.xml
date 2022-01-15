@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/card_white">
@@ -31,7 +32,8 @@
         android:text="@string/rate_the_experience"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="18sp" />
+        android:textSize="18dp"
+        tools:ignore="SpUsage" />
     <TextView
         android:id="@+id/rating_result"
         android:layout_width="match_parent"
@@ -42,7 +44,8 @@
         android:text="@string/good_enough"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="28sp" />
+        android:textSize="28dp"
+        tools:ignore="SpUsage" />
 
     <RatingBar
         android:id="@+id/rateStars"
@@ -87,10 +90,11 @@
         android:gravity="center"
         android:text="@string/submit_feedback"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="25dp"
         app:cornerRadius="5dp"
         app:strokeColor="@color/black"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="1dp"
+        tools:ignore="SpUsage" />
 </LinearLayout>
 
 </ScrollView>

@@ -24,8 +24,9 @@
             android:gravity="center"
             android:text="@string/w_e_l_c_o_m_e"
             android:textColor="@color/white"
-            android:textSize="40sp"
-            tools:targetApi="o" />
+            android:textSize="40dp"
+            tools:targetApi="o"
+            tools:ignore="SpUsage" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/drawer_btn"
@@ -47,8 +48,9 @@
             android:gravity="center"
             android:text="@string/s_i_t"
             android:textColor="@color/white"
-            android:textSize="80sp"
-            tools:targetApi="o" />
+            android:textSize="80dp"
+            tools:targetApi="o"
+            tools:ignore="SpUsage" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,8 +62,9 @@
             android:gravity="center"
             android:text="@string/cinemax"
             android:textColor="@color/white"
-            android:textSize="80sp"
-            tools:targetApi="o" />
+            android:textSize="80dp"
+            tools:targetApi="o"
+            tools:ignore="SpUsage" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -82,9 +85,10 @@
                 android:gravity="center_horizontal"
                 android:text="@string/developed_by_nirmal_kumar"
                 android:textColor="@color/black"
-                android:textSize="50sp"
+                android:textSize="50dp"
                 android:textStyle="bold"
-                tools:targetApi="o" />
+                tools:targetApi="o"
+                tools:ignore="SpUsage" />
         </LinearLayout>
 
 

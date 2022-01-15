@@ -113,4 +113,7 @@
     <string name="name2">Name:</string>
     <string name="seats">Seat No:</string>
     <string name="b01_b03">B01, B03</string>
+    <string name="your_qr_code">Your Qr Code</string>
+    <string name="tap_for_screenshot">Tap For Screenshot</string>
+    <string name="booked_tickets">Booked Tickets</string>
 </resources>

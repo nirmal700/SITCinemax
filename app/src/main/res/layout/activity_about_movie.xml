@@ -47,9 +47,10 @@
                 android:fontFamily="@font/astronaut"
                 android:text="@string/about_movie"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="25dp"
                 android:layout_marginEnd="25dp"
-                tools:targetApi="o" />
+                tools:targetApi="o"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 
@@ -81,8 +82,8 @@
                 android:fontFamily="@font/astronaut"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="35sp"
-                tools:ignore="MissingConstraints"
+                android:textSize="35dp"
+                tools:ignore="MissingConstraints,SpUsage"
                 tools:targetApi="o" />
          <RatingBar
             android:id="@+id/rbStars"
@@ -112,7 +113,9 @@
                     android:text="@string/details"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/tv_Details"
@@ -122,7 +125,9 @@
                     android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -137,7 +142,9 @@
                     android:text="@string/screenig_date"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/tv_date"
@@ -147,7 +154,9 @@
                     android:layout_marginStart="3dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18dp"
+                    tools:targetApi="o"
+                    tools:ignore="SpUsage" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -166,8 +175,9 @@
                 android:fontFamily="@font/caveatbrushregular"
                 android:text="@string/lorem"
                 android:textColor="@color/black"
-                android:textSize="25sp"
-                tools:targetApi="o" />
+                android:textSize="25dp"
+                tools:targetApi="o"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
     </LinearLayout>

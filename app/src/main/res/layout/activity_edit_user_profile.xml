@@ -49,7 +49,8 @@
             android:gravity="center_horizontal"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="30dp"
+            tools:ignore="SpUsage" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,8 +69,9 @@
                 android:autoSizeTextType="uniform"
                 android:text="@string/update_your_details"
                 android:textColor="@color/Primary"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="25dp"
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
             <TextView
                 android:layout_width="96dp"
@@ -79,7 +81,8 @@
                 android:autoSizeTextType="uniform"
                 android:text="@string/required"
                 android:textColor="@color/black"
-                android:textSize="13sp" />
+                android:textSize="13dp"
+                tools:ignore="SpUsage" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/et_name"
@@ -107,7 +110,8 @@
                     android:inputType="textCapSentences"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintBlack"
-                    android:textSize="20sp" />
+                    android:textSize="20dp"
+                    tools:ignore="SpUsage" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -136,7 +140,8 @@
                     android:inputType="textCapSentences"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintBlack"
-                    android:textSize="20sp" />
+                    android:textSize="20dp"
+                    tools:ignore="SpUsage" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -163,8 +168,8 @@
                     android:fontFamily="@font/my_fav_sans_number"
                     android:inputType="none"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:ignore="LabelFor" />
+                    android:textSize="20dp"
+                    tools:ignore="LabelFor,SpUsage" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,7 +179,8 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/choose_year"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="15dp"
+                tools:ignore="SpUsage" />
 
             <RadioGroup
                 android:id="@+id/radio_group"
@@ -238,10 +244,11 @@
                 android:fontFamily="@font/astronaut"
                 android:text="@string/update"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 app:strokeColor="@color/black"
-                app:strokeWidth="1dp" />
+                app:strokeWidth="1dp"
+                tools:ignore="SpUsage" />
         </LinearLayout>
 
     </LinearLayout>

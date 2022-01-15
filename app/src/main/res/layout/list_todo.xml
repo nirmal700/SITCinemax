@@ -45,7 +45,8 @@
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/astronaut"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="25dp"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/tv_month"
@@ -57,7 +58,8 @@
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/astronaut"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="25dp"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/tv_year"
@@ -70,7 +72,8 @@
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/astronaut"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="25dp"
+                    tools:ignore="SpUsage" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_delete"
@@ -82,12 +85,12 @@
                     android:fontFamily="@font/my_fav_sans_number"
                     android:text="@string/delete"
                     android:textColor="@color/white"
-                    android:textSize="10sp"
+                    android:textSize="10dp"
                     android:textStyle="bold"
                     app:backgroundTint="@color/light_red"
                     app:strokeColor="@color/black"
                     app:strokeWidth="1dp"
-                    tools:ignore="SmallSp" />
+                    tools:ignore="SmallSp,SpUsage" />
             </RelativeLayout>
 
             <View
@@ -107,8 +110,9 @@
                     android:autoSizeTextType="uniform"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    tools:ignore="SpUsage" />
 
                 <TextView
                     android:id="@+id/tv_description"
@@ -117,7 +121,8 @@
                     android:layout_marginStart="8dp"
                     android:autoSizeTextType="uniform"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20dp"
+                    tools:ignore="SpUsage" />
 
             </LinearLayout>
         </LinearLayout>

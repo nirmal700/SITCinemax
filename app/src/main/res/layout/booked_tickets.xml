@@ -12,7 +12,6 @@
         android:id="@+id/btn_backToSd"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="10dp"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -46,12 +45,12 @@
         android:autoSizeTextType="uniform"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:text="Booked Tickets"
+        android:text="@string/booked_tickets"
         android:fontFamily="@font/my_fav_sans_number"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="35sp"
-        tools:ignore="MissingConstraints"
+        android:textSize="35dp"
+        tools:ignore="MissingConstraints,SpUsage"
         tools:targetApi="o" />
 
     <LinearLayout

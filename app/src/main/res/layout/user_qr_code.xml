@@ -17,7 +17,6 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="25dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:src="@drawable/ic_back_arrow"
@@ -37,14 +36,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Qr Code"
+                android:text="@string/your_qr_code"
                 android:autoSizeTextType="uniform"
                 android:textColor="@color/white"
                 android:layout_marginVertical="25dp"
                 android:layout_gravity="center_horizontal"
-                android:textSize="25sp"
+                android:textSize="25dp"
                 android:fontFamily="@font/astronaut"
-                tools:targetApi="o" />
+                tools:targetApi="o"
+                tools:ignore="SpUsage" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,7 +90,7 @@
                 android:id="@+id/txt_screenShot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap For Screenshot"
+                android:text="@string/tap_for_screenshot"
                 android:autoSizeTextType="uniform"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"
