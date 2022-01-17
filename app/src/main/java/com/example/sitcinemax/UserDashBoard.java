@@ -92,7 +92,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         manager = new SessionManager(getApplicationContext());
 
         String sName = manager.getName();
-        user_Name.setText(sName);
+        user_Name.setText(String.format("%s(%s)", sName, manager.getSIC()));
 
         navigationDrawer();
 
