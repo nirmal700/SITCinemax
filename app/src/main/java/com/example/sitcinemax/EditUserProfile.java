@@ -36,15 +36,16 @@ public class EditUserProfile extends AppCompatActivity {
     Button btn_update;
     private TextInputLayout et_name, et_sic;
     private AutoCompleteTextView et_course;
-    private RadioGroup radioGroup;
+    private AutoCompleteTextView autoCompleteYear;
     private TextView tv_name;
     private ProgressDialog progressDialog;
-    private RadioButton radio_1styear, radio_2ndyear, radio_3rdyear, radio_4thyear, rb_selected;
 
     private String phoneNumber;
     private DatabaseReference userDb;
     private SessionManager manager;
     final String[] Course = {""};
+    final String[] Year = {""};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +55,8 @@ public class EditUserProfile extends AppCompatActivity {
         btn_back = findViewById(R.id.btn_backToCd);
         et_name = findViewById(R.id.et_name);
         et_sic = findViewById(R.id.et_sic);
-        radioGroup = findViewById(R.id.radio_group);
-        radio_1styear = findViewById(R.id.radio_1styear);
-        radio_2ndyear = findViewById(R.id.radio_2ndyear);
-        radio_3rdyear = findViewById(R.id.radio_3rdyear);
-        radio_4thyear = findViewById(R.id.radio_4thyear);
+        autoCompleteYear = findViewById(R.id.autoCompleteYear);
+
         btn_update = findViewById(R.id.btn_update);
         et_course = findViewById(R.id.autoCompleteCourse);
         tv_name = findViewById(R.id.tv_UserName);
@@ -72,6 +70,17 @@ public class EditUserProfile extends AppCompatActivity {
         arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListCourse);
         et_course.setAdapter(arrayAdapterCourse);
         et_course.setOnItemClickListener((adapterView, view, i, l) -> Course[0] = arrayAdapterCourse.getItem(i));
+
+        ArrayList<String> arrayListYear;
+        ArrayAdapter<String> arrayAdapterYear;
+        arrayListYear = new ArrayList<>();
+        arrayListYear.add("1st Year");
+        arrayListYear.add("2nd Year");
+        arrayListYear.add("3rd Year");
+        arrayListYear.add("4th Year");
+        arrayAdapterYear = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListYear);
+        autoCompleteYear.setAdapter(arrayAdapterYear);
+        autoCompleteYear.setOnItemClickListener((adapterView, view, i, l) -> Year[0] = arrayAdapterYear.getItem(i));
 
         manager = new SessionManager(getApplicationContext());
         phoneNumber = manager.getPhone();
@@ -123,21 +132,22 @@ public class EditUserProfile extends AppCompatActivity {
                 String _sic = snapshot.child("sic").getValue(String.class);
                 Objects.requireNonNull(et_sic.getEditText()).setText(_sic);
                 String _year = snapshot.child("year").getValue(String.class);
+                if(Objects.equals(_year, "1st Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(0).toString(),false);
+                else if(_year.equals("2nd Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(1).toString(),false);
+                else if(_year.equals("3rd Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(2).toString(),false);
+                else if(_year.equals("4th Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(3).toString(),false);
 
-
-                assert _year != null;
-                if (_year.equals("1stYear")) {
-                    radio_1styear.setChecked(true);
-                }
-                if (_year.equals("2ndYear")) {
-                    radio_2ndyear.setChecked(true);
-                }
-                if (_year.equals("3rdYear")) {
-                    radio_3rdyear.setChecked(true);
-                }
-                if (_year.equals("4thYear")) {
-                    radio_4thyear.setChecked(true);
-                }
+                String _course = snapshot.child("course").getValue(String.class);
+                if(Objects.equals(_course, "B.Tech"))
+                    et_course.setText(et_course.getAdapter().getItem(0).toString(),false);
+                else if(_course.equals("M.Tech"))
+                    et_course.setText(et_course.getAdapter().getItem(1).toString(),false);
+                else if(_course.equals("MCA"))
+                    et_course.setText(et_course.getAdapter().getItem(2).toString(),false);
 
 
                 progressDialog.dismiss();
@@ -173,13 +183,12 @@ public class EditUserProfile extends AppCompatActivity {
                 String _course = snapshot.child("course").getValue(String.class);
                 String _year = snapshot.child("year").getValue(String.class);
 
-                rb_selected = findViewById(radioGroup.getCheckedRadioButtonId());
 
 
                 if (Objects.requireNonNull(_name).equals(Objects.requireNonNull(et_name.getEditText()).getText().toString()) &&
                         Objects.requireNonNull(_sic).equals(Objects.requireNonNull(et_sic.getEditText()).getText().toString()) &&
                         Objects.requireNonNull(_course).equals(et_course.getText().toString()) &&
-                        Objects.requireNonNull(_year).equals(rb_selected.getText().toString())) {
+                        Objects.requireNonNull(_year).equals(autoCompleteYear.getText().toString())) {
 
                     Toast.makeText(EditUserProfile.this, "Same data no changes", Toast.LENGTH_SHORT).show();
 
@@ -194,7 +203,7 @@ public class EditUserProfile extends AppCompatActivity {
                     tv_name.setText(et_name.getEditText().getText().toString());
                     userDb.child("sic").setValue(et_sic.getEditText().getText().toString());
                     userDb.child("course").setValue(et_course.getText().toString());
-                    userDb.child("year").setValue(rb_selected.getText().toString());
+                    userDb.child("year").setValue(autoCompleteYear.getText().toString());
 
                     Toast.makeText(EditUserProfile.this, "Data Updated", Toast.LENGTH_SHORT).show();
 
@@ -284,11 +293,15 @@ public class EditUserProfile extends AppCompatActivity {
 
     private boolean validateYear() {
 
-        if (radioGroup.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "Please Select Year", Toast.LENGTH_SHORT).show();
+        String val = autoCompleteYear.getText().toString().trim();
+
+        if (val.isEmpty()) {
+            autoCompleteYear.setError("Field can not be empty");
             return false;
-        } else
+        } else {
+            autoCompleteYear.setError(null);
             return true;
+        }
     }
 
 }

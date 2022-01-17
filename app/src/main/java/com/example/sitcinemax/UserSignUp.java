@@ -16,8 +16,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,9 +45,7 @@ public class UserSignUp extends AppCompatActivity {
     private TextInputLayout et_phoneNumber;
     private TextInputLayout et_password;
     Button btn_getOtp, btn_login;
-    RadioGroup rg_year;
-    RadioButton rb_selectedYear;
-    AutoCompleteTextView autoCompleteCourse;
+    AutoCompleteTextView autoCompleteCourse,autoCompleteYear;
 
     ProgressDialog progressDialog;
     //FireBase Variables
@@ -63,17 +59,17 @@ public class UserSignUp extends AppCompatActivity {
         setContentView(R.layout.user_sign_up);
 
         final String[] Course = {""};
+        final String[] Year = {""};
         et_userName = findViewById(R.id.et_userName);
         et_sic = findViewById(R.id.et_sic);
-        TextInputLayout et_course = findViewById(R.id.et_course);
         et_phoneNumber = findViewById(R.id.et_phoneNumber);
         et_password = findViewById(R.id.et_password);
 
-        rg_year = findViewById(R.id.radio_group);
 
         btn_getOtp = findViewById(R.id.btn_getOtp);
         btn_login = findViewById(R.id.btn_backToLogin);
         autoCompleteCourse = findViewById(R.id.autoCompleteCourse);
+        autoCompleteYear = findViewById(R.id.autoCompleteYear);
 
         auth = FirebaseAuth.getInstance();
         ArrayList<String> arrayListCourse;
@@ -85,6 +81,18 @@ public class UserSignUp extends AppCompatActivity {
         arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListCourse);
         autoCompleteCourse.setAdapter(arrayAdapterCourse);
         autoCompleteCourse.setOnItemClickListener((adapterView, view, i, l) -> Course[0] = arrayAdapterCourse.getItem(i));
+
+        ArrayList<String> arrayListYear;
+        ArrayAdapter<String> arrayAdapterYear;
+        arrayListYear = new ArrayList<>();
+        arrayListYear.add("1st Year");
+        arrayListYear.add("2nd Year");
+        arrayListYear.add("3rd Year");
+        arrayListYear.add("4th Year");
+        arrayAdapterYear = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListYear);
+        autoCompleteYear.setAdapter(arrayAdapterYear);
+        autoCompleteYear.setOnItemClickListener((adapterView, view, i, l) -> Year[0] = arrayAdapterYear.getItem(i));
+
         //--------------- Internet Checking -----------
         if (!isConnected(UserSignUp.this)) {
             showCustomDialog();
@@ -117,7 +125,6 @@ public class UserSignUp extends AppCompatActivity {
             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             progressDialog.setCancelable(false);
 
-            rb_selectedYear = findViewById(rg_year.getCheckedRadioButtonId());
 
             String phone = Objects.requireNonNull(et_phoneNumber.getEditText()).getText().toString().trim();
             String phoneNumber = "+91" + phone;
@@ -192,13 +199,12 @@ public class UserSignUp extends AppCompatActivity {
 
                     String name = Objects.requireNonNull(et_userName.getEditText()).getText().toString();
                     String SIC = Objects.requireNonNull(et_sic.getEditText()).getText().toString();
-                    String Year = rb_selectedYear.getText().toString();
                     String password = Objects.requireNonNull(et_password.getEditText()).getText().toString();
                     SIC = SIC.toUpperCase(Locale.ROOT);
                     otpIntent.putExtra("name", name);
                     otpIntent.putExtra("SIC", SIC);
                     otpIntent.putExtra("Course", Course[0]);
-                    otpIntent.putExtra("Year", Year);
+                    otpIntent.putExtra("Year", Year[0]);
                     otpIntent.putExtra("password", password);
                     startActivity(otpIntent);
                     finish();
@@ -296,11 +302,15 @@ public class UserSignUp extends AppCompatActivity {
 
     private boolean validateYear() {
 
-        if (rg_year.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "Please Select Year", Toast.LENGTH_SHORT).show();
+        String val = autoCompleteYear.getText().toString().trim();
+
+        if (val.isEmpty()) {
+            autoCompleteYear.setError("Field can not be empty");
             return false;
-        } else
+        } else {
+            autoCompleteYear.setError(null);
             return true;
+        }
     }
 
     //--------------- Internet Error Dialog Box -----------

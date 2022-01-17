@@ -161,69 +161,49 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:autoSizeTextType="uniform"
-                    android:text="@string/choose_year"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    tools:ignore="SpUsage" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:autoSizeTextType="uniform"-->
+<!--                    android:text="@string/choose_year"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="15dp"-->
+<!--                    tools:ignore="SpUsage" />-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                <RadioGroup
-                    android:id="@+id/radio_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:autoSizeTextType="uniform"
-                    android:orientation="horizontal"
-                    tools:ignore="UselessParent">
-
-                    <RadioButton
-                        android:id="@+id/radio_1styear"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_year"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:buttonTint="@color/Primary"
-                        android:text="@string/_1styear"
-                        android:textColor="@color/black" />
+                        android:layout_marginTop="8dp"
+                        android:hint="Select Your Year"
+                        android:textColorHint="@color/black"
+                        app:boxStrokeColor="@color/black"
+                        app:boxStrokeWidth="1dp"
+                        app:endIconTint="@color/black"
+                        app:errorTextColor="@color/black"
+                        app:hintTextColor="@color/black">
 
-                    <RadioButton
-                        android:id="@+id/radio_2ndyear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:buttonTint="@color/Primary"
-                        android:text="@string/_2ndyear"
-                        android:textColor="@color/black" />
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/black"
+                            android:fontFamily="@font/my_fav_sans_number"
+                            android:inputType="none"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            tools:ignore="LabelFor,SpUsage" />
 
-                    <RadioButton
-                        android:id="@+id/radio_3rdyear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:buttonTint="@color/Primary"
-                        android:text="@string/_3rdyear"
-                        android:textColor="@color/black" />
-
-                    <RadioButton
-                        android:id="@+id/radio_4thyear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:buttonTint="@color/Primary"
-                        android:text="@string/_4thyear"
-                        android:textColor="@color/black" />
-
-
-                </RadioGroup>
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
