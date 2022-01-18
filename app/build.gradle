@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/knirmalkumar/SITCinemax Release')
+            storePassword 'Nirmal@16584'
+            keyAlias 'SITCinemax'
+            keyPassword 'Nirmal@16584'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -21,6 +29,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
