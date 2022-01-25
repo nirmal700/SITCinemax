@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class MainActivity extends AppCompatActivity {
 
     Animation bottom, side;
@@ -19,11 +21,16 @@ public class MainActivity extends AppCompatActivity {
 
     SessionManager manager;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         powered = findViewById(R.id.powered);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
 
         //Splash Animation
         side = AnimationUtils.loadAnimation(this, R.anim.side_anim);

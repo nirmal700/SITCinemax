@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,6 +57,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
     SessionManager manager;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     String view_date = new SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(new Date());
 
@@ -66,13 +69,14 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         LottieAnimationView lottieAnimationView1 = findViewById(R.id.drawer_btn);
         //lottieAnimationView1.setSpeed(3f);
-
+        manager = new SessionManager(getApplicationContext());
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         contentView = findViewById(R.id.linear_content);
         user_Name = findViewById(R.id.get_name);
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         btn_CustomerProfile = findViewById(R.id.btn_CustomerProfile);
         btn_TodoList = findViewById(R.id.btn_TodoList);
         btn_book_tickets = findViewById(R.id.btn_book_ticket);
@@ -89,7 +93,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         tv_time.setFormat12Hour("hh:mm:ss a");
         tv_time.setFormat24Hour(null);
 
-        manager = new SessionManager(getApplicationContext());
+
 
         String sName = manager.getName();
         user_Name.setText(String.format("%s(%s)", sName, manager.getSIC()));
