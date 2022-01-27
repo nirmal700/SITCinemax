@@ -116,7 +116,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:autoSizeTextType="uniform"
-                        android:digits="@string/allowedName"
                         android:fontFamily="@font/my_fav_sans_number"
                         android:inputType="textCapCharacters"
                         android:maxLines="1"

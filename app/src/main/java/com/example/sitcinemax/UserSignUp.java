@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -52,7 +54,7 @@ public class UserSignUp extends AppCompatActivity {
     private FirebaseAuth auth;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
 
-    @SuppressLint({"CutPasteId", "ObsoleteSdkInt"})
+    @SuppressLint({"CutPasteId", "ObsoleteSdkInt", "LongLogTag"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,7 @@ public class UserSignUp extends AppCompatActivity {
 
         final String[] Course = {""};
         final String[] Year = {""};
+
         et_userName = findViewById(R.id.et_userName);
         et_sic = findViewById(R.id.et_sic);
         et_phoneNumber = findViewById(R.id.et_phoneNumber);
