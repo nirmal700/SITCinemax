@@ -7,16 +7,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -67,19 +72,19 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
 
     @SuppressLint("NotifyDataSetChanged")
     private void LoadRecycler() {
-        Query mMovie = collectionReference.whereEqualTo("IsScreening", true);
-        mMovie.addSnapshotListener((value, error) -> {
-            if (error != null) {
-                Log.e("AddSnapShot", error.getMessage());
-                return;
-            }
-            for (DocumentSnapshot querySnapshot : Objects.requireNonNull(value)) {
-                    mMovies = querySnapshot.toObject(Movies.class);
+        FirebaseFirestore.getInstance().collection("Movies").whereEqualTo("IsScreening",true)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments())
+                {
+                    mMovies = documentSnapshot.toObject(Movies.class);
                     list.add(mMovies);
                     userMoviesAdapter = new UserMoviesAdapter(UserBookTickets.this, list);
                     recyclerView.setAdapter(userMoviesAdapter);
                     userMoviesAdapter.notifyDataSetChanged();
                     userMoviesAdapter.setOnItemClickListener(UserBookTickets.this);
+                }
             }
         });
 
