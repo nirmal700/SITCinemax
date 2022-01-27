@@ -149,7 +149,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                             view.setOnClickListener(ChooseSeatLayout.this);
                         } else if (seats.startsWith("00", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
                             count++;
-                            Log.e("LOG12", "onCreate: " + index + "\t" + seats.substring(index, index + 4));
+                           // Log.e("LOG12", "onCreate: " + index + "\t" + seats.substring(index, index + 4));
                             if (seats.startsWith("00", index)) {
                                 Par = 'A';
                             } else if (seats.startsWith("01", index)) {
@@ -177,7 +177,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                             }
 
                             String ID = seats.substring(index + 2, index + 4);
-                            Log.e("ID", "onCreate: " + "Index\t" + seats.substring(index, index + 4) + "Seat No\t" + ID + "Parity Bit" + Par);
+                            //Log.e("ID", "onCreate: " + "Index\t" + seats.substring(index, index + 4) + "Seat No\t" + ID + "Parity Bit" + Par);
                             TextView view = new TextView(ChooseSeatLayout.this);
                             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(seatSize, seatSize);
                             layoutParams.setMargins(seatGaping, seatGaping, seatGaping, seatGaping);
@@ -302,8 +302,8 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 seatno2 = selectedIds.substring(5, 9);
 
                 SeatNo = "" + p1 + seat1 + ", " + p2 + seat2;
-                Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
-                Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
+                //Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
+                //Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
 
             } else if (selectedIds.length() == 8) {
                 String seat1 = selectedIds.substring(1, 3);
@@ -315,8 +315,8 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 seatno1 = "0" + selectedIds.substring(0, 3);
                 seatno2 = "0" + selectedIds.substring(4, 7);
                 SeatNo = "" + p1 + seat1 + ", " + p2 + seat2;
-                Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
-                Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
+                //Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
+                //Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
             }
             Replace_For(seatno1);
             Replace_For(seatno2);
@@ -327,18 +327,18 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 char p1 = convert(pa1);
                 seatno1 = selectedIds.substring(0, 4);
                 SeatNo = "" + p1 + "" + seat1;
-                Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
-                Log.e("Seats", "SetSeats: " + seatno1 + "\t");
+               // Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
+                //Log.e("Seats", "SetSeats: " + seatno1 + "\t");
             } else if (selectedIds.length() == 4) {
                 String seat1 = selectedIds.substring(1, 3);
                 String pa1 = selectedIds.substring(0, 1);
                 seatno1 = "0" + selectedIds.substring(0, 3);
                 char p1 = convert(pa1);
                 SeatNo = "" + p1 + "" + seat1;
-                Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
-                Log.e("Seats", "SetSeats: " + seatno1 + "\t");
+                //Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
+                //Log.e("Seats", "SetSeats: " + seatno1 + "\t");
             }
-            Log.e("Replace", "Replace: " + seatno1);
+            //Log.e("Replace", "Replace: " + seatno1);
             Replace_For(seatno1);
         }
         collectionReference.document(MovieName).update("SeatLayout", seats);
@@ -369,8 +369,8 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
             seatno2 = selectedIds.substring(5, 9);
 
             SeatNo = "" + p1 + seat1 + "  ,  " + p2 + seat2;
-            Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
-            Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
+           // Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
+            //Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
 
         } else if (selectedIds.length() == 8) {
             String seat1 = selectedIds.substring(1, 3);
@@ -382,24 +382,24 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
             seatno1 = "0" + selectedIds.substring(0, 3);
             seatno2 = "0" + selectedIds.substring(4, 7);
             SeatNo = "" + p1 + seat1 + "  ,  " + p2 + seat2;
-            Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
-            Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
+            //Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
+            //Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
         } else if (selectedIds.length() == 5) {
             String seat1 = selectedIds.substring(2, 4);
             String pa1 = selectedIds.substring(0, 2);
             char p1 = convert(pa1);
             seatno1 = selectedIds.substring(0, 4);
             SeatNo = "" + p1 + "" + seat1;
-            Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
-            Log.e("Seats", "SetSeats: " + seatno1 + "\t");
+            //Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
+            //Log.e("Seats", "SetSeats: " + seatno1 + "\t");
         } else if (selectedIds.length() == 4) {
             String seat1 = selectedIds.substring(1, 3);
             String pa1 = selectedIds.substring(0, 1);
             seatno1 = "0" + selectedIds.substring(0, 3);
             char p1 = convert(pa1);
             SeatNo = "" + p1 + "" + seat1;
-            Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
-            Log.e("Seats", "SetSeats: " + seatno1 + "\t");
+            //Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
+            //Log.e("Seats", "SetSeats: " + seatno1 + "\t");
         }
 
     }
@@ -448,21 +448,21 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        Log.e("Clicked", "onClick: " + view.getId());
+        //Log.e("Clicked", "onClick: " + view.getId());
         if ((int) view.getTag() == STATUS_AVAILABLE) {
             if (selectedIds.length() <= max) {
                 if (selectedIds.contains(view.getId() + ",")) {
                     selectedIds = selectedIds.replace(+view.getId() + ",", "");
-                    Log.e("IF1", "onClick: Selected" + selectedIds);
+                    //Log.e("IF1", "onClick: Selected" + selectedIds);
                     view.setBackgroundResource(R.drawable.ic_seats_book);
                 } else {
                     selectedIds = selectedIds + view.getId() + ",";
                     view.setBackgroundResource(R.drawable.ic_seats_selected);
-                    Log.e("IF2", "onClick: Selected" + selectedIds);
+                    //Log.e("IF2", "onClick: Selected" + selectedIds);
                 }
             } else if (selectedIds.contains(view.getId() + ",")) {
                 selectedIds = selectedIds.replace(+view.getId() + ",", "");
-                Log.e("IF1", "onClick: Selected" + selectedIds);
+                //Log.e("IF1", "onClick: Selected" + selectedIds);
                 view.setBackgroundResource(R.drawable.ic_seats_book);
             } else if (NoOfPerson.equals("2") && selectedIds.length() <= 6) {
                 Toast.makeText(ChooseSeatLayout.this, "Cannot  More Than one Seats", Toast.LENGTH_SHORT).show();

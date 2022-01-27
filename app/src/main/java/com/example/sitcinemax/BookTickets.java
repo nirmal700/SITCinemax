@@ -8,10 +8,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -24,8 +29,10 @@ public class BookTickets extends AppCompatActivity {
     private RadioButton rb2;
     private Button btn_Proceed;
     ImageView btn_back;
+    Ticket mTicket;
     String sic, name, phone, mMovieName;
-    int b = -1;
+    int b = -1,flag = 0;
+    SessionManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +49,7 @@ public class BookTickets extends AppCompatActivity {
         btn_back = findViewById(R.id.btn_backToSd);
         btn_Proceed = findViewById(R.id.btn_Proceed);
 
-        SessionManager manager = new SessionManager(getApplicationContext());
+        manager = new SessionManager(getApplicationContext());
         Objects.requireNonNull(et_phoneNumber.getEditText()).setText(manager.getPhone());
         Objects.requireNonNull(et_userName.getEditText()).setText(manager.getName());
         Objects.requireNonNull(et_sic.getEditText()).setText(manager.getSIC());
@@ -96,14 +103,41 @@ public class BookTickets extends AppCompatActivity {
                 return;
             }
             sic = sic.toUpperCase(Locale.ROOT);
-            Intent intent = new Intent(BookTickets.this, ChooseSeatLayout.class);
-            intent.putExtra("NAME_2", name);
-            intent.putExtra("SIC_2", sic);
-            intent.putExtra("PHONE_NUMBER_2", phone);
-            intent.putExtra("Movie_Name", mMovieName);
-            intent.putExtra("NoOfPersons", "" + b);
-            Log.e("Intent Put", "onClick: " + name + phone + sic);
-            startActivity(intent);
+            FirebaseFirestore.getInstance().collection("Tickets")
+                    .whereEqualTo("movieName",mMovieName)
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            flag=0;
+                            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
+                                //Log.e("Firestore", "onSuccess: " + queryDocumentSnapshots.getDocuments().toString());
+                                mTicket = documentSnapshot.toObject(Ticket.class);
+                                if(Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()))
+                                {
+                                    Log.e("FireStore Data", "onSuccess: "+mTicket.getmDocId());
+                                    btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
+                                    Toast.makeText(BookTickets.this, "Already Booked a Ticket Cannot Book Another Ticket", Toast.LENGTH_SHORT).show();
+                                    flag=1;
+                                    return;
+                                }
+                                Log.e("FLAG", "onSuccess: "+flag );
+                            }
+                            if(flag == 0) {
+                                Intent intent = new Intent(BookTickets.this, ChooseSeatLayout.class);
+                                intent.putExtra("NAME_2", name);
+                                intent.putExtra("SIC_2", sic);
+                                intent.putExtra("PHONE_NUMBER_2", phone);
+                                intent.putExtra("Movie_Name", mMovieName);
+                                intent.putExtra("NoOfPersons", "" + b);
+                                Log.e("Intent Put", "onClick: " + name + phone + sic);
+                                startActivity(intent);
+                            }
+
+                        }
+                    });
+
+
         });
         btn_back.setOnClickListener(v -> {
             startActivity(new Intent(BookTickets.this, UserDashBoard.class));
