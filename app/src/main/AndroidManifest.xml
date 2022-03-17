@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sitcinemax">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+   e
 
     <queries>
         <intent>
@@ -18,6 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SITCinemax">
+        <activity
+            android:name=".UserPollSelection"
+            android:exported="false" />
         <activity
             android:name=".SingleTicket_QR"
             android:exported="false" />
@@ -78,6 +80,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".PushNotificationService"
             android:exported="false">
@@ -86,6 +89,5 @@
             </intent-filter>
         </service>
     </application>
-
 
 </manifest>

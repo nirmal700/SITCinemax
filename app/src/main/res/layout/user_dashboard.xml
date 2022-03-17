@@ -231,7 +231,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:contentDescription="@null"
-                        android:src="@drawable/ic_todo_list" />
+                        android:src="@drawable/ic_polling" />
 
                     <TextView
                         style="@android:style/TextAppearance.DeviceDefault.Medium"
@@ -239,10 +239,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerInParent="true"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="20dp"
                         android:autoSizeTextType="uniform"
                         android:fontFamily="@font/my_fav_sans_number"
-                        android:text="@string/to_do_list"
+                        android:text="Poll For Next Screening"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20dp"
                         android:textStyle="bold"

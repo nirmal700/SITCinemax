@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -204,9 +206,14 @@ public class EditUserProfile extends AppCompatActivity {
                     userDb.child("sic").setValue(et_sic.getEditText().getText().toString());
                     userDb.child("course").setValue(et_course.getText().toString());
                     userDb.child("year").setValue(autoCompleteYear.getText().toString());
-
-                    Toast.makeText(EditUserProfile.this, "Data Updated", Toast.LENGTH_SHORT).show();
-
+                    Logcat logcat = new Logcat(et_name.getEditText().getText().toString(),_name,et_sic.getEditText().getText().toString(),_sic,_year,et_course.getText().toString(),_course,autoCompleteYear.getText().toString(),manager.getPhone(),null);
+                    CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Logcat");
+                    collectionReference.add(logcat).addOnSuccessListener(documentReference -> {
+                    }).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(EditUserProfile.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
             }

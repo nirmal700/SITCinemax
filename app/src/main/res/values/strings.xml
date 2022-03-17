@@ -117,4 +117,5 @@
     <string name="tap_for_screenshot">Tap For Screenshot</string>
     <string name="booked_tickets">Booked Tickets</string>
     <string name="ticket_s">Ticket\'s</string>
+    <string name="wearing_slippers_are_not_allowed_inside_the_cinemax"><font color="#44ADFF">*</font>Wearing Slippers Are not Allowed inside The Cinemax</string>
 </resources>

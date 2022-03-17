@@ -147,10 +147,10 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                             Objects.requireNonNull(layout).addView(view);
                             seatViewList.add(view);
                             view.setOnClickListener(ChooseSeatLayout.this);
-                        } else if (seats.startsWith("00", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
+                        } else if (seats.startsWith("11", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
                             count++;
                            // Log.e("LOG12", "onCreate: " + index + "\t" + seats.substring(index, index + 4));
-                            if (seats.startsWith("00", index)) {
+                            if (seats.startsWith("11", index)) {
                                 Par = 'A';
                             } else if (seats.startsWith("01", index)) {
                                 Par = 'B';
@@ -174,6 +174,10 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                                 Par = 'J';
                             } else if (seats.startsWith("10", index)) {
                                 Par = 'K';
+                            }else if (seats.startsWith("12", index)) {
+                                Par = 'L';
+                            }else if (seats.startsWith("13", index)) {
+                                Par = 'M';
                             }
 
                             String ID = seats.substring(index + 2, index + 4);
@@ -225,9 +229,11 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
 
         btn_Proceed.setOnClickListener(view -> {
+            Log.e("Button Prooced", "onCreate: "+"Clicked");
             progressDialog.show();
-
-            if (NoOfPerson.equals("1") && selectedIds.length() <= 5) {
+            Log.e("Selected Id", "onCreate: "+selectedIds );
+            if (NoOfPerson.equals("1") && selectedIds.length() <= 5 && selectedIds.length() > 0 ) {
+                Log.e("Button Prooced", "onCreate: "+"Clicked 1");
                 btn_Proceed.setError(null);
                 getSeats();
 
@@ -251,10 +257,11 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                         }
                     });
                 }
-            } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10 && selectedIds.length() >= 5 ) {
+            } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10 && selectedIds.length() > 5 ) {
                 btn_Proceed.setError(null);
                 progressDialog.show();
                 getSeats();
+                Log.e("Button Prooced", "onCreate: "+"Clicked 2");
                 Replace(selectedIds);
                 if (flag == 0) {
                     btn_Proceed.setError("Can't Book The Seats");
@@ -280,6 +287,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
             } else {
                 btn_Proceed.setError("Check the Seats");
+                Log.e("Button Prooced", "onCreate: "+"Clicked 3");
                 progressDialog.dismiss();
             }
 
@@ -406,7 +414,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
     private char convert(String no) {
         char Par = 'Z';
-        if (no.equals("00") | no.equals("0")) {
+        if (no.equals("11") | no.equals("0")) {
             Par = 'A';
             return Par;
         } else if (no.equals("01") | no.equals("1")) {
@@ -442,6 +450,14 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
             Par = 'K';
             return Par;
         }
+        else if (no.equals("12")) {
+            Par = 'L';
+            return Par;
+        }
+        else if (no.equals("13")) {
+            Par = 'M';
+            return Par;
+        }
         return Par;
 
     }
@@ -453,21 +469,21 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
             if (selectedIds.length() <= max) {
                 if (selectedIds.contains(view.getId() + ",")) {
                     selectedIds = selectedIds.replace(+view.getId() + ",", "");
-                    //Log.e("IF1", "onClick: Selected" + selectedIds);
+                    Log.e("IF1", "onClick: Selected" + selectedIds);
                     view.setBackgroundResource(R.drawable.ic_seats_book);
                 } else {
                     selectedIds = selectedIds + view.getId() + ",";
                     view.setBackgroundResource(R.drawable.ic_seats_selected);
-                    //Log.e("IF2", "onClick: Selected" + selectedIds);
+                    Log.e("IF2", "onClick: Selected" + selectedIds);
                 }
             } else if (selectedIds.contains(view.getId() + ",")) {
                 selectedIds = selectedIds.replace(+view.getId() + ",", "");
-                //Log.e("IF1", "onClick: Selected" + selectedIds);
+                Log.e("IF1", "onClick: Selected" + selectedIds);
                 view.setBackgroundResource(R.drawable.ic_seats_book);
             } else if (NoOfPerson.equals("2") && selectedIds.length() <= 6) {
-                Toast.makeText(ChooseSeatLayout.this, "Cannot  More Than one Seats", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChooseSeatLayout.this, "Cannot  More Than Two Seats", Toast.LENGTH_SHORT).show();
             } else
-                Toast.makeText(ChooseSeatLayout.this, "Cannot Choose More Than Two Seats", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChooseSeatLayout.this, "Cannot Choose More Than One Seats", Toast.LENGTH_SHORT).show();
         } else if ((int) view.getTag() == STATUS_BOOKED) {
             Toast.makeText(this, "Seat " + view.getId() + " is Booked", Toast.LENGTH_SHORT).show();
         } else if ((int) view.getTag() == STATUS_RESERVED) {

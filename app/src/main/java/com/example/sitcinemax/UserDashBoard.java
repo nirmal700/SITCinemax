@@ -114,7 +114,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         btn_CustomerProfile.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, EditUserProfile.class)));
         btn_My_Qr.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), UserQrCode.class)));
 
-        btn_TodoList.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserToDoList.class)));
+        btn_TodoList.setOnClickListener(v -> startActivity(new Intent(UserDashBoard.this, UserPollSelection.class)));
         btn_book_tickets.setOnClickListener(view -> {
             Dialog dialog = new Dialog(UserDashBoard.this);
             dialog.setContentView(R.layout.booking_alert);

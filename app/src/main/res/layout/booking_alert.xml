@@ -104,6 +104,18 @@
         android:textSize="20dp"
         android:layout_marginStart="5dp"
         tools:ignore="SpUsage" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autoSizeTextType="uniform"
+        android:layout_gravity="start"
+        android:fontFamily="@font/my_fav_sans_number"
+        android:text="@string/wearing_slippers_are_not_allowed_inside_the_cinemax"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginStart="5dp"
+        tools:ignore="SpUsage" />
 
     <LinearLayout
         android:layout_width="match_parent"

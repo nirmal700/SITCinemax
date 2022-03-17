@@ -31,6 +31,8 @@
         <entry key="app/src/main/res/drawable/bg_progress.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16197916666666667" />
         <entry key="app/src/main/res/drawable/ic_qr_code.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/drawable/ic_sic.xml" value="0.2555" />
+        <entry key="app/src/main/res/drawable/progress_track.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/radio_custom.xml" value="0.3109375" />
         <entry key="app/src/main/res/drawable/radio_selected.xml" value="0.3109375" />
         <entry key="app/src/main/res/drawable/radio_selector.xml" value="0.3109375" />
@@ -52,6 +54,7 @@
         <entry key="app/src/main/res/layout/activity_single_ticket_qr.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_user_login.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_user_phone_number_verification.xml" value="0.28020833333333334" />
+        <entry key="app/src/main/res/layout/activity_user_poll_selection.xml" value="0.2490740740740741" />
         <entry key="app/src/main/res/layout/activity_user_sign_up.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/booked_tickets.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/booking_alert.xml" value="0.28020833333333334" />
