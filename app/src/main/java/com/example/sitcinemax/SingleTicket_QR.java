@@ -63,7 +63,7 @@ public class SingleTicket_QR extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         String appName = "SITCinemax";
         String SICUser = mBticket.getSICUser();
-        String NameUser = mBticket.getSICUser();
+        String NameUser = mBticket.getNameUser();
         String SIC2 = mBticket.getSIC2();
         String Name2 = mBticket.getName2();
         String MovieName = mBticket.getMovieName();
