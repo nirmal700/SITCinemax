@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -80,13 +81,9 @@ public class SingleTicket_QR extends AppCompatActivity {
         //--------------- Encoding Data -----------
         try {
             // assert phoneNumber != null;
-<<<<<<< HEAD:app/src/main/java/com/sitbbsr/sitcinemax/SingleTicket_QR.java
             String mEncode = SICUser + ":" + NameUser + ":" + SIC2 + ":" + Name2 + ":" + MovieName + ":" + Details + ":" + Poster + ":" + ScreenDate + ":" + Seats + ":" + BookedTime + ":" + Docid;
             String encodedData = encrypt(mEncode);
             Log.e("TAG", "onCreate: " + mEncode);
-=======
-            String encodedData = encrypt(SICUser+ ":" +NameUser+ ":" +SIC2+ ":" +Name2+ ":" +MovieName+ ":"+ Details +":"+ Poster+ ":"+ ScreenDate+ ":"+ Seats+ ":"+BookedTime+":"+Docid);
->>>>>>> parent of fe1c467 (Update Release V.1.0):app/src/main/java/com/example/sitcinemax/SingleTicket_QR.java
             MultiFormatWriter writer = new MultiFormatWriter();
 
             //--------------- Create QR code -----------
