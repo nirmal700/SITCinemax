@@ -35,8 +35,8 @@
             android:text="@string/login_with"
             android:textColor="@color/white"
             android:textSize="17dp"
-            tools:targetApi="o"
-            tools:ignore="SpUsage" />
+            tools:ignore="SpUsage"
+            tools:targetApi="o" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -142,8 +142,8 @@
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/black"
                 app:strokeWidth="1dp"
-                tools:targetApi="lollipop"
-                tools:ignore="SpUsage" />
+                tools:ignore="SpUsage"
+                tools:targetApi="lollipop" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_backSignUp"

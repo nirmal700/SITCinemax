@@ -5,8 +5,8 @@ import com.google.firebase.firestore.ServerTimestamp;
 import java.util.Date;
 
 public class PollData {
-    String mOption1, mOption2, mOption3,mOption4;
-    int  mOption1Votes,mOption2Votes, mOption3Votes, mOption4Votes;
+    String mOption1, mOption2, mOption3, mOption4;
+    int mOption1Votes, mOption2Votes, mOption3Votes, mOption4Votes;
 
     public PollData() {
     }

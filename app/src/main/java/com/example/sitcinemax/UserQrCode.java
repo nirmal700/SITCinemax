@@ -53,7 +53,7 @@ public class UserQrCode extends AppCompatActivity {
     LinearLayout bg_screenShot;
     TextView txt_screenShot;
 
-    ImageView btn_screenshot,btn_backToCd,qr_output;
+    ImageView btn_screenshot, btn_backToCd, qr_output;
     ProgressDialog progressDialog;
 
     //--------------- Encryption Variables -----------
@@ -68,7 +68,7 @@ public class UserQrCode extends AppCompatActivity {
 
         qr_output = findViewById(R.id.qr_output);
         btn_screenshot = findViewById(R.id.btn_screenshot);
-        btn_backToCd  = findViewById(R.id.btn_backToCd);
+        btn_backToCd = findViewById(R.id.btn_backToCd);
         bg_screenShot = findViewById(R.id.bg_screenShot);
         txt_screenShot = findViewById(R.id.txt_screenShot);
 
@@ -76,7 +76,7 @@ public class UserQrCode extends AppCompatActivity {
         String phoneNo = manager.getPhone(); //Get Phone Number from session
 
         //--------------- Internet Checking -----------
-        if (!isConnected(UserQrCode.this)){
+        if (!isConnected(UserQrCode.this)) {
             showCustomDialog();
         }
 
@@ -106,18 +106,17 @@ public class UserQrCode extends AppCompatActivity {
                 String year = snapshot.child("year").getValue(String.class);
 
 
-
                 //--------------- Encoding Data -----------
                 try {
-                   // assert phoneNumber != null;
-                    String encodedData = encrypt(phoneNumber+ ":" +course+ ":" +SIC+ ":" +year);
+                    // assert phoneNumber != null;
+                    String encodedData = encrypt(phoneNumber + ":" + course + ":" + SIC + ":" + year);
                     MultiFormatWriter writer = new MultiFormatWriter();
 
                     //--------------- Create QR code -----------
                     try {
-                        BitMatrix matrix = writer.encode( appName+":"+ name + ":" + encodedData , BarcodeFormat.QR_CODE,350,350);
+                        BitMatrix matrix = writer.encode(appName + ":" + name + ":" + encodedData, BarcodeFormat.QR_CODE, 350, 350);
 
-                        BarcodeEncoder encoder =new BarcodeEncoder();
+                        BarcodeEncoder encoder = new BarcodeEncoder();
                         Bitmap bitmap = encoder.createBitmap(matrix);
                         qr_output.setImageBitmap(bitmap);
 
@@ -143,7 +142,7 @@ public class UserQrCode extends AppCompatActivity {
 
         //--------------- Button for back to User Dashboard -----------
         btn_backToCd.setOnClickListener(v -> {
-            startActivity(new Intent(UserQrCode.this,UserDashBoard.class));
+            startActivity(new Intent(UserQrCode.this, UserDashBoard.class));
             finishAffinity();
         });
 
@@ -160,10 +159,10 @@ public class UserQrCode extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(UserQrCode.this);
         builder.setMessage("Please connect to the internet")
-             //   .setCancelable(false)
+                //   .setCancelable(false)
                 .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
                 .setNegativeButton("Cancel", (dialog, which) -> {
-                    startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+                    startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
                     finish();
                 });
         AlertDialog alertDialog = builder.create();
@@ -186,12 +185,12 @@ public class UserQrCode extends AppCompatActivity {
 
     //--------------- Encode Data -----------
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private String encrypt(String forEncode) throws Exception{
+    private String encrypt(String forEncode) throws Exception {
         SecretKeySpec key = generateKey(keyPass);
         Cipher c = Cipher.getInstance(AES);
-        c.init(Cipher.ENCRYPT_MODE,key);
+        c.init(Cipher.ENCRYPT_MODE, key);
         byte[] encVal = c.doFinal(forEncode.getBytes());
-        return Base64.encodeToString(encVal,Base64.DEFAULT);
+        return Base64.encodeToString(encVal, Base64.DEFAULT);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -209,7 +208,7 @@ public class UserQrCode extends AppCompatActivity {
         String currentDate = new SimpleDateFormat("d-MMM-yy_HH-mm", Locale.getDefault()).format(new Date());
         try {
             // image naming and path  to include sd card  appending name you choose for file
-            String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/"+ "SITCinemax_" + currentDate + ".jpeg";
+            String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString() + "/" + "SITCinemax_" + currentDate + ".jpeg";
 
             // create bitmap screen capture
             View v1 = getWindow().getDecorView().getRootView();
@@ -235,24 +234,23 @@ public class UserQrCode extends AppCompatActivity {
 
     //--------------- Permission for write screenshot to storage -----------
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static final String [] PERMISSION_STORAGE = {
+    private static final String[] PERMISSION_STORAGE = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
-    public static void verifyStoragePermission(Activity activity){
+    public static void verifyStoragePermission(Activity activity) {
 
-        int permission = ActivityCompat.checkSelfPermission(activity,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
 
-        if (permission != PackageManager.PERMISSION_GRANTED){
+        if (permission != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(activity,PERMISSION_STORAGE,REQUEST_EXTERNAL_STORAGE);
+            ActivityCompat.requestPermissions(activity, PERMISSION_STORAGE, REQUEST_EXTERNAL_STORAGE);
         }
 
 
     }
-
 
 
 }

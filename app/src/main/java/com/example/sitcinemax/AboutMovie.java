@@ -16,10 +16,11 @@ public class AboutMovie extends YouTubeBaseActivity {
 
     String api_key = "AIzaSyDNqfIOvQasJJsE6uUGwiG7dH9Sg4lQ5fU";
     YouTubePlayerView youTubePlayerView;
-    TextView tv_MovieName, tv_description,tv_date,tv_Details;
+    TextView tv_MovieName, tv_description, tv_date, tv_Details;
     RatingBar rbStars;
     ImageView btn_backToSd;
     YouTubePlayer.OnInitializedListener onInitializedListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class AboutMovie extends YouTubeBaseActivity {
         rbStars = findViewById(R.id.rbStars);
         btn_backToSd = findViewById(R.id.btn_backToSd);
         Intent intent = getIntent();
-        Movies mTrailer = (Movies)intent.getSerializableExtra("Movie_Details");
+        Movies mTrailer = (Movies) intent.getSerializableExtra("Movie_Details");
         tv_MovieName.setText(mTrailer.getMovieName());
         tv_description.setText(String.format("\n\t\t\t%s\n\n\n", mTrailer.getMovieDescription()));
         rbStars.setRating(Float.parseFloat(mTrailer.getMovieRating()));
@@ -39,22 +40,21 @@ public class AboutMovie extends YouTubeBaseActivity {
         tv_Details.setText(mTrailer.getDetails());
 
 
-
-        youTubePlayerView = (YouTubePlayerView)findViewById(R.id.YoutubePlayer);
+        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.YoutubePlayer);
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                 youTubePlayer.loadVideo(mTrailer.getTrailerURL());
+                youTubePlayer.loadVideo(mTrailer.getTrailerURL());
             }
 
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Log.e("TAG", "onInitializationFailure: "+youTubeInitializationResult.toString() +provider.toString() );
+                Log.e("TAG", "onInitializationFailure: " + youTubeInitializationResult.toString() + provider.toString());
             }
         };
-        youTubePlayerView.initialize(api_key,onInitializedListener);
+        youTubePlayerView.initialize(api_key, onInitializedListener);
         btn_backToSd.setOnClickListener(v -> {
-            startActivity(new Intent(AboutMovie.this,UserBookTickets.class));
+            startActivity(new Intent(AboutMovie.this, UserBookTickets.class));
             finishAffinity();
         });
     }

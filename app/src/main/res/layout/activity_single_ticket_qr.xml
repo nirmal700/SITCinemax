@@ -6,14 +6,15 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp"
     android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/card_white"
     android:layout_weight="1"
     android:background="@color/card_white"
     android:orientation="vertical"
+    app:cardBackgroundColor="@color/card_white"
     app:cardCornerRadius="12dp"
     app:cardElevation="10dp"
     app:strokeColor="@color/hintBlack"
     app:strokeWidth=".5dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,9 +68,9 @@
                 app:srcCompat="@drawable/ic_qr_code" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/docId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/docId"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/_201299381324"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
@@ -89,37 +90,37 @@
             app:layout_constraintTop_toTopOf="@+id/guideline">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_MovieName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:id="@+id/tv_MovieName"
                 android:text="@string/spider_man_no_way_home"
-                android:textSize="22dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold"
                 tools:ignore="SpUsage" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/tv_Details"
-                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/_2h_15m_hindi_u_a"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                 android:textColor="@color/black"
+                android:textSize="18dp"
                 tools:ignore="SpUsage" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_bookedBy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:id="@+id/tv_bookedBy"
-                android:textSize="18dp"
                 android:text="@string/_23rd_december_2021"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                 android:textColor="@color/black"
+                android:textSize="18dp"
                 tools:ignore="SpUsage" />
 
             <LinearLayout
@@ -139,16 +140,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
                         tools:ignore="SpUsage" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_screenDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_screenDate"
                         android:text="@string/_23rd_december_2021"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black" />
@@ -173,19 +174,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/time"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
                         tools:ignore="SpUsage" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/_2h_15m"
-                        android:textSize="15dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black"
+                        android:textSize="15dp"
                         tools:ignore="SpUsage" />
 
                 </LinearLayout>
@@ -208,20 +209,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/seat_no"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
                         tools:ignore="SpUsage" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/SeatNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/SeatNo"
-                        android:textSize="16dp"
                         android:text="@string/c04_c15"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                         android:textColor="@color/black"
+                        android:textSize="16dp"
                         tools:ignore="SpUsage" />
 
                 </LinearLayout>

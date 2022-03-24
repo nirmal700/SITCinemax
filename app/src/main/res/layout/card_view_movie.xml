@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
     android:layout_marginHorizontal="5dp"
+    android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:layout_weight="1"
-    app:cardBackgroundColor="@color/card_white"
     android:background="@color/card_white"
     android:orientation="vertical"
+    app:cardBackgroundColor="@color/card_white"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
     app:strokeColor="@color/Primary_light"
@@ -20,8 +20,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/card_white"
         android:layout_marginTop="30dp"
+        android:background="@color/card_white"
         android:orientation="vertical">
 
         <ImageView
@@ -41,10 +41,10 @@
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
-                android:layout_marginTop="6dp"
                 android:layout_height="wrap_content"
-                android:autoSizeTextType="uniform"
                 android:layout_marginStart="2dp"
+                android:layout_marginTop="6dp"
+                android:autoSizeTextType="uniform"
                 android:fontFamily="@font/astronaut"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
@@ -57,8 +57,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
                 android:autoSizeTextType="uniform"
                 android:textColor="@color/black"
                 android:textSize="18dp"
@@ -69,9 +69,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="30dp"
-            android:layout_gravity="center_horizontal"
             android:paddingHorizontal="5dp">
 
             <Button

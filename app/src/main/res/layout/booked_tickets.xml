@@ -4,63 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/Primary"
+    android:orientation="vertical"
     tools:context=".UserBookedTickets">
 
     <ImageView
         android:id="@+id/btn_backToSd"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="10dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:src="@drawable/ic_back_arrow"
-        app:tint="@color/black"
         android:contentDescription="@null"
         android:focusable="true"
-        android:layout_marginStart="20dp" />
+        android:src="@drawable/ic_back_arrow"
+        app:tint="@color/black" />
 
     <ImageView
         android:layout_width="120dp"
         android:layout_height="100dp"
-        android:src="@drawable/movie_ticket"
-        android:layout_marginTop="-55dp"
         android:layout_gravity="center_horizontal"
-        android:contentDescription="@null" />
+        android:layout_marginTop="-55dp"
+        android:contentDescription="@null"
+        android:src="@drawable/movie_ticket" />
 
-<!--    <View-->
-<!--        android:layout_width="150dp"-->
-<!--        android:layout_height="2dp"-->
-<!--        android:layout_marginTop="-8dp"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:background="@color/black"-->
-<!--        android:layout_marginHorizontal="15dp"/>-->
+    <!--    <View-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="2dp"-->
+    <!--        android:layout_marginTop="-8dp"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:background="@color/black"-->
+    <!--        android:layout_marginHorizontal="15dp"/>-->
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoSizeTextType="uniform"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:text="@string/booked_tickets"
+        android:layout_marginTop="20dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/my_fav_sans_number"
-        android:textStyle="bold"
+        android:text="@string/booked_tickets"
         android:textColor="@color/white"
         android:textSize="35dp"
+        android:textStyle="bold"
         tools:ignore="MissingConstraints,SpUsage"
         tools:targetApi="o" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_lower"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:paddingTop="20dp"
-        android:layout_marginHorizontal="5dp">
+        android:paddingTop="20dp">
 
 
         <androidx.recyclerview.widget.RecyclerView

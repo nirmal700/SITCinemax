@@ -5,7 +5,7 @@ import com.google.firebase.firestore.ServerTimestamp;
 import java.util.Date;
 
 public class Logcat {
-    String mNewName,mOldName,mNewSIC,mOldSIC,mOldCourse,mOldYear,mNewCourse,mNewYear,mMobileNo;
+    String mNewName, mOldName, mNewSIC, mOldSIC, mOldCourse, mOldYear, mNewCourse, mNewYear, mMobileNo;
     @ServerTimestamp
     Date mUpdatedTime;
 

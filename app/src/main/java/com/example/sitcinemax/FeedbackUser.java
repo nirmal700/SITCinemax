@@ -26,6 +26,7 @@ public class FeedbackUser extends AppCompatActivity {
     EditText feedback_et;
     SessionManager manager;
     ProgressDialog progressDialog;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,13 +84,12 @@ public class FeedbackUser extends AppCompatActivity {
         });
         btn_Submit.setOnClickListener(view -> {
             progressDialog.show();
-            if(feedback_et.getText().toString().length()<=5)
-            {
+            if (feedback_et.getText().toString().length() <= 5) {
                 btn_Submit.setError("Invalid Feedback");
                 progressDialog.dismiss();
                 return;
             }
-            Feedback feedback = new Feedback(""+rateStars.getRating(),feedback_et.getText().toString(),manager.getSIC(), manager.getPhone(),manager.getName(), resultRate.getText().toString(),false,false,null);
+            Feedback feedback = new Feedback("" + rateStars.getRating(), feedback_et.getText().toString(), manager.getSIC(), manager.getPhone(), manager.getName(), resultRate.getText().toString(), false, false, null);
             CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Feedback");
             collectionReference.add(feedback).addOnSuccessListener(documentReference -> {
             }).addOnCompleteListener(task -> {

@@ -169,8 +169,8 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/hintBlack"
                         android:textSize="20dp"
-                        tools:targetApi="o"
-                        tools:ignore="SpUsage" />
+                        tools:ignore="SpUsage"
+                        tools:targetApi="o" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -220,8 +220,8 @@
                     android:text="@string/choose_no_of_person_s"
                     android:textColor="@color/black"
                     android:textSize="15dp"
-                    tools:targetApi="o"
-                    tools:ignore="SpUsage" />
+                    tools:ignore="SpUsage"
+                    tools:targetApi="o" />
 
                 <RadioGroup
                     android:id="@+id/radio_group"
@@ -325,8 +325,8 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/hintBlack"
                         android:textSize="20dp"
-                        tools:targetApi="o"
-                        tools:ignore="SpUsage" />
+                        tools:ignore="SpUsage"
+                        tools:targetApi="o" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout

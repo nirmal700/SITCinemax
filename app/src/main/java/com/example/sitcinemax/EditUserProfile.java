@@ -134,22 +134,22 @@ public class EditUserProfile extends AppCompatActivity {
                 String _sic = snapshot.child("sic").getValue(String.class);
                 Objects.requireNonNull(et_sic.getEditText()).setText(_sic);
                 String _year = snapshot.child("year").getValue(String.class);
-                if(Objects.equals(_year, "1st Year"))
-                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(0).toString(),false);
-                else if(_year.equals("2nd Year"))
-                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(1).toString(),false);
-                else if(_year.equals("3rd Year"))
-                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(2).toString(),false);
-                else if(_year.equals("4th Year"))
-                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(3).toString(),false);
+                if (Objects.equals(_year, "1st Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(0).toString(), false);
+                else if (_year.equals("2nd Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(1).toString(), false);
+                else if (_year.equals("3rd Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(2).toString(), false);
+                else if (_year.equals("4th Year"))
+                    autoCompleteYear.setText(autoCompleteYear.getAdapter().getItem(3).toString(), false);
 
                 String _course = snapshot.child("course").getValue(String.class);
-                if(Objects.equals(_course, "B.Tech"))
-                    et_course.setText(et_course.getAdapter().getItem(0).toString(),false);
-                else if(_course.equals("M.Tech"))
-                    et_course.setText(et_course.getAdapter().getItem(1).toString(),false);
-                else if(_course.equals("MCA"))
-                    et_course.setText(et_course.getAdapter().getItem(2).toString(),false);
+                if (Objects.equals(_course, "B.Tech"))
+                    et_course.setText(et_course.getAdapter().getItem(0).toString(), false);
+                else if (_course.equals("M.Tech"))
+                    et_course.setText(et_course.getAdapter().getItem(1).toString(), false);
+                else if (_course.equals("MCA"))
+                    et_course.setText(et_course.getAdapter().getItem(2).toString(), false);
 
 
                 progressDialog.dismiss();
@@ -186,7 +186,6 @@ public class EditUserProfile extends AppCompatActivity {
                 String _year = snapshot.child("year").getValue(String.class);
 
 
-
                 if (Objects.requireNonNull(_name).equals(Objects.requireNonNull(et_name.getEditText()).getText().toString()) &&
                         Objects.requireNonNull(_sic).equals(Objects.requireNonNull(et_sic.getEditText()).getText().toString()) &&
                         Objects.requireNonNull(_course).equals(et_course.getText().toString()) &&
@@ -206,7 +205,7 @@ public class EditUserProfile extends AppCompatActivity {
                     userDb.child("sic").setValue(et_sic.getEditText().getText().toString());
                     userDb.child("course").setValue(et_course.getText().toString());
                     userDb.child("year").setValue(autoCompleteYear.getText().toString());
-                    Logcat logcat = new Logcat(et_name.getEditText().getText().toString(),_name,et_sic.getEditText().getText().toString(),_sic,_year,et_course.getText().toString(),_course,autoCompleteYear.getText().toString(),manager.getPhone(),null);
+                    Logcat logcat = new Logcat(et_name.getEditText().getText().toString(), _name, et_sic.getEditText().getText().toString(), _sic, _year, et_course.getText().toString(), _course, autoCompleteYear.getText().toString(), manager.getPhone(), null);
                     CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Logcat");
                     collectionReference.add(logcat).addOnSuccessListener(documentReference -> {
                     }).addOnCompleteListener(task -> {

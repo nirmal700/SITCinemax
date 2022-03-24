@@ -121,21 +121,21 @@ public class UserToDoList extends AppCompatActivity {
             btn_selectDate.setOnClickListener(v12 -> {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         UserToDoList.this, (view, year1, month1, day1) -> {
-                            month1 = month1 + 1;
+                    month1 = month1 + 1;
 
-                            String fd = "" + day1;
-                            String fm = "" + month1;
-                            if (day1 < 10) {
-                                fd = "0" + day1;
-                            }
-                            if (month1 < 10) {
-                                fm = "0" + month1;
-                            }
+                    String fd = "" + day1;
+                    String fm = "" + month1;
+                    if (day1 < 10) {
+                        fd = "0" + day1;
+                    }
+                    if (month1 < 10) {
+                        fm = "0" + month1;
+                    }
 
-                            selectedDate = fd + "/" + fm + "/" + year1;
+                    selectedDate = fd + "/" + fm + "/" + year1;
 
-                            btn_selectDate.setText(selectedDate);
-                        }, year, month, day);
+                    btn_selectDate.setText(selectedDate);
+                }, year, month, day);
                 datePickerDialog.show();
             });
 

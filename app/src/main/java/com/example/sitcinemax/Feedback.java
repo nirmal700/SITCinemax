@@ -5,15 +5,15 @@ import com.google.firebase.firestore.ServerTimestamp;
 import java.util.Date;
 
 public class Feedback {
-    String RatingStars, Feedback, SIC, PhoneNumber, RatingText,mUserName;
-    boolean IsResolved,IsAcknowledged;
+    String RatingStars, Feedback, SIC, PhoneNumber, RatingText, mUserName;
+    boolean IsResolved, IsAcknowledged;
     @ServerTimestamp
     Date mUpdatedTime;
 
     public Feedback() {
     }
 
-    public Feedback(String ratingStars, String feedback, String SIC, String phoneNumber,String mUserName, String ratingText, boolean isResolved, boolean isAcknowledged,Date mUpdatedTime) {
+    public Feedback(String ratingStars, String feedback, String SIC, String phoneNumber, String mUserName, String ratingText, boolean isResolved, boolean isAcknowledged, Date mUpdatedTime) {
         RatingStars = ratingStars;
         Feedback = feedback;
         this.SIC = SIC;

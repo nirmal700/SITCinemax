@@ -74,7 +74,7 @@ public class UserMoviesAdapter extends RecyclerView.Adapter<UserMoviesAdapter.My
 
         public ImageView imageView;
         public TextView tv_title, tv_description;
-        public Button bt_ok,btn_aboutMovie;
+        public Button bt_ok, btn_aboutMovie;
 
 
         public MyViewHolder(@NonNull View itemView) {

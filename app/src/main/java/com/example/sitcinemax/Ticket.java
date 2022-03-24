@@ -7,14 +7,14 @@ import java.util.Date;
 
 
 public class Ticket implements Serializable {
-    String NameUser, SICUser, PhoneNumber, MovieName, Seats, SIC2, PhoneNumber2, Name2, mDetails, mScreenDate, mPoster,mDocId;
+    String NameUser, SICUser, PhoneNumber, MovieName, Seats, SIC2, PhoneNumber2, Name2, mDetails, mScreenDate, mPoster, mDocId;
     @ServerTimestamp
     Date mBookedTime;
 
     public Ticket() {
     }
 
-    public Ticket(String nameUser, String SICUser, String phoneNumber, String movieName, String seats, String SIC2, String phoneNumber2, String name2, Date mBookedTime, String mDetails, String mScreenDate, String mPoster,String mDocId) {
+    public Ticket(String nameUser, String SICUser, String phoneNumber, String movieName, String seats, String SIC2, String phoneNumber2, String name2, Date mBookedTime, String mDetails, String mScreenDate, String mPoster, String mDocId) {
         NameUser = nameUser;
         this.SICUser = SICUser;
         PhoneNumber = phoneNumber;
@@ -27,7 +27,7 @@ public class Ticket implements Serializable {
         this.mDetails = mDetails;
         this.mScreenDate = mScreenDate;
         this.mPoster = mPoster;
-        this.mDocId =mDocId;
+        this.mDocId = mDocId;
     }
 
     public String getNameUser() {

@@ -68,8 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="15dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_toEndOf="@+id/iv_member"
                 android:fontFamily="@font/my_fav_sans_number"
                 android:text="@string/spider_man_no_way_home"
@@ -106,38 +106,38 @@
                 tools:ignore="SpUsage" />
 
             <LinearLayout
+                android:id="@+id/person1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_Details"
                 android:layout_marginStart="10dp"
-                android:id="@+id/person1"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_toEndOf="@+id/iv_member">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:autoSizeTextType="uniform"
-                        android:text="@string/name1"
-                        android:textColor="@color/black"
-                        android:textSize="22dp"
-                        android:fontFamily="@font/bebeas"
-                        tools:targetApi="o"
-                        tools:ignore="SpUsage" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/bebeas"
+                    android:text="@string/name1"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    tools:ignore="SpUsage"
+                    tools:targetApi="o" />
 
-                    <TextView
-                        android:id="@+id/tv_name1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/k_nirmal_kumar_20bcta16"
-                        android:autoSizeTextType="uniform"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/oswald_light"
-                        android:textSize="18dp"
-                        tools:targetApi="o"
-                        tools:ignore="SpUsage" />
+                <TextView
+                    android:id="@+id/tv_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/oswald_light"
+                    android:text="@string/k_nirmal_kumar_20bcta16"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    tools:ignore="SpUsage"
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
@@ -155,25 +155,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/bebeas"
                     android:text="@string/name2"
                     android:textColor="@color/black"
                     android:textSize="22dp"
-                    android:fontFamily="@font/bebeas"
-                    tools:targetApi="o"
-                    tools:ignore="SpUsage" />
+                    tools:ignore="SpUsage"
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/tv_name2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/oswald_light"
                     android:text="@string/k_nirmal_kumar_20bcta16"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/oswald_light"
                     android:textSize="18dp"
-                    tools:targetApi="o"
-                    tools:ignore="SpUsage" />
+                    tools:ignore="SpUsage"
+                    tools:targetApi="o" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -188,24 +189,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/bebeas"
                     android:text="@string/seats"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/bebeas"
                     android:textSize="20dp"
-                    tools:targetApi="o"
-                    tools:ignore="SpUsage" />
+                    tools:ignore="SpUsage"
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/seats"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/b01_b03"
                     android:autoSizeTextType="uniform"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/my_fav_sans_number"
+                    android:text="@string/b01_b03"
+                    android:textColor="@color/black"
                     android:textSize="20dp"
-                    tools:targetApi="o"
-                    tools:ignore="SpUsage" />
+                    tools:ignore="SpUsage"
+                    tools:targetApi="o" />
             </LinearLayout>
 
         </RelativeLayout>

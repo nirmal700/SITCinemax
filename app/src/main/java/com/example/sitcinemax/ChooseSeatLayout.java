@@ -149,7 +149,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                             view.setOnClickListener(ChooseSeatLayout.this);
                         } else if (seats.startsWith("11", index) | seats.startsWith("01", index) | seats.startsWith("02", index) | seats.startsWith("03", index) | seats.startsWith("04", index) | seats.startsWith("05", index) | seats.startsWith("06", index) | seats.startsWith("07", index) | seats.startsWith("08", index) | seats.startsWith("09", index) | seats.startsWith("10", index) | seats.startsWith("11", index) | seats.startsWith("12", index) | seats.startsWith("13", index) | seats.startsWith("14", index)) {
                             count++;
-                           // Log.e("LOG12", "onCreate: " + index + "\t" + seats.substring(index, index + 4));
+                            // Log.e("LOG12", "onCreate: " + index + "\t" + seats.substring(index, index + 4));
                             if (seats.startsWith("11", index)) {
                                 Par = 'A';
                             } else if (seats.startsWith("01", index)) {
@@ -174,9 +174,9 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                                 Par = 'J';
                             } else if (seats.startsWith("10", index)) {
                                 Par = 'K';
-                            }else if (seats.startsWith("12", index)) {
+                            } else if (seats.startsWith("12", index)) {
                                 Par = 'L';
-                            }else if (seats.startsWith("13", index)) {
+                            } else if (seats.startsWith("13", index)) {
                                 Par = 'M';
                             }
 
@@ -229,11 +229,11 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
 
         btn_Proceed.setOnClickListener(view -> {
-            Log.e("Button Prooced", "onCreate: "+"Clicked");
+            Log.e("Button Prooced", "onCreate: " + "Clicked");
             progressDialog.show();
-            Log.e("Selected Id", "onCreate: "+selectedIds );
-            if (NoOfPerson.equals("1") && selectedIds.length() <= 5 && selectedIds.length() > 0 ) {
-                Log.e("Button Prooced", "onCreate: "+"Clicked 1");
+            Log.e("Selected Id", "onCreate: " + selectedIds);
+            if (NoOfPerson.equals("1") && selectedIds.length() <= 5 && selectedIds.length() > 0) {
+                Log.e("Button Prooced", "onCreate: " + "Clicked 1");
                 btn_Proceed.setError(null);
                 getSeats();
 
@@ -242,11 +242,11 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                     btn_Proceed.setError("Can't Book The Seats");
                     progressDialog.dismiss();
                 } else {
-                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl(),"");
+                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2, null, mMovie.getDetails(), mMovie.getScreenDate(), mMovie.getPosterUrl(), "");
                     CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
                     collectionReference.add(ticket).addOnSuccessListener((DocumentReference documentReference) -> {
                         String ID = documentReference.getId();
-                        collectionReference.document(ID).update("mDocId",ID);
+                        collectionReference.document(ID).update("mDocId", ID);
                     }).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(ChooseSeatLayout.this, "FireStore Updated", Toast.LENGTH_SHORT).show();
@@ -257,21 +257,21 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                         }
                     });
                 }
-            } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10 && selectedIds.length() > 5 ) {
+            } else if (NoOfPerson.equals("2") && selectedIds.length() <= 10 && selectedIds.length() > 5) {
                 btn_Proceed.setError(null);
                 progressDialog.show();
                 getSeats();
-                Log.e("Button Prooced", "onCreate: "+"Clicked 2");
+                Log.e("Button Prooced", "onCreate: " + "Clicked 2");
                 Replace(selectedIds);
                 if (flag == 0) {
                     btn_Proceed.setError("Can't Book The Seats");
                     progressDialog.dismiss();
                 } else {
-                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2,null,mMovie.getDetails(),mMovie.getScreenDate(),mMovie.getPosterUrl(),"");
+                    Ticket ticket = new Ticket(uName, uSIC, uPhone, MovieName, SeatNo, SIC2, PhoneNumber2, Name2, null, mMovie.getDetails(), mMovie.getScreenDate(), mMovie.getPosterUrl(), "");
                     CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("Tickets");
                     collectionReference.add(ticket).addOnSuccessListener((DocumentReference documentReference) -> {
-                        String ID = documentReference.getId();
-                        collectionReference.document(ID).update("mDocId",ID);
+                                String ID = documentReference.getId();
+                                collectionReference.document(ID).update("mDocId", ID);
                             }
                     ).addOnCompleteListener((Task<DocumentReference> task) -> {
                         if (task.isSuccessful()) {
@@ -287,7 +287,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
 
             } else {
                 btn_Proceed.setError("Check the Seats");
-                Log.e("Button Prooced", "onCreate: "+"Clicked 3");
+                Log.e("Button Prooced", "onCreate: " + "Clicked 3");
                 progressDialog.dismiss();
             }
 
@@ -335,7 +335,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
                 char p1 = convert(pa1);
                 seatno1 = selectedIds.substring(0, 4);
                 SeatNo = "" + p1 + "" + seat1;
-               // Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
+                // Log.e("Seats", "getSeats: " + seat1 + "\t" + SeatNo);
                 //Log.e("Seats", "SetSeats: " + seatno1 + "\t");
             } else if (selectedIds.length() == 4) {
                 String seat1 = selectedIds.substring(1, 3);
@@ -377,7 +377,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
             seatno2 = selectedIds.substring(5, 9);
 
             SeatNo = "" + p1 + seat1 + "  ,  " + p2 + seat2;
-           // Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
+            // Log.e("Seats", "getSeats: " + seat1 + seat2 + pa1 + pa2 + "\t" + SeatNo);
             //Log.e("Seats", "SetSeats: " + seatno1 + "\t" + seatno2);
 
         } else if (selectedIds.length() == 8) {
@@ -449,12 +449,10 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
         } else if (no.equals("10")) {
             Par = 'K';
             return Par;
-        }
-        else if (no.equals("12")) {
+        } else if (no.equals("12")) {
             Par = 'L';
             return Par;
-        }
-        else if (no.equals("13")) {
+        } else if (no.equals("13")) {
             Par = 'M';
             return Par;
         }

@@ -31,7 +31,7 @@ public class BookTickets extends AppCompatActivity {
     ImageView btn_back;
     Ticket mTicket;
     String sic, name, phone, mMovieName;
-    int b = -1,flag = 0;
+    int b = -1, flag = 0;
     SessionManager manager;
 
     @Override
@@ -104,26 +104,25 @@ public class BookTickets extends AppCompatActivity {
             }
             sic = sic.toUpperCase(Locale.ROOT);
             FirebaseFirestore.getInstance().collection("Tickets")
-                    .whereEqualTo("movieName",mMovieName)
+                    .whereEqualTo("movieName", mMovieName)
                     .get()
                     .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            flag=0;
+                            flag = 0;
                             for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
                                 //Log.e("Firestore", "onSuccess: " + queryDocumentSnapshots.getDocuments().toString());
                                 mTicket = documentSnapshot.toObject(Ticket.class);
-                                if(Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()))
-                                {
-                                    Log.e("FireStore Data", "onSuccess: "+mTicket.getmDocId());
+                                if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC())) {
+                                    Log.e("FireStore Data", "onSuccess: " + mTicket.getmDocId());
                                     btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
                                     Toast.makeText(BookTickets.this, "Already Booked a Ticket Cannot Book Another Ticket", Toast.LENGTH_SHORT).show();
-                                    flag=1;
+                                    flag = 1;
                                     return;
                                 }
-                                Log.e("FLAG", "onSuccess: "+flag );
+                                Log.e("FLAG", "onSuccess: " + flag);
                             }
-                            if(flag == 0) {
+                            if (flag == 0) {
                                 Intent intent = new Intent(BookTickets.this, ChooseSeatLayout.class);
                                 intent.putExtra("NAME_2", name);
                                 intent.putExtra("SIC_2", sic);

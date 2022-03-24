@@ -3,13 +3,13 @@ package com.example.sitcinemax;
 import java.io.Serializable;
 
 public class Movies implements Serializable {
-    String MovieName, MovieDescription, MovieRating, PosterUrl, MovieShort, SeatLayout, TrailerURL,Details,ScreenDate;
+    String MovieName, MovieDescription, MovieRating, PosterUrl, MovieShort, SeatLayout, TrailerURL, Details, ScreenDate;
     boolean IsScreening;
 
     public Movies() {
     }
 
-    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening, String SeatLayout, String TrailerURL,String Details, String ScreenDate) {
+    public Movies(String movieName, String movieDescription, String movieRating, String posterUrl, String movieShort, boolean isScreening, String SeatLayout, String TrailerURL, String Details, String ScreenDate) {
         MovieName = movieName;
         MovieDescription = movieDescription;
         MovieRating = movieRating;

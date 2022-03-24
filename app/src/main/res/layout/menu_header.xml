@@ -54,8 +54,8 @@
         android:fontFamily="@font/my_fav_sans_number"
         android:textColor="@color/white"
         android:textSize="25dp"
-        tools:targetApi="o"
-        tools:ignore="SpUsage" />
+        tools:ignore="SpUsage"
+        tools:targetApi="o" />
 
     <ImageView
         android:layout_width="100dp"

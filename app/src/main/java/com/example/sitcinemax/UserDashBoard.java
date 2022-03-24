@@ -94,7 +94,6 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         tv_time.setFormat24Hour(null);
 
 
-
         String sName = manager.getName();
         user_Name.setText(String.format("%s(%s)", sName, manager.getSIC()));
 

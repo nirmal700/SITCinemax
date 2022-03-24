@@ -47,7 +47,7 @@ public class UserSignUp extends AppCompatActivity {
     private TextInputLayout et_phoneNumber;
     private TextInputLayout et_password;
     Button btn_getOtp, btn_login;
-    AutoCompleteTextView autoCompleteCourse,autoCompleteYear;
+    AutoCompleteTextView autoCompleteCourse, autoCompleteYear;
 
     ProgressDialog progressDialog;
     //FireBase Variables

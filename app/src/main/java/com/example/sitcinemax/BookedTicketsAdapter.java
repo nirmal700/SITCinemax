@@ -50,8 +50,7 @@ public class BookedTicketsAdapter extends RecyclerView.Adapter<BookedTicketsAdap
         if (currentData.getSIC2().equals("N/A") || currentData.getName2().equals("N/A")) {
             holder.tv_no_ticket.setText("1");
             holder.person2.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             holder.tv_no_ticket.setText("2");
             holder.tv_name2.setText(currentData.getName2() + "(" + currentData.getSIC2() + ")");
         }

@@ -72,12 +72,11 @@ public class UserBookTickets extends AppCompatActivity implements UserMoviesAdap
 
     @SuppressLint("NotifyDataSetChanged")
     private void LoadRecycler() {
-        FirebaseFirestore.getInstance().collection("Movies").whereEqualTo("IsScreening",true)
+        FirebaseFirestore.getInstance().collection("Movies").whereEqualTo("IsScreening", true)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments())
-                {
+                for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
                     mMovies = documentSnapshot.toObject(Movies.class);
                     list.add(mMovies);
                     userMoviesAdapter = new UserMoviesAdapter(UserBookTickets.this, list);

@@ -19,8 +19,8 @@
         android:textColor="@color/Primary"
         android:textSize="30dp"
         android:textStyle="bold"
-        tools:targetApi="o"
-        tools:ignore="SpUsage" />
+        tools:ignore="SpUsage"
+        tools:targetApi="o" />
 
 
     <EditText
@@ -81,8 +81,8 @@
         app:startIconTint="@color/black"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp"
-        tools:targetApi="o"
-        tools:ignore="SpUsage" />
+        tools:ignore="SpUsage"
+        tools:targetApi="o" />
 
     <LinearLayout
         android:layout_width="match_parent"

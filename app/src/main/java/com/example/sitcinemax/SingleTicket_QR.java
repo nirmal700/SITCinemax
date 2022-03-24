@@ -34,14 +34,15 @@ public class SingleTicket_QR extends AppCompatActivity {
     String AES = "AES";
     String keyPass = "SITCinemax@Silicon";
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_ticket_qr);
         ImageView iv_qr;
-        TextView tv_MovieName,tv_Details,tv_bookedBy,tv_screenDate,SeatNo,docId;
+        TextView tv_MovieName, tv_Details, tv_bookedBy, tv_screenDate, SeatNo, docId;
         Intent i = getIntent();
-        Ticket mBticket = (Ticket)i.getSerializableExtra("Booked_Tickets");
+        Ticket mBticket = (Ticket) i.getSerializableExtra("Booked_Tickets");
         iv_qr = findViewById(R.id.iv_qr);
         tv_MovieName = findViewById(R.id.tv_MovieName);
         tv_Details = findViewById(R.id.tv_Details);
@@ -74,19 +75,25 @@ public class SingleTicket_QR extends AppCompatActivity {
         String BookedTime = mBticket.getmBookedTime().toString();
         String Docid = mBticket.mDocId;
 
-        if(!isConnected(SingleTicket_QR.this))
+        if (!isConnected(SingleTicket_QR.this))
             showCustomDialog();
         //--------------- Encoding Data -----------
         try {
             // assert phoneNumber != null;
+<<<<<<< HEAD:app/src/main/java/com/sitbbsr/sitcinemax/SingleTicket_QR.java
+            String mEncode = SICUser + ":" + NameUser + ":" + SIC2 + ":" + Name2 + ":" + MovieName + ":" + Details + ":" + Poster + ":" + ScreenDate + ":" + Seats + ":" + BookedTime + ":" + Docid;
+            String encodedData = encrypt(mEncode);
+            Log.e("TAG", "onCreate: " + mEncode);
+=======
             String encodedData = encrypt(SICUser+ ":" +NameUser+ ":" +SIC2+ ":" +Name2+ ":" +MovieName+ ":"+ Details +":"+ Poster+ ":"+ ScreenDate+ ":"+ Seats+ ":"+BookedTime+":"+Docid);
+>>>>>>> parent of fe1c467 (Update Release V.1.0):app/src/main/java/com/example/sitcinemax/SingleTicket_QR.java
             MultiFormatWriter writer = new MultiFormatWriter();
 
             //--------------- Create QR code -----------
             try {
-                BitMatrix matrix = writer.encode( appName+":"+ "BookedTickets" + ":" + encodedData , BarcodeFormat.QR_CODE,350,350);
+                BitMatrix matrix = writer.encode(appName + ":" + "BookedTickets" + ":" + encodedData, BarcodeFormat.QR_CODE, 350, 350);
 
-                BarcodeEncoder encoder =new BarcodeEncoder();
+                BarcodeEncoder encoder = new BarcodeEncoder();
                 Bitmap bitmap = encoder.createBitmap(matrix);
                 iv_qr.setImageBitmap(bitmap);
 
@@ -103,6 +110,7 @@ public class SingleTicket_QR extends AppCompatActivity {
 
 
     }
+
     //--------------- Internet Error Dialog Box -----------
     private void showCustomDialog() {
 
@@ -111,7 +119,7 @@ public class SingleTicket_QR extends AppCompatActivity {
                 //   .setCancelable(false)
                 .setPositiveButton("Connect", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
                 .setNegativeButton("Cancel", (dialog, which) -> {
-                    startActivity(new Intent(getApplicationContext(),UserDashBoard.class));
+                    startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
                     finish();
                 });
         AlertDialog alertDialog = builder.create();
@@ -134,12 +142,12 @@ public class SingleTicket_QR extends AppCompatActivity {
 
     //--------------- Encode Data -----------
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private String encrypt(String forEncode) throws Exception{
+    private String encrypt(String forEncode) throws Exception {
         SecretKeySpec key = generateKey(keyPass);
         Cipher c = Cipher.getInstance(AES);
-        c.init(Cipher.ENCRYPT_MODE,key);
+        c.init(Cipher.ENCRYPT_MODE, key);
         byte[] encVal = c.doFinal(forEncode.getBytes());
-        return Base64.encodeToString(encVal,Base64.DEFAULT);
+        return Base64.encodeToString(encVal, Base64.DEFAULT);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

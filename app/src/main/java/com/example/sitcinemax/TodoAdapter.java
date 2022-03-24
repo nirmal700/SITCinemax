@@ -133,21 +133,21 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
             btn_selectDate.setOnClickListener(v12 -> {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         mContext, (view, year1, month1, day1) -> {
-                            month1 = month1 + 1;
+                    month1 = month1 + 1;
 
-                            String fd = "" + day1;
-                            String fm = "" + month1;
-                            if (day1 < 10) {
-                                fd = "0" + day1;
-                            }
-                            if (month1 < 10) {
-                                fm = "0" + month1;
-                            }
+                    String fd = "" + day1;
+                    String fm = "" + month1;
+                    if (day1 < 10) {
+                        fd = "0" + day1;
+                    }
+                    if (month1 < 10) {
+                        fm = "0" + month1;
+                    }
 
-                            String selectedDate = fd + "/" + fm + "/" + year1;
+                    String selectedDate = fd + "/" + fm + "/" + year1;
 
-                            btn_selectDate.setText(selectedDate);
-                        }, year, month, day);
+                    btn_selectDate.setText(selectedDate);
+                }, year, month, day);
                 datePickerDialog.show();
             });
 

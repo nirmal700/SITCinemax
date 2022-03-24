@@ -39,8 +39,8 @@
         android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
-        tools:targetApi="o"
-        tools:ignore="SpUsage" />
+        tools:ignore="SpUsage"
+        tools:targetApi="o" />
 
     <RelativeLayout
         android:layout_width="match_parent"
