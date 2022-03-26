@@ -1,18 +1,64 @@
 {
   "project_info": {
     "project_number": "1076596174857",
+    "firebase_url": "https://sit-cinemax-4a5e0-default-rtdb.firebaseio.com",
     "project_id": "sit-cinemax-4a5e0",
     "storage_bucket": "sit-cinemax-4a5e0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1076596174857:android:6e1a4a304d4bc7e10988d8",
+        "mobilesdk_app_id": "1:1076596174857:android:656ed378dac2573f0988d8",
         "android_client_info": {
-          "package_name": "com.example.sitcinemax"
+          "package_name": "com.sitbbsr.sitcinemax"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1076596174857-pgd152624r082di85drcet23turti0a1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitbbsr.sitcinemax",
+            "certificate_hash": "e32da86e595395d43b1b29461b5baf1bd2135479"
+          }
+        },
+        {
+          "client_id": "1076596174857-2ap4evjupoijhci93lqbabbafjc7ca1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeI50SGKBhf6qw2ccpbhg0xzDaDWikr88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076596174857-2ap4evjupoijhci93lqbabbafjc7ca1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076596174857:android:f25d59451352398f0988d8",
+        "android_client_info": {
+          "package_name": "com.sitbbsrcore.sitcinemaxadministrator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076596174857-hs9hl58qk0g2liu4ct7akpg35l75ugls.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitbbsrcore.sitcinemaxadministrator",
+            "certificate_hash": "339eb7903814f2ed3c5b73e8b3e459fd6f146668"
+          }
+        },
         {
           "client_id": "1076596174857-2ap4evjupoijhci93lqbabbafjc7ca1p.apps.googleusercontent.com",
           "client_type": 3

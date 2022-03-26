@@ -1,4 +1,4 @@
-package com.example.sitcinemax;
+package com.sitbbsr.sitcinemax;
 
 import android.content.Context;
 

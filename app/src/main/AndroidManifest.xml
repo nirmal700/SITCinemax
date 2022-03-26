@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sitcinemax">
+    package="com.sitbbsr.sitcinemax">
 
 
     <queries>
@@ -17,61 +17,61 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SITCinemax">
         <activity
-            android:name=".UserPollSelection"
+            android:name="com.sitbbsr.sitcinemax.UserPollSelection"
             android:exported="false" />
         <activity
-            android:name=".SingleTicket_QR"
+            android:name="com.sitbbsr.sitcinemax.SingleTicket_QR"
             android:exported="false" />
         <activity
-            android:name=".FeedbackUser"
+            android:name="com.sitbbsr.sitcinemax.FeedbackUser"
             android:exported="false" />
         <activity
-            android:name=".UserBookedTickets"
+            android:name="com.sitbbsr.sitcinemax.UserBookedTickets"
             android:exported="false" />
         <activity
-            android:name=".BookingConfirmation"
+            android:name="com.sitbbsr.sitcinemax.BookingConfirmation"
             android:exported="false" />
         <activity
-            android:name=".AboutMovie"
+            android:name="com.sitbbsr.sitcinemax.AboutMovie"
             android:exported="false" />
         <activity
-            android:name=".ChooseSeatLayout"
+            android:name="com.sitbbsr.sitcinemax.ChooseSeatLayout"
             android:exported="false" />
         <activity
-            android:name=".BookTickets"
+            android:name="com.sitbbsr.sitcinemax.BookTickets"
             android:exported="false" />
         <activity
-            android:name=".UserBookTickets"
+            android:name="com.sitbbsr.sitcinemax.UserBookTickets"
             android:exported="false" />
         <activity
-            android:name=".EditUserProfile"
+            android:name="com.sitbbsr.sitcinemax.EditUserProfile"
             android:exported="false" />
         <activity
-            android:name=".AboutSITCinemax"
+            android:name="com.sitbbsr.sitcinemax.AboutSITCinemax"
             android:exported="false" />
         <activity
-            android:name=".ContactUs"
+            android:name="com.sitbbsr.sitcinemax.ContactUs"
             android:exported="false" />
         <activity
-            android:name=".UserLogin"
+            android:name="com.sitbbsr.sitcinemax.UserLogin"
             android:exported="false" />
         <activity
-            android:name=".UserPhoneNumberVerification"
+            android:name="com.sitbbsr.sitcinemax.UserPhoneNumberVerification"
             android:exported="false" />
         <activity
-            android:name=".UserDashBoard"
+            android:name="com.sitbbsr.sitcinemax.UserDashBoard"
             android:exported="false" />
         <activity
-            android:name=".UserQrCode"
+            android:name="com.sitbbsr.sitcinemax.UserQrCode"
             android:exported="false" />
         <activity
-            android:name=".UserToDoList"
+            android:name="com.sitbbsr.sitcinemax.UserToDoList"
             android:exported="false" />
         <activity
-            android:name=".UserSignUp"
+            android:name="com.sitbbsr.sitcinemax.UserSignUp"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.sitbbsr.sitcinemax.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,7 +81,7 @@
         </activity>
 
         <service
-            android:name=".PushNotificationService"
+            android:name="com.sitbbsr.sitcinemax.PushNotificationService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
