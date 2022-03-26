@@ -180,7 +180,7 @@ public class UserSignUp extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-
+                progressDialog.dismiss();
                 Toast.makeText(UserSignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
@@ -243,13 +243,52 @@ public class UserSignUp extends AppCompatActivity {
 
     private boolean validateSIC() {
         String val = Objects.requireNonNull(et_sic.getEditText()).getText().toString().trim();
+        String mYear = autoCompleteYear.getText().toString().trim();
 
         if (val.isEmpty()) {
             et_sic.setError("Field can not be empty");
             return false;
-        } else {
-            et_sic.setError(null);
-            return true;
+        }
+        else
+        {
+            switch (mYear) {
+                case "1st Year":
+                    if (val.startsWith("21") && val.length() == 8)
+                        return true;
+                     else {
+                        et_sic.setError("Not a Valid SIC For 1st Year");
+                        return false;
+                     }
+
+                case "2nd Year":
+                    if (val.startsWith("20") && val.length() == 8) {
+                        return true;
+                    } else {
+                        et_sic.setError("Not a Valid SIC For 2nd Year");
+                        return false;
+                    }
+
+                case "3rd Year":
+                    if (val.startsWith("19") && val.length() == 9) {
+                        return true;
+                    } else {
+                        et_sic.setError("Not a Valid SIC For 3rd Year");
+                        return false;
+                    }
+
+                case "4th Year":
+                    if (val.startsWith("18") && val.length() == 9) {
+                        return true;
+                    } else {
+                        et_sic.setError("Not a Valid SIC For 4th Year");
+                        return false;
+                    }
+
+
+                default:
+                    et_sic.setError("Not a Valid SIC ");
+                    return false;
+            }
         }
     }
 
