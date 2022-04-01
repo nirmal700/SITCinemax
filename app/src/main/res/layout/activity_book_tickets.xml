@@ -266,36 +266,6 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/black" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_userName2"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:autoSizeTextType="uniform"
-                    android:hint="@string/_2nd_person_name"
-                    android:textColorHint="@color/black"
-                    app:boxStrokeColor="@color/black"
-                    app:boxStrokeWidth="1dp"
-                    app:endIconMode="clear_text"
-                    app:endIconTint="@color/black"
-                    app:hintTextColor="@color/black"
-                    app:startIconDrawable="@drawable/ic_user"
-                    app:startIconTint="@color/black"
-                    tools:targetApi="o">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:autoSizeTextType="uniform"
-                        android:digits="@string/allowedName"
-                        android:fontFamily="@font/my_fav_sans_number"
-                        android:inputType="textCapWords"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        tools:ignore="SpUsage" />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_sic2"
@@ -327,6 +297,37 @@
                         android:textSize="20dp"
                         tools:ignore="SpUsage"
                         tools:targetApi="o" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_userName2"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:hint="@string/_2nd_person_name"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_user"
+                    app:startIconTint="@color/black"
+                    tools:targetApi="o">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:enabled="false"
+                        android:autoSizeTextType="uniform"
+                        android:digits="@string/allowedName"
+                        android:fontFamily="@font/my_fav_sans_number"
+                        android:inputType="textCapWords"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        tools:ignore="SpUsage" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout

@@ -52,6 +52,7 @@ public class UserSignUp extends AppCompatActivity {
     ArrayList <String> mStudentsmcaSIC;
     ArrayList <String> mStudentName;
     ArrayList <String> mStudentMCAName;
+    String Course = "";
 
     AutoCompleteTextView autoCompleteCourse, autoCompleteYear;
 
@@ -66,7 +67,7 @@ public class UserSignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_sign_up);
 
-        final String[] Course = {""};
+
         final String[] Year = {""};
 
         et_userName = findViewById(R.id.et_userName);
@@ -4623,7 +4624,7 @@ public class UserSignUp extends AppCompatActivity {
         arrayListCourse.add("MCA");
         arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListCourse);
         autoCompleteCourse.setAdapter(arrayAdapterCourse);
-        autoCompleteCourse.setOnItemClickListener((adapterView, view, i, l) -> Course[0] = arrayAdapterCourse.getItem(i));
+
 
         ArrayList<String> arrayListYear;
         ArrayAdapter<String> arrayAdapterYear;
@@ -4775,7 +4776,7 @@ public class UserSignUp extends AppCompatActivity {
                     SIC = SIC.toUpperCase(Locale.ROOT);
                     otpIntent.putExtra("name", name);
                     otpIntent.putExtra("SIC", SIC);
-                    otpIntent.putExtra("Course", Course[0]);
+                    otpIntent.putExtra("Course", Course);
                     otpIntent.putExtra("Year", Year[0]);
                     otpIntent.putExtra("password", password);
                     startActivity(otpIntent);
@@ -4820,8 +4821,10 @@ public class UserSignUp extends AppCompatActivity {
         {
             int i = mStudentsSIC.indexOf(val);
             Log.e("SIC Present With Name", "validateSIC: "+mStudentName.get(i) );
+            autoCompleteCourse.setListSelection(0);
             autoCompleteCourse.setText(autoCompleteCourse.getAdapter().getItem(0).toString(),false);
             autoCompleteCourse.setEnabled(false);
+            Course = "B.Tech";
             et_userName.getEditText().setText(mStudentName.get(i));
             et_userName.setEnabled(false);
            // et_sic.setEnabled(false);
@@ -4831,8 +4834,10 @@ public class UserSignUp extends AppCompatActivity {
         {
             int i = mStudentsmcaSIC.indexOf(val);
             Log.e("SIC Present With Name", "validateSIC: "+mStudentName.get(i) );
+            autoCompleteCourse.setListSelection(2);
             autoCompleteCourse.setText(autoCompleteCourse.getAdapter().getItem(2).toString(),false);
             autoCompleteCourse.setEnabled(false);
+            Course = "MCA";
             et_userName.getEditText().setText(mStudentMCAName.get(i));
             et_userName.setEnabled(false);
             // et_sic.setEnabled(false);
