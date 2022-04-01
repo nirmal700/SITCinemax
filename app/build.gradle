@@ -20,8 +20,8 @@ android {
         applicationId "com.sitbbsr.sitcinemax"
         minSdk 21
         targetSdk 31
-        versionCode 5
-        versionName "5"
+        versionCode 6
+        versionName "6"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.debug

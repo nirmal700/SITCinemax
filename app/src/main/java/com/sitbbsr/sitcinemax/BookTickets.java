@@ -113,12 +113,22 @@ public class BookTickets extends AppCompatActivity {
                             for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
                                 //Log.e("Firestore", "onSuccess: " + queryDocumentSnapshots.getDocuments().toString());
                                 mTicket = documentSnapshot.toObject(Ticket.class);
-                                if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC())) {
+                                if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()) || mTicket.getSIC2().equals(manager.getSIC()))
+                                {
                                     Log.e("FireStore Data", "onSuccess: " + mTicket.getmDocId());
                                     btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
                                     Toast.makeText(BookTickets.this, "Already Booked a Ticket Cannot Book Another Ticket", Toast.LENGTH_SHORT).show();
                                     flag = 1;
                                     return;
+                                }
+                                else if(b==2) {
+                                    if (mTicket.getSIC2().equals(sic) || mTicket.getSICUser().equals(sic)) {
+                                        Log.e("2 nd FireStore Data", "onSuccess: " + mTicket.getmDocId());
+                                        btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
+                                        Toast.makeText(BookTickets.this, "Already Booked a Ticket Cannot Book Another Ticket", Toast.LENGTH_SHORT).show();
+                                        flag = 1;
+                                        return;
+                                    }
                                 }
                                 Log.e("FLAG", "onSuccess: " + flag);
                             }

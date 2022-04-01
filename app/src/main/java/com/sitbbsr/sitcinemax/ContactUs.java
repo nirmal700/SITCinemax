@@ -39,7 +39,6 @@ public class ContactUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
 
-        to_gitHub = findViewById(R.id.to_gitHub);
         to_whatsapp = findViewById(R.id.to_whatsapp);
         to_gmail = findViewById(R.id.to_gMail);
         to_instagram = findViewById(R.id.to_instagram);
@@ -77,7 +76,7 @@ public class ContactUs extends AppCompatActivity {
 
         to_instagram.setOnClickListener(v -> {
 
-            Uri uri = Uri.parse("https://www.instagram.com/k.nirmalkumar2002/");
+            Uri uri = Uri.parse("https://www.instagram.com/sitcinemax/");
             Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
             likeIng.setPackage("com.instagram.android");
 
@@ -85,7 +84,7 @@ public class ContactUs extends AppCompatActivity {
                 startActivity(likeIng);
             } catch (ActivityNotFoundException e) {
                 startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://www.instagram.com/k.nirmalkumar2002/")));
+                        Uri.parse("https://www.instagram.com/sitcinemax/")));
             }
             Toast.makeText(ContactUs.this, "Contact SIT Cinemax via Instagram", Toast.LENGTH_SHORT).show();
 
@@ -101,15 +100,6 @@ public class ContactUs extends AppCompatActivity {
 
         });
 
-        to_gitHub.setOnClickListener(v -> {
-
-            String url = "https://github.com/nirmal700";
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(url));
-            startActivity(i);
-            Toast.makeText(ContactUs.this, "Contact Nirmal via GitHub", Toast.LENGTH_SHORT).show();
-
-        });
 
         list = new ArrayList<>();
 

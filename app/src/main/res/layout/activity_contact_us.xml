@@ -84,17 +84,7 @@
                 android:src="@drawable/ic_gmail"
                 app:tint="@color/white" />
 
-            <ImageView
-                android:id="@+id/to_gitHub"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="5dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:contentDescription="@null"
-                android:focusable="true"
-                android:src="@drawable/ic_github"
-                app:tint="@color/white" />
+
 
         </LinearLayout>
     </LinearLayout>
