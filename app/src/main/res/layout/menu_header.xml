@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:autoSizeTextType="uniform"
-        android:text="@string/stay_home"
+        android:text="Entertainment To The Max!"
         android:textColor="@color/white"
         android:textSize="15dp"
         tools:ignore="SpUsage" />

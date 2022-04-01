@@ -4659,7 +4659,6 @@ public class UserSignUp extends AppCompatActivity {
                 }
                 else
                 {
-                    et_userName.setEnabled(true);
                     et_userName.getEditText().setText("");
                     autoCompleteCourse.setEnabled(true);
                 }
@@ -4821,7 +4820,7 @@ public class UserSignUp extends AppCompatActivity {
         {
             int i = mStudentsSIC.indexOf(val);
             Log.e("SIC Present With Name", "validateSIC: "+mStudentName.get(i) );
-            autoCompleteCourse.setText("B.Tech");
+            autoCompleteCourse.setText(autoCompleteCourse.getAdapter().getItem(0).toString(),false);
             autoCompleteCourse.setEnabled(false);
             et_userName.getEditText().setText(mStudentName.get(i));
             et_userName.setEnabled(false);
@@ -4832,7 +4831,7 @@ public class UserSignUp extends AppCompatActivity {
         {
             int i = mStudentsmcaSIC.indexOf(val);
             Log.e("SIC Present With Name", "validateSIC: "+mStudentName.get(i) );
-            autoCompleteCourse.setText("MCA");
+            autoCompleteCourse.setText(autoCompleteCourse.getAdapter().getItem(2).toString(),false);
             autoCompleteCourse.setEnabled(false);
             et_userName.getEditText().setText(mStudentMCAName.get(i));
             et_userName.setEnabled(false);
