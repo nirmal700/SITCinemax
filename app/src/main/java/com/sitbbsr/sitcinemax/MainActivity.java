@@ -59,6 +59,21 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                else
+                {
+                    new Handler().postDelayed(() -> {
+
+                        manager = new SessionManager(getApplicationContext());
+                        if (manager.getUserLogin()) {
+                            startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
+                        } else {
+                            startActivity(new Intent(getApplicationContext(), UserSignUp.class));
+                        }
+                        finish();
+
+
+                    }, SPLASH_TIMER);
+                }
             }
         });
         //mAppUpadteManager.registerListener(installStateUpdatedListener);
@@ -72,18 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         powered.setAnimation(bottom);
 
-        new Handler().postDelayed(() -> {
 
-            manager = new SessionManager(getApplicationContext());
-            if (manager.getUserLogin()) {
-                startActivity(new Intent(getApplicationContext(), UserDashBoard.class));
-            } else {
-                startActivity(new Intent(getApplicationContext(), UserSignUp.class));
-            }
-            finish();
-
-
-        }, SPLASH_TIMER);
 
     }
 
@@ -110,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         //if(mAppUpadteManager != null) mAppUpadteManager.unregisterListener(installStateUpdatedListener);
+        finishAffinity();
         super.onStop();
     }
 
@@ -117,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == RC_APP_UPDATE && resultCode != RESULT_OK) {
             Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
+            finishAffinity();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
