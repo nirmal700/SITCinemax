@@ -197,6 +197,11 @@ public class UserPollSelection extends AppCompatActivity {
                         } else if (flag4 == false) {
                             mOptionChoosed = pollData.mOption4;
                         }
+                        if(mOptionChoosed.equals(null))
+                        {
+                            btn_Submit.setError("Can't be Empty");
+                            return;
+                        }
                         UserPollMovie userPollMovie = new UserPollMovie(mOptionChoosed, manager.getSIC(), manager.getPhone(), null);
                         CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("UserPollData");
                         collectionReference.add(userPollMovie).addOnSuccessListener(documentReference -> {

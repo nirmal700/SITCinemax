@@ -2280,6 +2280,36 @@ public class BookTickets extends AppCompatActivity {
         mStudentsmcaSIC.add ("21MMCA80");
         mStudentsmcaSIC.add ("21MMCA81");
         mStudentsmcaSIC.add ("21MMCA82");
+        mStudentsmcaSIC.add("190710001");
+        mStudentsmcaSIC.add("190710002");
+        mStudentsmcaSIC.add("190710003");
+        mStudentsmcaSIC.add("190710004");
+        mStudentsmcaSIC.add("190710005");
+        mStudentsmcaSIC.add("190710006");
+        mStudentsmcaSIC.add("190710007");
+        mStudentsmcaSIC.add("190710009");
+        mStudentsmcaSIC.add("190710010");
+        mStudentsmcaSIC.add("190710011");
+        mStudentsmcaSIC.add("190710012");
+        mStudentsmcaSIC.add("190710013");
+        mStudentsmcaSIC.add("190710014");
+        mStudentsmcaSIC.add("190710015");
+        mStudentsmcaSIC.add("190710016");
+        mStudentsmcaSIC.add("190710017");
+        mStudentsmcaSIC.add("190710018");
+        mStudentsmcaSIC.add("190710019");
+        mStudentsmcaSIC.add("190710020");
+        mStudentsmcaSIC.add("190710021");
+        mStudentsmcaSIC.add("190710022");
+        mStudentsmcaSIC.add("190710023");
+        mStudentsmcaSIC.add("190710024");
+        mStudentsmcaSIC.add("190710025");
+        mStudentsmcaSIC.add("190710026");
+        mStudentsmcaSIC.add("190710027");
+        mStudentsmcaSIC.add("190710028");
+        mStudentsmcaSIC.add("190710030");
+        mStudentsmcaSIC.add("190710031");
+        mStudentsmcaSIC.add("190710032");
 
 
 
@@ -4572,6 +4602,36 @@ public class BookTickets extends AppCompatActivity {
         mStudentMCAName.add("NAMITA NAYAK");
         mStudentMCAName.add("RAHUL DEV LENKA");
         mStudentMCAName.add("BINEESHA SAHOO");
+        mStudentMCAName.add ("SRIDHARA SUNDAR BHUYAN");
+        mStudentMCAName.add ("RAJDEEP NAYAK");
+        mStudentMCAName.add ("DEBASISH BALABANTARAY");
+        mStudentMCAName.add ("BAISAKHI PANDA");
+        mStudentMCAName.add ("IPSEETA PARIDA");
+        mStudentMCAName.add ("JYOTIPRAKASH SAHOO");
+        mStudentMCAName.add ("SHUBHRANSHU DAS");
+        mStudentMCAName.add ("SUBRAT BEHERA");
+        mStudentMCAName.add ("SAMBIT RANJAN SAMAL");
+        mStudentMCAName.add ("SOUMYA RANJAN NAYAK");
+        mStudentMCAName.add ("PANDA DEBASIS HARAPRASAD");
+        mStudentMCAName.add ("DESYNA  BEURA");
+        mStudentMCAName.add ("ARIJIT PARIDA");
+        mStudentMCAName.add ("RUDRA NARAYAN MALLICK");
+        mStudentMCAName.add ("SHUBHASRI PADHI");
+        mStudentMCAName.add ("GAYATRI PRIYADARSHINI");
+        mStudentMCAName.add ("SANGITA MISHRA");
+        mStudentMCAName.add ("LIPSA SAHOO");
+        mStudentMCAName.add ("ACHYUT KUMAR SINGH");
+        mStudentMCAName.add ("MADHUSMITA PARIDA");
+        mStudentMCAName.add ("AKANKSHYA  MOHANTY");
+        mStudentMCAName.add ("LIPIKA LENKA");
+        mStudentMCAName.add ("PRATIKHYA BARIK");
+        mStudentMCAName.add ("BHAGYASHREE JAISWAL");
+        mStudentMCAName.add ("SUDIPTA DUTTA");
+        mStudentMCAName.add ("SUCHINTITA MISHRA");
+        mStudentMCAName.add ("BHANUPRIYA MISHRA");
+        mStudentMCAName.add ("DEBASIKHA HUI");
+        mStudentMCAName.add ("BIJAYALAXMI KAR");
+        mStudentMCAName.add ("NISHA KUMARI");
 
 
         manager = new SessionManager(getApplicationContext());

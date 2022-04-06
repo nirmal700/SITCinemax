@@ -88,7 +88,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ImageViewHolde
             try {
                 mContext.startActivity(instagram);
             } catch (ActivityNotFoundException e) {
-                mContext.startActivity(instagram);
+                e.printStackTrace();
             }
             Toast.makeText(mContext, "Contact " + name + " via Instagram", Toast.LENGTH_SHORT).show();
         });
