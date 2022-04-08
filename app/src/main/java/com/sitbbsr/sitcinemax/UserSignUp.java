@@ -52,6 +52,8 @@ public class UserSignUp extends AppCompatActivity {
     ArrayList <String> mStudentsmcaSIC;
     ArrayList <String> mStudentName;
     ArrayList <String> mStudentMCAName;
+    ArrayList <String> mStudentMSCName;
+    ArrayList <String> mStudentsmscSIC;
     String Course = "";
 
     AutoCompleteTextView autoCompleteCourse, autoCompleteYear;
@@ -82,6 +84,8 @@ public class UserSignUp extends AppCompatActivity {
         autoCompleteYear = findViewById(R.id.autoCompleteYear);
 
         auth = FirebaseAuth.getInstance();
+        mStudentMSCName = new ArrayList<>();
+        mStudentsmscSIC = new ArrayList<>();
 
 
         mStudentsSIC = new ArrayList<>();
@@ -2339,6 +2343,63 @@ public class UserSignUp extends AppCompatActivity {
         mStudentsmcaSIC.add("190710030");
         mStudentsmcaSIC.add("190710031");
         mStudentsmcaSIC.add("190710032");
+        mStudentsmscSIC.add("20MDSC56");
+        mStudentsmscSIC.add("20MDSD14");
+        mStudentsmscSIC.add("20MDSD15");
+        mStudentsmscSIC.add("20MDSE43");
+        mStudentsmscSIC.add("20MDSE44");
+        mStudentsmscSIC.add("20MDSE96");
+        mStudentsmscSIC.add("20MDSF08");
+        mStudentsmscSIC.add("20MDSF10");
+        mStudentsmscSIC.add("20MDSF52");
+        mStudentsmscSIC.add("20MDSF75");
+        mStudentsmscSIC.add("20MDSF77");
+        mStudentsmscSIC.add("20MDSF79");
+        mStudentsmscSIC.add("20MDSF84");
+        mStudentsmscSIC.add("20MDSF89");
+        mStudentsmscSIC.add("20MDSF90");
+        mStudentsmscSIC.add("20MDSF96");
+        mStudentsmscSIC.add("21MDSA01");
+        mStudentsmscSIC.add("21MDSA02");
+        mStudentsmscSIC.add("21MDSA03");
+        mStudentsmscSIC.add("21MDSA04");
+        mStudentsmscSIC.add("21MDSA05");
+        mStudentsmscSIC.add("21MDSA06");
+        mStudentsmscSIC.add("21MDSA07");
+        mStudentsmscSIC.add("21MDSA70");
+        mStudentsmscSIC.add("21MDSA72");
+        mStudentsmscSIC.add("21MDSA74");
+        mStudentsmscSIC.add("21MDSA76");
+        mStudentsmscSIC.add("21MDSA77");
+
+        mStudentMSCName.add("PRIYA RANI PATAR");
+        mStudentMSCName.add("MIHIR RAJ");
+        mStudentMSCName.add("SAMBIT KUMAR NAYAK");
+        mStudentMSCName.add("DIBYA PRAKASH DASH");
+        mStudentMSCName.add("APARNNA PARHI");
+        mStudentMSCName.add("SUKANYA SUMAN KALYAN");
+        mStudentMSCName.add("LIPSARANI MISHRA");
+        mStudentMSCName.add("KALINGA MOHARANA");
+        mStudentMSCName.add("B NEHA PATTANAIK");
+        mStudentMSCName.add("NILANJANA PATRA");
+        mStudentMSCName.add("SWETA KRUSHNA MOHAPATRA");
+        mStudentMSCName.add("NIHAR RANJAN SAHOO");
+        mStudentMSCName.add("NIRLIPTA ROUTRAY");
+        mStudentMSCName.add("SWATISHREE SHEKHAR DEO");
+        mStudentMSCName.add("MAUSUMI SARANGI");
+        mStudentMSCName.add("ARPITA BISWAL");
+        mStudentMSCName.add("VISAKHA ");
+        mStudentMSCName.add("SAMPRITI PRADHAN");
+        mStudentMSCName.add("DEBASHISH MOHAPATRA");
+        mStudentMSCName.add("SUBHALAXMI SWAIN");
+        mStudentMSCName.add("NIHAR RANJAN SAMAL");
+        mStudentMSCName.add("NIMISHA TRIPATHY");
+        mStudentMSCName.add("JAGANNATH PANIGRAHI");
+        mStudentMSCName.add("PRITISH KUMAR DASH");
+        mStudentMSCName.add("PUSPITA SAHOO");
+        mStudentMSCName.add("SONALI SUBHADARSINI");
+        mStudentMSCName.add("HARISANKAR PANDA");
+        mStudentMSCName.add("MANISH MOHAPATRA");
 
 
 
@@ -4682,6 +4743,7 @@ public class UserSignUp extends AppCompatActivity {
         arrayListCourse.add("B.Tech");
         arrayListCourse.add("M.Tech");
         arrayListCourse.add("MCA");
+        arrayListCourse.add("MSC");
         arrayAdapterCourse = new ArrayAdapter<>(getApplicationContext(), R.layout.text_menu, arrayListCourse);
         autoCompleteCourse.setAdapter(arrayAdapterCourse);
 
@@ -4899,6 +4961,19 @@ public class UserSignUp extends AppCompatActivity {
             autoCompleteCourse.setEnabled(false);
             Course = "MCA";
             et_userName.getEditText().setText(mStudentMCAName.get(i));
+            et_userName.setEnabled(false);
+            // et_sic.setEnabled(false);
+            return true;
+        }
+        else if(mStudentsmscSIC.contains(val))
+        {
+            int i = mStudentsmscSIC.indexOf(val);
+            Log.e("SIC Present With Name", "validateSIC: "+mStudentName.get(i) );
+            autoCompleteCourse.setListSelection(2);
+            autoCompleteCourse.setText(autoCompleteCourse.getAdapter().getItem(3).toString(),false);
+            autoCompleteCourse.setEnabled(false);
+            Course = "MSC";
+            et_userName.getEditText().setText(mStudentMSCName.get(i));
             et_userName.setEnabled(false);
             // et_sic.setEnabled(false);
             return true;
