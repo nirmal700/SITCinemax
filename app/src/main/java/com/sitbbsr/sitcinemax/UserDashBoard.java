@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -57,6 +66,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     SessionManager manager;
 
     private FirebaseAnalytics mFirebaseAnalytics;
+    private InterstitialAd mInterstitialAd;
 
     String view_date = new SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(new Date());
 
@@ -65,6 +75,11 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_dashboard);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {}
+        });
 
         LottieAnimationView lottieAnimationView1 = findViewById(R.id.drawer_btn);
         //lottieAnimationView1.setSpeed(3f);
@@ -92,7 +107,7 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
         tv_time.setFormat12Hour("hh:mm:ss a");
         tv_time.setFormat24Hour(null);
 
-
+    setAds();
         String sName = manager.getName();
         user_Name.setText(String.format("%s(%s)", sName, manager.getSIC()));
 
@@ -121,9 +136,21 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
             btCancel.setOnClickListener(v -> dialog.cancel());
             btOk.setOnClickListener(v -> {
-
-                startActivity(new Intent(UserDashBoard.this, UserBookTickets.class));
-                dialog.dismiss();
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(UserDashBoard.this);
+                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                        @Override
+                        public void onAdDismissedFullScreenContent() {
+                            super.onAdDismissedFullScreenContent();
+                            startActivity(new Intent(UserDashBoard.this, UserBookTickets.class));
+                            dialog.dismiss();
+                        }
+                    });
+                } else {
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                    startActivity(new Intent(UserDashBoard.this, UserBookTickets.class));
+                    dialog.dismiss();
+                }
             });
 
             dialog.show();
@@ -320,6 +347,29 @@ public class UserDashBoard extends AppCompatActivity implements NavigationView.O
 
         return (wifiConn != null && wifiConn.isConnected()) || (mobileConn != null && mobileConn.isConnected() || (bluetoothConn != null && bluetoothConn.isConnected())); // if true ,  else false
 
+    }
+
+    public void setAds()
+    {
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(this,"ca-app-pub-5024821781911197/6410829632", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i("TAG", "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i("TAG", loadAdError.getMessage());
+                        mInterstitialAd = null;
+                    }
+                });
     }
 
 

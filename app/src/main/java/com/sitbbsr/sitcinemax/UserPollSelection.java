@@ -1,10 +1,9 @@
 package com.sitbbsr.sitcinemax;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -15,12 +14,24 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Transaction;
 
+import java.util.List;
 import java.util.Objects;
 
 public class UserPollSelection extends AppCompatActivity {
@@ -36,8 +47,8 @@ public class UserPollSelection extends AppCompatActivity {
     PollData pollData;
     UserPollMovie userPollMovie;
     SessionManager manager;
+    int flag = -1;
     ProgressDialog progressDialog;
-    int flag = 0;
     private final CollectionReference mCollectionReference = FirebaseFirestore.getInstance().collection("PollData");
 
     @SuppressLint("ClickableViewAccessibility")
@@ -68,10 +79,12 @@ public class UserPollSelection extends AppCompatActivity {
         progressDialog.dismiss();
 
         FirebaseFirestore.getInstance().collection("UserPollData")
+                .whereEqualTo("mSicUser",manager.getSIC())
+                .limit(2)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                flag = 0;
+                Log.e("TAG", "onSuccess: "+queryDocumentSnapshots.getDocuments().toString() );
                 for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
                     userPollMovie = documentSnapshot.toObject(UserPollMovie.class);
                     if (userPollMovie.getmSicUser().equals(manager.getSIC())) {
@@ -91,145 +104,213 @@ public class UserPollSelection extends AppCompatActivity {
                     }
                 }
             }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(UserPollSelection.this, "Error! Occured"+e.toString(), Toast.LENGTH_SHORT).show();
+            }
         });
-
-        if (flag == 0) {
-            FirebaseFirestore.getInstance().collection("PollData").document("Poll")
-                    .get().addOnSuccessListener(documentSnapshot -> {
-                pollData = documentSnapshot.toObject(PollData.class);
-                Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption1Votes());
-                Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption2Votes());
-                Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption3Votes());
-                Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption4Votes());
-                count1 = pollData.getmOption1Votes();
-                count2 = pollData.getmOption2Votes();
-                count3 = pollData.getmOption3Votes();
-                count4 = pollData.getmOption4Votes();
-                tvOption1.setText(pollData.mOption1);
-                tvOption2.setText(pollData.mOption2);
-                tvOption3.setText(pollData.mOption3);
-                tvOption4.setText(pollData.mOption4);
-                seekBar1.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        return true;
+        if(flag==-1) {
+            FirebaseFirestore.getInstance().collection("PollData").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if (error != null) {
+                        Toast.makeText(UserPollSelection.this, "" + error, Toast.LENGTH_SHORT).show();
                     }
-                });
-                tvOption1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (flag1) {
-                            count1 = count1 + 1;
-                            flag1 = false;
-                            flag2 = true;
-                            flag3 = true;
-                            flag4 = true;
-                            CalculatePercent();
+                    if (value != null) {
+                        Log.e("TAG", "onEvent: ___________________________________");
+                        List<DocumentSnapshot> snapshotList = value.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshotList) {
+                            Log.e("TAG", "onEvent: " + snapshot.getData());
+                            pollData = snapshot.toObject(PollData.class);
                         }
-                    }
-                });
-                seekBar2.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        return true;
-                    }
-                });
-                tvOption2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (flag2) {
-                            count2 = count2 + 1;
-                            flag1 = true;
-                            flag2 = false;
-                            flag3 = true;
-                            flag4 = true;
-                            CalculatePercent();
-                        }
-                    }
-                });
-                seekBar3.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        return true;
-                    }
-                });
-                tvOption3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (flag3) {
-                            count3 = count3 + 1;
-                            flag1 = true;
-                            flag2 = true;
-                            flag3 = false;
-                            flag4 = true;
-                            CalculatePercent();
-                        }
-                    }
-                });
-                seekBar4.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                        return true;
-                    }
-                });
-                tvOption4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (flag4) {
-                            count4 = count4 + 1;
-                            flag1 = true;
-                            flag2 = true;
-                            flag3 = true;
-                            flag4 = false;
-                            CalculatePercent();
-                        }
-                    }
-                });
-                btn_Submit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (flag1 == false) {
-                            mOptionChoosed = pollData.mOption1;
-                        } else if (flag2 == false) {
-                            mOptionChoosed = pollData.mOption2;
-                        } else if (flag3 == false) {
-                            mOptionChoosed = pollData.mOption3;
-                        } else if (flag4 == false) {
-                            mOptionChoosed = pollData.mOption4;
-                        }
-                        if(mOptionChoosed.equals(null))
-                        {
-                            btn_Submit.setError("Can't be Empty");
-                            return;
-                        }
-                        UserPollMovie userPollMovie = new UserPollMovie(mOptionChoosed, manager.getSIC(), manager.getPhone(), null);
-                        CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("UserPollData");
-                        collectionReference.add(userPollMovie).addOnSuccessListener(documentReference -> {
-                        }).addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                mCollectionReference.document("Poll").update("mOption1Votes", (int) count1);
-                                mCollectionReference.document("Poll").update("mOption2Votes", (int) count2);
-                                mCollectionReference.document("Poll").update("mOption3Votes", (int) count3);
-                                mCollectionReference.document("Poll").update("mOption4Votes", (int) count4);
-                                Toast.makeText(UserPollSelection.this, "Poll Submitted Successfully!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(UserPollSelection.this, UserDashBoard.class);
-                                progressDialog.dismiss();
-                                startActivity(intent);
-                                finish();
+                        mOptionChoosed = null;
+                        tvOption1.setBackgroundResource(0);
+                        tvOption2.setBackgroundResource(0);
+                        tvOption3.setBackgroundResource(0);
+                        tvOption4.setBackgroundResource(0);
+                        flag1 = true;
+                        flag2 = true;
+                        flag3 = true;
+                        flag4 = true;
+                        Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption1Votes());
+                        Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption2Votes());
+                        Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption3Votes());
+                        Log.e("Poll Data", "onSuccess: " + Objects.requireNonNull(pollData).getmOption4Votes());
+                        count1 = pollData.getmOption1Votes();
+                        count2 = pollData.getmOption2Votes();
+                        count3 = pollData.getmOption3Votes();
+                        count4 = pollData.getmOption4Votes();
+                        tvOption1.setText(pollData.mOption1);
+                        tvOption2.setText(pollData.mOption2);
+                        tvOption3.setText(pollData.mOption3);
+                        tvOption4.setText(pollData.mOption4);
+                        CalculatePercent();
+                        seekBar1.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View view, MotionEvent motionEvent) {
+                                return true;
                             }
                         });
+                        tvOption1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (flag1) {
+                                    flag1 = false;
+                                    flag2 = true;
+                                    flag3 = true;
+                                    flag4 = true;
+                                    tvOption1.setBackgroundResource(R.drawable.progress_track1);
+                                    tvOption2.setBackgroundResource(0);
+                                    tvOption3.setBackgroundResource(0);
+                                    tvOption4.setBackgroundResource(0);
+                                    CalculatePercent();
+                                }
+                            }
+                        });
+                        seekBar2.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View view, MotionEvent motionEvent) {
+                                return true;
+                            }
+                        });
+                        tvOption2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (flag2) {
+                                    flag1 = true;
+                                    flag2 = false;
+                                    flag3 = true;
+                                    flag4 = true;
+                                    tvOption1.setBackgroundResource(0);
+                                    tvOption2.setBackgroundResource(R.drawable.progress_track1);
+                                    tvOption3.setBackgroundResource(0);
+                                    tvOption4.setBackgroundResource(0);
+                                    CalculatePercent();
+                                }
+                            }
+                        });
+                        seekBar3.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View view, MotionEvent motionEvent) {
+                                return true;
+                            }
+                        });
+                        tvOption3.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (flag3) {
+                                    flag1 = true;
+                                    flag2 = true;
+                                    flag3 = false;
+                                    flag4 = true;
+                                    tvOption1.setBackgroundResource(0);
+                                    tvOption2.setBackgroundResource(0);
+                                    tvOption4.setBackgroundResource(0);
+                                    tvOption3.setBackgroundResource(R.drawable.progress_track1);
+                                    CalculatePercent();
+                                }
+                            }
+                        });
+                        seekBar4.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View view, MotionEvent motionEvent) {
+                                return true;
+                            }
+                        });
+                        tvOption4.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (flag4) {
+                                    flag1 = true;
+                                    flag2 = true;
+                                    flag3 = true;
+                                    flag4 = false;
+                                    tvOption1.setBackgroundResource(0);
+                                    tvOption2.setBackgroundResource(0);
+                                    tvOption3.setBackgroundResource(0);
+                                    tvOption4.setBackgroundResource(R.drawable.progress_track1);
+                                    CalculatePercent();
+                                }
+                            }
+                        });
+                        btn_Submit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (flag1 == false) {
+                                    mOptionChoosed = pollData.mOption1;
+                                } else if (flag2 == false) {
+                                    mOptionChoosed = pollData.mOption2;
+                                } else if (flag3 == false) {
+                                    mOptionChoosed = pollData.mOption3;
+                                } else if (flag4 == false) {
+                                    mOptionChoosed = pollData.mOption4;
+                                }
+                                if(mOptionChoosed != null) {
+                                    FirebaseFirestore.getInstance().runTransaction(new Transaction.Function<Void>() {
+                                        @Nullable
+                                        public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+                                            DocumentReference documentReference = mCollectionReference.document("Poll");
+                                            DocumentSnapshot documentSnapshot = transaction.get(documentReference);
+                                            if(mOptionChoosed.equals(pollData.mOption1))
+                                            {
+                                                transaction.update(documentReference,"mOption1Votes", FieldValue.increment(1));
+                                                return null;
+                                            }
+                                            else if(mOptionChoosed.equals(pollData.mOption2))
+                                            {
+                                                transaction.update(documentReference,"mOption2Votes",FieldValue.increment(1));
+                                                return null;
 
+                                            }else if(mOptionChoosed.equals(pollData.mOption3))
+                                            {
+                                                transaction.update(documentReference,"mOption3Votes",FieldValue.increment(1));
+                                                return null;
+                                            }else if(mOptionChoosed.equals(pollData.mOption4))
+                                            {
+                                                transaction.update(documentReference,"mOption4Votes",FieldValue.increment(1));
+                                                return null;
+                                            }
+                                            else
+                                                Toast.makeText(UserPollSelection.this, "Didn't Write", Toast.LENGTH_SHORT).show();
+                                            return null;
+                                        }
+                                    }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            UserPollMovie userPollMovie = new UserPollMovie(mOptionChoosed, manager.getSIC(), manager.getPhone(), null);
+                                            CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("UserPollData");
+                                            collectionReference.add(userPollMovie).addOnSuccessListener(documentReference -> {
+                                            }).addOnCompleteListener(task -> {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(UserPollSelection.this, "Poll Submitted Successfully!", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(UserPollSelection.this, UserDashBoard.class);
+                                                    progressDialog.dismiss();
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                                else {
+                                    Toast.makeText(UserPollSelection.this, "Choose a Option First", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
-                });
-
+                }
             });
+        }
+
             btn_backToSd.setOnClickListener(v -> {
                 startActivity(new Intent(UserPollSelection.this, UserDashBoard.class));
                 finishAffinity();
             });
         }
-    }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void CalculatePercent() {
         double total = count1 + count2 + count3 + count4;
         double p1 = (count1 / total) * 100;
@@ -241,9 +322,9 @@ public class UserPollSelection extends AppCompatActivity {
         mTvPercent2.setText(String.format("%.0f%%", p2));
         seekBar2.setProgress((int) p2);
         mTvPercent3.setText(String.format("%.0f%%", p3));
-        seekBar3.setProgress((int) p3);
+        seekBar3.setProgress(Math.toIntExact((long) p3));
         mTvPercent4.setText(String.format("%.0f%%", p4));
-        seekBar4.setProgress((int) p4);
+        seekBar4.setProgress(Math.toIntExact((long) p4));
         Log.e("TAG", "onCreate: " + flag1 + flag2 + flag3 + flag4 + count1 + count2 + count3 + count4);
     }
 

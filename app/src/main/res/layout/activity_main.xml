@@ -81,11 +81,11 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="80dp"
                 android:autoSizeTextType="uniform"
-                android:fontFamily="@font/harmony"
+                android:fontFamily="@font/stfr"
                 android:gravity="center_horizontal"
                 android:text="@string/developed_by_nirmal_kumar"
                 android:textColor="@color/black"
-                android:textSize="50dp"
+                android:textSize="45dp"
                 android:textStyle="bold"
                 tools:ignore="SpUsage"
                 tools:targetApi="o" />

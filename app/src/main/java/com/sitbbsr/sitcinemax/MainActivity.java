@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     Animation bottom, side;
 
-    private static final int SPLASH_TIMER = 3400;
+    private static final int SPLASH_TIMER = 3900;
     private static final int RC_APP_UPDATE = 895;
 
     TextView powered;

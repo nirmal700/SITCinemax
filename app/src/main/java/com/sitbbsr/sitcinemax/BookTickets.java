@@ -17,12 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -4782,16 +4787,36 @@ public class BookTickets extends AppCompatActivity {
             }
             sic = sic.toUpperCase(Locale.ROOT);
 
-            FirebaseFirestore.getInstance().collection("Tickets")
+            Task<QuerySnapshot> task1 = FirebaseFirestore.getInstance()
+                    .collection("Tickets")
+                    .whereEqualTo("sicuser",manager.getSIC())
                     .whereEqualTo("movieName", mMovieName)
-                    .get()
-                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    .orderBy("mBookedTime", Query.Direction.DESCENDING)
+                    .limit(25)
+                    .get();
+            Task<QuerySnapshot> task2 = FirebaseFirestore.getInstance()
+                    .collection("Tickets")
+                    .whereEqualTo("sic2",manager.getSIC())
+                    .whereEqualTo("movieName", mMovieName)
+                    .orderBy("mBookedTime", Query.Direction.DESCENDING)
+                    .limit(25)
+                    .get();
+            Task <List<QuerySnapshot>> allTasks = Tasks.whenAllSuccess(task1,task2);
+
+            allTasks.addOnSuccessListener(new OnSuccessListener<List<QuerySnapshot>>() {
+                @Override
+                public void onSuccess(List<QuerySnapshot> querySnapshots) {
+                    Log.e("TAG", "onCreate: "+task1.getResult().toString() ); Log.e("TAG", "onCreate: "+task2.getResult().toString() );
+                    for(QuerySnapshot queryDocumentSnapshots : querySnapshots)
+                    {
+                        Log.e("TAG", "onSuccess:"+queryDocumentSnapshots.getDocuments().toString() );
+                        Log.e("FLAG1", "onSuccess: " + flag);
+                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots)
+                        {
                             flag = 0;
-                            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
-                                //Log.e("Firestore", "onSuccess: " + queryDocumentSnapshots.getDocuments().toString());
+                            if (documentSnapshot.toObject(Ticket.class).getSICUser().equals(manager.getSIC()) | documentSnapshot.toObject(Ticket.class).getSIC2().equals(manager.getSIC())) {
                                 mTicket = documentSnapshot.toObject(Ticket.class);
+                                Log.e("TAG", "onSuccess: "+documentSnapshot.toString() );
                                 if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()) || mTicket.getSIC2().equals(manager.getSIC()))
                                 {
                                     Log.e("FireStore Data", "onSuccess: " + mTicket.getmDocId());
@@ -4809,26 +4834,28 @@ public class BookTickets extends AppCompatActivity {
                                         return;
                                     }
                                 }
-                                Log.e("FLAG", "onSuccess: " + flag);
+                                Log.e("FLAG2", "onSuccess: " + flag);
                             }
-                            if (flag == 0) {
-                                Intent intent = new Intent(BookTickets.this, ChooseSeatLayout.class);
-                                intent.putExtra("NAME_2", name);
-                                intent.putExtra("SIC_2", sic);
-                                intent.putExtra("PHONE_NUMBER_2", phone);
-                                intent.putExtra("Movie_Name", mMovieName);
-                                intent.putExtra("NoOfPersons", "" + b);
-                                Log.e("Intent Put", "onClick: " + name + phone + sic);
-                                startActivity(intent);
-                            }
+                            Log.e("FLAG3", "onSuccess: " + flag);
+
 
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(BookTickets.this, e.toString(), Toast.LENGTH_SHORT).show();
+                        if (flag == 0) {
+                            Intent intent = new Intent(BookTickets.this, ChooseSeatLayout.class);
+                            intent.putExtra("NAME_2", name);
+                            intent.putExtra("SIC_2", sic);
+                            intent.putExtra("PHONE_NUMBER_2", phone);
+                            intent.putExtra("Movie_Name", mMovieName);
+                            intent.putExtra("NoOfPersons", "" + b);
+                            Log.e("Intent Put", "onClick: " + name + phone + sic);
+                            startActivity(intent);
+                        }
+                    }
+                    Log.e("FLAG5", "onSuccess: " + flag);
                 }
             });
+
+
 
 
         });

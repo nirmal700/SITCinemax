@@ -11,15 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -78,20 +84,31 @@ public class UserBookedTickets extends AppCompatActivity implements BookedTicket
 
     @SuppressLint("NotifyDataSetChanged")
     private void loadRecycler() {
-        Query getTickets = collectionReference.orderBy("mBookedTime", Query.Direction.DESCENDING);
-        getTickets.addSnapshotListener((value, error) -> {
-            if (error != null) {
-                Log.e("AddSnapShot", error.getMessage());
-                return;
-            }
-            for (DocumentChange documentChange : Objects.requireNonNull(value).getDocumentChanges()) {
-                if (documentChange.getType() == DocumentChange.Type.ADDED) {
-                    if (documentChange.getDocument().toObject(Ticket.class).getSICUser().equals(manager.getSIC()) | documentChange.getDocument().toObject(Ticket.class).getSIC2().equals(manager.getSIC())) {
-                        list.add(documentChange.getDocument().toObject(Ticket.class));
-                        bookedTicketsAdapter = new BookedTicketsAdapter(UserBookedTickets.this, list);
-                        recyclerView.setAdapter(bookedTicketsAdapter);
-                        bookedTicketsAdapter.notifyDataSetChanged();
-                        bookedTicketsAdapter.setOnItemClickListener(UserBookedTickets.this);
+
+        Task<QuerySnapshot> task1 = collectionReference.whereEqualTo("sicuser",manager.getSIC())
+                .orderBy("mBookedTime", Query.Direction.DESCENDING)
+                .limit(25)
+                .get();
+        Task<QuerySnapshot> task2 = collectionReference.whereEqualTo("sic2",manager.getSIC())
+                .orderBy("mBookedTime", Query.Direction.DESCENDING)
+                .limit(25)
+                .get();
+        Task <List<QuerySnapshot>> allTasks = Tasks.whenAllSuccess(task1,task2);
+
+        allTasks.addOnSuccessListener(new OnSuccessListener<List<QuerySnapshot>>() {
+            @Override
+            public void onSuccess(List<QuerySnapshot> querySnapshots) {
+                for(QuerySnapshot queryDocumentSnapshots : querySnapshots)
+                {
+                    for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots)
+                    {
+                        if (documentSnapshot.toObject(Ticket.class).getSICUser().equals(manager.getSIC()) | documentSnapshot.toObject(Ticket.class).getSIC2().equals(manager.getSIC())) {
+                            list.add(documentSnapshot.toObject(Ticket.class));
+                            bookedTicketsAdapter = new BookedTicketsAdapter(UserBookedTickets.this, list);
+                            recyclerView.setAdapter(bookedTicketsAdapter);
+                            bookedTicketsAdapter.notifyDataSetChanged();
+                            bookedTicketsAdapter.setOnItemClickListener(UserBookedTickets.this);
+                        }
                     }
                 }
             }
