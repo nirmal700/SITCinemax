@@ -238,6 +238,7 @@ public class UserPollSelection extends AppCompatActivity {
                         btn_Submit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                progressDialog.show();
                                 if (flag1 == false) {
                                     mOptionChoosed = pollData.mOption1;
                                 } else if (flag2 == false) {
@@ -273,7 +274,10 @@ public class UserPollSelection extends AppCompatActivity {
                                                 return null;
                                             }
                                             else
+                                            {
                                                 Toast.makeText(UserPollSelection.this, "Didn't Write", Toast.LENGTH_SHORT).show();
+                                                progressDialog.dismiss();
+                                            }
                                             return null;
                                         }
                                     }).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -296,6 +300,7 @@ public class UserPollSelection extends AppCompatActivity {
                                 }
                                 else {
                                     Toast.makeText(UserPollSelection.this, "Choose a Option First", Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
                                 }
                             }
                         });

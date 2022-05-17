@@ -99,7 +99,7 @@ public class ChooseSeatLayout extends AppCompatActivity implements View.OnClickL
         FirebaseFirestore.getInstance()
                 .collection("Movies")
                 .document(MovieName)
-                .addSnapshotListener((DocumentSnapshot value, FirebaseFirestoreException error) -> {
+                .addSnapshotListener(ChooseSeatLayout.this,(DocumentSnapshot value, FirebaseFirestoreException error) -> {
                     if (error != null) {
                         Log.e("Firebase Error", "onEvent: ", error);
                         progressDialog.dismiss();
