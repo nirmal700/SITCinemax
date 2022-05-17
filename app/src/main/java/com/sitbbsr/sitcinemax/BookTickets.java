@@ -4792,16 +4792,30 @@ public class BookTickets extends AppCompatActivity {
                     .whereEqualTo("sicuser",manager.getSIC())
                     .whereEqualTo("movieName", mMovieName)
                     .orderBy("mBookedTime", Query.Direction.DESCENDING)
-                    .limit(25)
+                    .limit(2)
                     .get();
             Task<QuerySnapshot> task2 = FirebaseFirestore.getInstance()
                     .collection("Tickets")
                     .whereEqualTo("sic2",manager.getSIC())
                     .whereEqualTo("movieName", mMovieName)
                     .orderBy("mBookedTime", Query.Direction.DESCENDING)
-                    .limit(25)
+                    .limit(2)
                     .get();
-            Task <List<QuerySnapshot>> allTasks = Tasks.whenAllSuccess(task1,task2);
+            Task<QuerySnapshot> task3 = FirebaseFirestore.getInstance()
+                    .collection("Tickets")
+                    .whereEqualTo("sicuser",sic)
+                    .whereEqualTo("movieName", mMovieName)
+                    .orderBy("mBookedTime", Query.Direction.DESCENDING)
+                    .limit(2)
+                    .get();
+            Task<QuerySnapshot> task4 = FirebaseFirestore.getInstance()
+                    .collection("Tickets")
+                    .whereEqualTo("sic2",sic)
+                    .whereEqualTo("movieName", mMovieName)
+                    .orderBy("mBookedTime", Query.Direction.DESCENDING)
+                    .limit(2)
+                    .get();
+            Task <List<QuerySnapshot>> allTasks = Tasks.whenAllSuccess(task1,task2,task3,task4);
 
             allTasks.addOnSuccessListener(new OnSuccessListener<List<QuerySnapshot>>() {
                 @Override
@@ -4812,23 +4826,15 @@ public class BookTickets extends AppCompatActivity {
                         Log.e("FLAG1", "onSuccess: " + flag);
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             flag = 0;
-                            if (documentSnapshot.toObject(Ticket.class).getSICUser().equals(manager.getSIC()) | documentSnapshot.toObject(Ticket.class).getSIC2().equals(manager.getSIC())) {
+                            if (documentSnapshot.toObject(Ticket.class).getSICUser().equals(manager.getSIC()) | documentSnapshot.toObject(Ticket.class).getSIC2().equals(manager.getSIC()) | documentSnapshot.toObject(Ticket.class).getSICUser().equals(sic) | documentSnapshot.toObject(Ticket.class).getSIC2().equals(sic)) {
                                 mTicket = documentSnapshot.toObject(Ticket.class);
                                 Log.e("TAG", "onSuccess: " + documentSnapshot.toString());
-                                if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()) || mTicket.getSIC2().equals(manager.getSIC())) {
+                                if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()) || mTicket.getSIC2().equals(manager.getSIC()) || Objects.requireNonNull(mTicket).getSICUser().equals(sic) || mTicket.getSIC2().equals(sic)) {
                                     Log.e("FireStore Data", "onSuccess: " + mTicket.getmDocId());
                                     btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
                                     Toast.makeText(BookTickets.this, "Already Booked a Ticket Cannot Book Another Ticket", Toast.LENGTH_SHORT).show();
                                     flag = 1;
                                     return;
-                                } else if (b == 2) {
-                                    if (mTicket.getSIC2().equals(sic) || mTicket.getSICUser().equals(sic)) {
-                                        Log.e("2 nd FireStore Data", "onSuccess: " + mTicket.getmDocId());
-                                        btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
-                                        Toast.makeText(BookTickets.this, "Already Booked a Ticket Cannot Book Another Ticket", Toast.LENGTH_SHORT).show();
-                                        flag = 1;
-                                        return;
-                                    }
                                 }
                                 Log.e("FLAG2", "onSuccess: " + flag);
                             }
