@@ -4807,25 +4807,21 @@ public class BookTickets extends AppCompatActivity {
                 @Override
                 public void onSuccess(List<QuerySnapshot> querySnapshots) {
                     Log.e("TAG", "onCreate: "+task1.getResult().toString() ); Log.e("TAG", "onCreate: "+task2.getResult().toString() );
-                    for(QuerySnapshot queryDocumentSnapshots : querySnapshots)
-                    {
-                        Log.e("TAG", "onSuccess:"+queryDocumentSnapshots.getDocuments().toString() );
+                    for(QuerySnapshot queryDocumentSnapshots : querySnapshots) {
+                        Log.e("TAG", "onSuccess:" + queryDocumentSnapshots.getDocuments().toString());
                         Log.e("FLAG1", "onSuccess: " + flag);
-                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots)
-                        {
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             flag = 0;
                             if (documentSnapshot.toObject(Ticket.class).getSICUser().equals(manager.getSIC()) | documentSnapshot.toObject(Ticket.class).getSIC2().equals(manager.getSIC())) {
                                 mTicket = documentSnapshot.toObject(Ticket.class);
-                                Log.e("TAG", "onSuccess: "+documentSnapshot.toString() );
-                                if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()) || mTicket.getSIC2().equals(manager.getSIC()))
-                                {
+                                Log.e("TAG", "onSuccess: " + documentSnapshot.toString());
+                                if (Objects.requireNonNull(mTicket).getSICUser().equals(manager.getSIC()) || mTicket.getSIC2().equals(manager.getSIC())) {
                                     Log.e("FireStore Data", "onSuccess: " + mTicket.getmDocId());
                                     btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
                                     Toast.makeText(BookTickets.this, "Already Booked a Ticket Cannot Book Another Ticket", Toast.LENGTH_SHORT).show();
                                     flag = 1;
                                     return;
-                                }
-                                else if(b==2) {
+                                } else if (b == 2) {
                                     if (mTicket.getSIC2().equals(sic) || mTicket.getSICUser().equals(sic)) {
                                         Log.e("2 nd FireStore Data", "onSuccess: " + mTicket.getmDocId());
                                         btn_Proceed.setError("Already Booked a Ticket Cannot Book Another Ticket");
@@ -4840,6 +4836,7 @@ public class BookTickets extends AppCompatActivity {
 
 
                         }
+                    }
                         if (flag == 0) {
                             Intent intent = new Intent(BookTickets.this, ChooseSeatLayout.class);
                             intent.putExtra("NAME_2", name);
@@ -4850,7 +4847,6 @@ public class BookTickets extends AppCompatActivity {
                             Log.e("Intent Put", "onClick: " + name + phone + sic);
                             startActivity(intent);
                         }
-                    }
                     Log.e("FLAG5", "onSuccess: " + flag);
                 }
             });
