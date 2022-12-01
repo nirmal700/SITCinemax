@@ -143,7 +143,7 @@
                         android:textColorHint="@color/black"
                         app:boxStrokeColor="@color/black"
                         app:boxStrokeWidth="1dp"
-                        android:enabled="false"
+                        app:boxStrokeWidthFocused="2dp"
                         app:endIconTint="@color/black"
                         app:errorTextColor="@color/black"
                         app:hintTextColor="@color/black"
@@ -154,27 +154,16 @@
                             android:id="@+id/autoCompleteCourse"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/black"
-                            android:enabled="false"
                             android:fontFamily="@font/my_fav_sans_number"
                             android:inputType="none"
+                            android:enabled="false"
                             android:textColor="@color/black"
                             android:textSize="20dp"
-                            tools:ignore="LabelFor,SpUsage" />
+                            tools:ignore="LabelFor,SpUsage"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginTop="10dp"-->
-                <!--                    android:autoSizeTextType="uniform"-->
-                <!--                    android:text="@string/choose_year"-->
-                <!--                    android:textColor="@color/black"-->
-                <!--                    android:textStyle="bold"-->
-                <!--                    android:textSize="15dp"-->
-                <!--                    tools:ignore="SpUsage" />-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -190,20 +179,22 @@
                         android:textColorHint="@color/black"
                         app:boxStrokeColor="@color/black"
                         app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
                         app:endIconTint="@color/black"
                         app:errorTextColor="@color/black"
-                        app:hintTextColor="@color/black">
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/ic_user"
+                        app:startIconTint="@color/black">
 
                         <AutoCompleteTextView
                             android:id="@+id/autoCompleteYear"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/black"
                             android:fontFamily="@font/my_fav_sans_number"
                             android:inputType="none"
                             android:textColor="@color/black"
                             android:textSize="20dp"
-                            tools:ignore="LabelFor,SpUsage" />
+                            tools:ignore="LabelFor,SpUsage"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
