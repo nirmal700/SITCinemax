@@ -1,20 +1,33 @@
-# Android
-# Build your Android project with Gradle.
-# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/android
-
 trigger:
-- main
+  branches:
+    include:
+      - main
 
 pool:
-  vmImage: 'macos-latest'
+  vmImage: 'ubuntu-latest'
 
-steps:
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug'
+variables:
+  buildDir: 'app/build/outputs/apk/release'
+
+jobs:
+- job: Build
+  displayName: "Build Android APK"
+  steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.x'
+      displayName: 'Use Python 3.x'
+
+    - task: Gradle@2
+      displayName: 'Build Release APK'
+      inputs:
+        workingDirectory: ''
+        gradleWrapperFile: 'gradlew'
+        options: 'clean'
+        tasks: 'assembleRelease'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish APK Artifact'
+      inputs:
+        PathtoPublish: '$(buildDir)'
+        ArtifactName: 'apk-release'
